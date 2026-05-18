@@ -5,13 +5,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Konka — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
-
 :root {
-/* Same palette as index.html */
-–gold:      #FAD067;
-–gold-acc:  #E8B830;
+  /* Same palette as index.html */
+  --gold:      #FAD067;
+  --gold-acc:  #E8B830;
 
 –blue:      #91BCFF;
 –blue-acc:  #6A9FEE;
@@ -90,9 +91,12 @@ font-size: 22px; font-weight: 700; letter-spacing: 1.5px; color: var(–rosa-acc
 display: flex; align-items: center; gap: 1px;
 }
 .nav-logo-text .o {
-display: inline-block; width: 22px; height: 22px;
+display: inline-block;
+width: 22px; height: 22px;
+min-width: 22px;
 background: var(–blue); border-radius: 50%;
 margin: 0 1px; position: relative; top: 1px;
+flex-shrink: 0;
 }
 .nav-subtitle {
 font-size: 13px; font-weight: 300; color: var(–muted);
@@ -321,10 +325,12 @@ display: flex; align-items: center; gap: 1px;
 .foot-logo .o {
 display: inline-block;
 width: 18px; height: 18px;
+min-width: 18px;
 background: var(–blue);
 border-radius: 50%;
 margin: 0 1px;
 position: relative; top: 1px;
+flex-shrink: 0;
 }
 footer p {
 font-size: 13px; font-weight: 300;
@@ -602,9 +608,7 @@ footer { flex-direction: column; align-items: flex-start; gap: 12px; }
 
 <nav>
   <div class="nav-logo">
-    <img src="Konka_logo_jpeg.jpeg" alt="Konka"
-         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-    <span class="nav-logo-text" style="display:none">K<span class="o"></span>NKA</span>
+    <span class="nav-logo-text">K<span class="o"></span>NKA</span>
     <span class="nav-subtitle">Design System</span>
   </div>
   <div class="nav-right">
@@ -620,6 +624,7 @@ footer { flex-direction: column; align-items: flex-start; gap: 12px; }
     <h1 class="reveal">Components &amp; <span class="blob">colours</span></h1>
     <p class="lede reveal d1">A reference for diagrams, member colours, and group icons used across the Konka app. Every component is built on the same floating-card pattern, soft pastel palette, and the Fredoka + DM Sans pairing.</p>
 
+```
 <div class="toc reveal d2">
   <div class="toc-title">Jump to</div>
   <div class="toc-sections">
