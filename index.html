@@ -448,25 +448,22 @@ transition: background .15s, color .15s;
 
 <nav>
   <div class="nav-logo">K<span class="o"></span>NKA</div>
-  <span class="nav-subtitle">Gruppe-diagrammer · Utviklerguide</span>
+  <span class="nav-subtitle">Design System</span>
 </nav>
 
 <!-- HERO -->
 
 <div class="page-hero" id="topp">
   <div class="container">
-    <p class="label">Intern dokumentasjon</p>
-    <h1>Gruppe-<span class="blob">diagrammer</span></h1>
-    <p>Komplett oversikt over alle 14 diagrammer som vises på gruppe-siden i Konka-appen. Inkluderer visningslogikk, default rekkefølge, beskrivelser og visuelle eksempler for hvert diagram. Alle diagrammer vises i hvite kort-bokser med avrundede hjørner og skygge, med en rund infoknapp (i) øverst til høyre som flipper kortet og viser forklaringstekst.</p>
+    <p class="label">Design System</p>
+    <h1>Konka <span class="blob">Components</span></h1>
 
 <div class="toc">
-  <div class="toc-title">Innhold — hopp til seksjon</div>
+  <div class="toc-title">Jump to</div>
   <div class="toc-sections">
-    <a href="#rekkefølge" class="toc-sec-link">📋 Rekkefølge</a>
-    <a href="#diagrammer" class="toc-sec-link">📊 Alle diagrammer</a>
-    <a href="#prompt" class="toc-sec-link">💬 Prompt-mal</a>
-    <a href="#deltakerfarger" class="toc-sec-link">🎨 Deltakerfarger</a>
-    <a href="#gruppeikoner" class="toc-sec-link">🏅 Gruppeikon-palett</a>
+    <a href="#diagrammer" class="toc-sec-link">📊 Components</a>
+    <a href="#deltakerfarger" class="toc-sec-link">🎨 Colour palette</a>
+    <a href="#gruppeikoner" class="toc-sec-link">🏅 Group icons</a>
   </div>
   <div class="toc-divider">Diagrammer</div>
   <div class="toc-grid">
@@ -490,60 +487,10 @@ transition: background .15s, color .15s;
   </div>
 </div>
 
-<!-- VISNINGSLOGIKK -->
-
-<section class="section" id="rekkefølge">
-  <div class="container">
-    <p class="section-title">Visningslogikk</p>
-    <h2>Default <span class="blob">rekkefølge</span></h2>
-    <div class="view-grid">
-      <div class="view-card">
-        <h3>Uke-view</h3>
-        <p class="view-sub">Siste 7 dager</p>
-        <ol>
-          <li>Gruppedata</li>
-          <li>Aktivitetsstripe</li>
-          <li>Fartskontroll</li>
-          <li>Tidspunktet</li>
-          <li>Forebyggern</li>
-          <li>Pulssoner</li>
-          <li>Wattmåleren <span class="nisje">⚙ nisje</span></li>
-          <li>Frekvensnerd <span class="nisje">⚙ nisje</span></li>
-          <li>Tour de Konka</li>
-          <li>Topptur</li>
-        </ol>
-      </div>
-      <div class="view-card">
-        <h3>I år-view</h3>
-        <p class="view-sub">Kalenderår (1. jan til dags dato)</p>
-        <ol>
-          <li>Gruppedata</li>
-          <li>Aktivitetsstripe</li>
-          <li>Streak-tårnet</li>
-          <li>Fartskontroll</li>
-          <li>Tour de Konka</li>
-          <li>Topptur</li>
-          <li>Vanedyret</li>
-          <li>Tidspunktet</li>
-          <li>Forebyggern</li>
-          <li>Pulssoner</li>
-          <li>All-round</li>
-          <li>LokalPokal</li>
-          <li>Wattmåleren <span class="nisje">⚙ nisje</span></li>
-          <li>Frekvensnerd <span class="nisje">⚙ nisje</span></li>
-        </ol>
-      </div>
-    </div>
-    <p style="font-size:13px;color:var(--muted);margin-top:16px;">⚙ Nisje-diagrammer er avskrudd som default og må aktiveres av admin i gruppeinnstillingene.</p>
-  </div>
-</section>
-
 <!-- DIAGRAMMER -->
 
 <section class="section" id="diagrammer">
   <div class="container">
-    <p class="section-title">Diagrammer</p>
-    <h2>Alle <span class="blob">14 diagrammer</span></h2>
     <div class="diagrams-grid">
 
   <!-- 1. GRUPPEDATA -->
@@ -551,7 +498,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">🥧 Gruppedata</span>
-        <span class="diagram-meta-desc">Gruppens samlede bidrag · velg tid / distanse / økter</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -641,7 +587,6 @@ transition: background .15s, color .15s;
         </div>
       </div>
     </div>
-    <div class="diagram-info">Trykk på et kakestykke → deltakersirkelen med initialer vises i midten av donut-en. Tabs for å velge mellom Tid / Distanse / Antall økter. Sveip for side 2 (distanse) og side 3 (økter).</div>
   </div>
 
   <!-- 2. AKTIVITETSSTRIPE -->
@@ -649,7 +594,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">📅 Aktivitetsstripe</span>
-        <span class="diagram-meta-desc">Hvilke dager har deltakerne trent?</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -666,7 +610,6 @@ transition: background .15s, color .15s;
         <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-nora" style="width:30px;height:30px;font-size:11px;">NO</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div></div></div>
       </div>
     </div>
-    <div class="diagram-info">Uke-view: siste 7 dager. I år-view: siste 30 dager med scroll. Fargede rundinger = trent den dagen. Grå runding = ikke trent.</div>
   </div>
 
   <!-- 3. FARTSKONTROLL -->
@@ -674,7 +617,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">🏃 Fartskontroll</span>
-        <span class="diagram-meta-desc">Relativ gjennomsnittsfart · plassering på løpebane</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -727,7 +669,6 @@ transition: background .15s, color .15s;
         </div>
       </div>
     </div>
-    <div class="diagram-info">SVG-fil: Runningtrack.svg fra prosjektet. Plassering rundt banen tilsvarer relativ gjennomsnittsfart. Knapp for distanse og sport øverst på kortet.</div>
   </div>
 
   <!-- 4. TIDSPUNKTET -->
@@ -735,7 +676,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">🕐 Tidspunktet</span>
-        <span class="diagram-meta-desc">Når på dagen trener deltakerne?</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -784,7 +724,6 @@ transition: background .15s, color .15s;
         <div style="font-size:12px;color:#888;text-align:center;">🌅 Mia og Lars er morgenmennesker</div>
       </div>
     </div>
-    <div class="diagram-info">24-timers urskive. Bue langs urskiven viser tidsvinduet deltakeren vanligvis trener i. Sirkler forskyves radialt ved overlapp. En liten tekst kategoriserer deltakerne.</div>
   </div>
 
   <!-- 5. FOREBYGGERN -->
@@ -792,7 +731,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">⚖️ Forebyggern</span>
-        <span class="diagram-meta-desc">Kondis vs. styrke · to klare farger, ingen gradient</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -840,7 +778,6 @@ transition: background .15s, color .15s;
         </div>
       </div>
     </div>
-    <div class="diagram-info">To klare farger — Kornblomst (BlueMedium) for kondis, Korall (CoralMedium) for styrke. Ingen gradient. Hvit skille mellom de to segmentene.</div>
   </div>
 
   <!-- 6. PULSSONER -->
@@ -848,7 +785,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">❤️ Pulssoner</span>
-        <span class="diagram-meta-desc">Tid i Z0–Z5 · fra hvile til maks</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -952,7 +888,6 @@ transition: background .15s, color .15s;
 
       </div>
     </div>
-    <div class="diagram-info">Stacked bar per deltaker. Z0 Hvile → Z5 Maks. Tynne hvite skillestreker mellom soner. Basert på tid i sone. Appen viser Z0–Z5 (6 soner).</div>
   </div>
 
   <!-- 7. WATTMÅLEREN -->
@@ -960,7 +895,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">⚡ Wattmåleren</span>
-        <span class="diagram-meta-desc">Gjennomsnittswatt · krever måleutstyr · nisje</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -975,7 +909,6 @@ transition: background .15s, color .15s;
       </div>
       <p style="font-size:11px;color:#aaa;margin-top:8px;text-align:center;">Beste enkelttur: M 245 · S 198 · L 171 · E 143 · N 118 W</p>
     </div>
-    <div class="diagram-info">Gjennomsnittswatt totalt på tvers av kondisjonssporter, eller per enkeltspot (velges via knapp). Krever watt-måler. Avskrudd som default — aktiveres av admin.</div>
   </div>
 
   <!-- 8. FREKVENSNERD -->
@@ -983,7 +916,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">🔄 Frekvensnerd</span>
-        <span class="diagram-meta-desc">Stegfrekvens / RPM · krever måleutstyr · nisje</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -1002,7 +934,6 @@ transition: background .15s, color .15s;
       </div>
       <p style="font-size:11px;color:#aaa;margin-top:14px;text-align:center;">Optimal løpefrekvens: 170–185 spm</p>
     </div>
-    <div class="diagram-info">Velg sport via knapp (løp/sykkel). Viser gjennomsnittlig frekvens per deltaker. Avskrudd som default — aktiveres av admin.</div>
   </div>
 
   <!-- 9. TOUR DE KONKA -->
@@ -1010,7 +941,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">🚴 Tour de Konka</span>
-        <span class="diagram-meta-desc">Samlet distanse · humpete vei A→B</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -1055,7 +985,6 @@ transition: background .15s, color .15s;
         <div style="display:flex;align-items:center;gap:8px;font-size:13px;"><div class="pc p-nora" style="width:24px;height:24px;font-size:9px;">NO</div><span style="font-weight:600;color:#1C1C1E;">52 km</span><span style="color:#aaa;margin-left:auto;">−134 km</span></div>
       </div>
     </div>
-    <div class="diagram-info">Deltakerne følger veibanens senterlinje, roterer med stigningen. Veien justeres dynamisk — lederen nær men aldri i mål. Knapp for å velge sport.</div>
   </div>
 
   <!-- 10. TOPPTUR -->
@@ -1063,7 +992,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">⛰️ Topptur</span>
-        <span class="diagram-meta-desc">Samlet høydemeter · navnesirkler på fjellside</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -1103,7 +1031,6 @@ transition: background .15s, color .15s;
         <div style="display:flex;align-items:center;gap:8px;font-size:13px;"><div class="pc p-lars" style="width:24px;height:24px;font-size:9px;">LA</div><span style="font-weight:600;color:#1C1C1E;">2 900 hm</span><span style="color:#aaa;margin-left:auto;">−1 300</span></div>
       </div>
     </div>
-    <div class="diagram-info">SVG-fil: fjell i prosjektet. Fjellets topp justeres dynamisk — lederen aldri helt på toppen. Differansen til lederen vises. Knapp for sport.</div>
   </div>
 
   <!-- 11. STREAK-TÅRNET -->
@@ -1111,7 +1038,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">🔥 Streak-tårnet</span>
-        <span class="diagram-meta-desc">Uker på rad · tårn i personlig farge · kun I år</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -1165,7 +1091,6 @@ transition: background .15s, color .15s;
         </div>
       </div>
     </div>
-    <div class="diagram-info">Tårnet bygges i brukerens personlige farge — én kloss per uke på rad. Brutt streak → 💥 + "beste: N uker". Kun i år-view.</div>
   </div>
 
   <!-- 12. VANEDYRET -->
@@ -1173,7 +1098,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">🏊 Vanedyret</span>
-        <span class="diagram-meta-desc">Treningsrytme · rett linje = konsekvent · kun I år</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -1220,7 +1144,6 @@ transition: background .15s, color .15s;
         </div>
       </div>
     </div>
-    <div class="diagram-info">SVG-fil: Swimmingpool.svg fra prosjektet. Linjen har samme farge som deltakers sirkel. Konsistensscoren i % vises til høyre. Kun i år-view.</div>
   </div>
 
   <!-- 13. ALL-ROUND -->
@@ -1228,7 +1151,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">🏅 All-round</span>
-        <span class="diagram-meta-desc">Sportstempler · runde ikoner · kun I år</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -1242,7 +1164,6 @@ transition: background .15s, color .15s;
         <div style="display:flex;align-items:center;gap:10px;"><div class="pc p-erik" style="width:30px;height:30px;font-size:11px;flex-shrink:0;">EH</div><div style="display:flex;gap:6px;flex-wrap:wrap;"><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏃</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚴</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🏊</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🧗</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">⛷️</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🚣</div></div><span style="font-size:13px;color:#888;margin-left:2px;font-weight:500;">2</span></div>
       </div>
     </div>
-    <div class="diagram-info">Runde stempel-ikoner per gjennomført sport. Ikke-gjennomførte vises gråtonet (opacity 0.25, grayscale). Motiverer til variasjon. Kun i år-view.</div>
   </div>
 
   <!-- 14. LOKALPOKAL -->
@@ -1250,7 +1171,6 @@ transition: background .15s, color .15s;
     <div style="display:flex;align-items:flex-start;justify-content:space-between;">
       <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
         <span class="diagram-meta-name">🗺️ LokalPokal</span>
-        <span class="diagram-meta-desc">Kartruteinnsamling · første til å logge eier ruten · kun I år</span>
       </div>
       <button class="info-btn">i</button>
     </div>
@@ -1272,34 +1192,10 @@ transition: background .15s, color .15s;
         <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-nora" style="width:24px;height:24px;font-size:9px;">NO</div><div style="width:25%;height:6px;border-radius:3px;background:#B7A0EC;"></div><span style="font-size:13px;font-weight:600;color:#1C1C1E;min-width:32px;text-align:right;">9%</span></div>
       </div>
     </div>
-    <div class="diagram-info">Kartområde settes av admin. Ruter eies av første til å logge en treningsøkt der. Prosentandel av totale ruter vises per deltaker. Kun i år-view.</div>
   </div>
 
 </div><!-- /diagrams-grid -->
-```
 
-  </div>
-</section>
-
-<!-- PROMPT MAL -->
-
-<section class="section" id="prompt" style="background:var(--white);">
-  <div class="container">
-    <p class="section-title">Prompt-mal</p>
-    <h2>Åpne ny <span class="blob">diagram-tråd</span></h2>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:24px;font-weight:300;line-height:1.7;">Bruk denne malen når du starter en ny chat med Claude for å designe et spesifikt diagram. All kontekst, paletten, SVG-filer og skissebilder ligger i prosjektet og er tilgjengelig for Claude uten at du trenger å laste opp noe ekstra — med mindre du har nye skisser eller kommentarer.</p>
-    <div class="prompt-box">
-      <span class="comment">// Lim inn i åpningsmeldingen i ny Claude-chat</span><br><br>
-      Vi skal designe <span class="highlight">[DIAGRAMNAVN]</span> til treningsappen Konka.<br>
-      Les oppsummeringsdokumentet i prosjektet for full kontekst om appen,<br>
-      designspråk, fargepalett, alle 14 diagrammer og default rekkefølge.<br>
-      SVG-filer for løpebane (Fartskontroll), svømmebasseng (Vanedyret)<br>
-      og fjell (Topptur) ligger også i prosjektet og skal brukes.<br>
-      Skissebilder med håndskrevne kommentarer for alle diagrammene ligger der også.<br><br>
-      <span class="comment">// Legg til hvis relevant:</span><br>
-      <span class="val">Her er mine spesifikke kommentarer til dette diagrammet: [beskriv]</span><br><br>
-      Kan du lage et React-showcase med realistiske testdata for 5 deltakere?
-    </div>
   </div>
 </section>
 
@@ -1307,10 +1203,8 @@ transition: background .15s, color .15s;
 
 <section class="section" id="deltakerfarger">
   <div class="container">
-    <p class="section-title">Fargepalett</p>
-    <h2>Deltaker<span class="blob">farger</span></h2>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:8px;font-weight:300;line-height:1.7;max-width:580px;">Deltakere tildeles én av følgende farger. Brukes konsekvent på tvers av alle diagrammer.</p>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:24px;font-weight:300;line-height:1.7;max-width:580px;">Hver farge vises med hex-kode og Swift UI-navn (300-steget / base). Swift UI-navnene følger mønsteret <code style="background:var(--off);padding:2px 6px;border-radius:4px;font-size:12px;">FargenavnMedium</code> for bakgrunn og <code style="background:var(--off);padding:2px 6px;border-radius:4px;font-size:12px;">FargenavnDark</code> for tekst/kant.</p>
+    <p class="section-title">Colour Palette</p>
+    <h2>Member <span class="blob">colours</span></h2>
     <div style="display:flex;flex-wrap:wrap;gap:16px;">
       <div style="display:flex;flex-direction:column;align-items:center;gap:6px;min-width:80px;">
         <div style="width:48px;height:48px;border-radius:50%;background:#FFA39B;box-shadow:var(--card-shadow);"></div>
@@ -1361,7 +1255,7 @@ transition: background .15s, color .15s;
         <code style="font-size:10px;color:var(--blue-acc);background:var(--kornblomst-light);padding:2px 6px;border-radius:4px;">PinkMedium</code>
       </div>
     </div>
-    <p style="font-size:12px;color:var(--muted);margin-top:20px;font-weight:300;">Nyansenavnet «Medium» tilsvarer 300-steget (base) etter navnekonvensjonen: Lightest · Light · MediumLight · <strong>Medium</strong> · Dark · Darkest.</p>
+
   </div>
 </section>
 
@@ -1369,14 +1263,8 @@ transition: background .15s, color .15s;
 
 <section class="section" id="gruppeikoner" style="background:var(--white);">
   <div class="container">
-    <p class="section-title">Gruppeikoner</p>
-    <h2>Palett for <span class="blob">gruppeikoner</span></h2>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:8px;font-weight:300;line-height:1.7;max-width:640px;">
-      Bakgrunnsfargen til gruppeikonet brukes i tre kontekster: som sirkel-bakgrunn bak sport-ikonet, som kantlinje på invitasjonskort, og som tekstfarge i gruppelistevisning — begge på hvit bakgrunn.
-    </p>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:32px;font-weight:300;line-height:1.7;max-width:640px;">
-      <strong style="color:var(--text);font-weight:500;">Prinsipp:</strong> Bakgrunn bruker <strong style="color:var(--text);font-weight:500;">300-steget (base)</strong> fra paletten. Kantlinje og tekst bruker <strong style="color:var(--text);font-weight:500;">400-steget</strong> — ett trinn mørkere — for å gi tilstrekkelig kontrast mot hvit. Lysegul er eneste unntak og bruker 500-steget for tekst/kantlinje.
-    </p>
+    <p class="section-title">Colour Palette</p>
+    <h2>Group icon <span class="blob">colours</span></h2>
 
 <!-- Eksempel-card fra appen -->
 <div style="margin-bottom:40px;">
@@ -1401,7 +1289,7 @@ transition: background .15s, color .15s;
           <div style="font-size:12px;color:#5E96F0;">Du er invitert</div>
         </div>
       </div>
-      <div style="font-size:12px;color:var(--muted);">Invitasjonskort — kantlinje bruker 400-steget</div>
+
     </div>
 
     <!-- Gruppelistekort eksempel - Rosa -->
@@ -1417,7 +1305,7 @@ transition: background .15s, color .15s;
 </div>
 
 <!-- Paletten -->
-<p style="font-size:12px;font-weight:500;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">Komplett palett</p>
+
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;">
 
   <!-- Korall -->
@@ -1426,16 +1314,15 @@ transition: background .15s, color .15s;
     <div style="flex:1;">
       <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px;">Korall</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Bakgrunn</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#FFA39B;"></div>
         <code style="font-size:11px;color:var(--muted);">#FFA39B</code>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Tekst/kant</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#F07C72;"></div>
         <code style="font-size:11px;color:var(--muted);">#F07C72</code>
       </div>
-      <div style="margin-top:8px;font-size:12px;font-weight:500;color:#F07C72;">Prøvetekst i tekstfarge</div>
       <div style="margin-top:4px;height:1px;background:#F07C72;border-radius:1px;width:80%;"></div>
     </div>
   </div>
@@ -1446,16 +1333,15 @@ transition: background .15s, color .15s;
     <div style="flex:1;">
       <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px;">Fersken</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Bakgrunn</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#F8C696;"></div>
         <code style="font-size:11px;color:var(--muted);">#F8C696</code>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Tekst/kant</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#E8A76A;"></div>
         <code style="font-size:11px;color:var(--muted);">#E8A76A</code>
       </div>
-      <div style="margin-top:8px;font-size:12px;font-weight:500;color:#E8A76A;">Prøvetekst i tekstfarge</div>
       <div style="margin-top:4px;height:1px;background:#E8A76A;border-radius:1px;width:80%;"></div>
     </div>
   </div>
@@ -1466,16 +1352,15 @@ transition: background .15s, color .15s;
     <div style="flex:1;">
       <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px;">Gull</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Bakgrunn</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#FAD067;"></div>
         <code style="font-size:11px;color:var(--muted);">#FAD067</code>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Tekst/kant</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#E0B034;"></div>
         <code style="font-size:11px;color:var(--muted);">#E0B034</code>
       </div>
-      <div style="margin-top:8px;font-size:12px;font-weight:500;color:#E0B034;">Prøvetekst i tekstfarge</div>
       <div style="margin-top:4px;height:1px;background:#E0B034;border-radius:1px;width:80%;"></div>
     </div>
   </div>
@@ -1486,16 +1371,15 @@ transition: background .15s, color .15s;
     <div style="flex:1;">
       <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px;">Lysegul <span style="font-size:11px;color:var(--muted);font-weight:300;">— bruker 500-steg</span></div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Bakgrunn</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#FFF89E;border:1px solid #eee;"></div>
         <code style="font-size:11px;color:var(--muted);">#FFF89E</code>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Tekst/kant</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#B0AA3E;"></div>
         <code style="font-size:11px;color:var(--muted);">#B0AA3E</code>
       </div>
-      <div style="margin-top:8px;font-size:12px;font-weight:500;color:#B0AA3E;">Prøvetekst i tekstfarge</div>
       <div style="margin-top:4px;height:1px;background:#B0AA3E;border-radius:1px;width:80%;"></div>
     </div>
   </div>
@@ -1506,16 +1390,15 @@ transition: background .15s, color .15s;
     <div style="flex:1;">
       <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px;">Mint</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Bakgrunn</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#8FD6E7;"></div>
         <code style="font-size:11px;color:var(--muted);">#8FD6E7</code>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Tekst/kant</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#5CB8D0;"></div>
         <code style="font-size:11px;color:var(--muted);">#5CB8D0</code>
       </div>
-      <div style="margin-top:8px;font-size:12px;font-weight:500;color:#5CB8D0;">Prøvetekst i tekstfarge</div>
       <div style="margin-top:4px;height:1px;background:#5CB8D0;border-radius:1px;width:80%;"></div>
     </div>
   </div>
@@ -1526,16 +1409,15 @@ transition: background .15s, color .15s;
     <div style="flex:1;">
       <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px;">Kornblomst</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Bakgrunn</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#91BCFF;"></div>
         <code style="font-size:11px;color:var(--muted);">#91BCFF</code>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Tekst/kant</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#5E96F0;"></div>
         <code style="font-size:11px;color:var(--muted);">#5E96F0</code>
       </div>
-      <div style="margin-top:8px;font-size:12px;font-weight:500;color:#5E96F0;">Prøvetekst i tekstfarge</div>
       <div style="margin-top:4px;height:1px;background:#5E96F0;border-radius:1px;width:80%;"></div>
     </div>
   </div>
@@ -1546,16 +1428,15 @@ transition: background .15s, color .15s;
     <div style="flex:1;">
       <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px;">Lavendel</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Bakgrunn</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#B7A0EC;"></div>
         <code style="font-size:11px;color:var(--muted);">#B7A0EC</code>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Tekst/kant</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#9074D8;"></div>
         <code style="font-size:11px;color:var(--muted);">#9074D8</code>
       </div>
-      <div style="margin-top:8px;font-size:12px;font-weight:500;color:#9074D8;">Prøvetekst i tekstfarge</div>
       <div style="margin-top:4px;height:1px;background:#9074D8;border-radius:1px;width:80%;"></div>
     </div>
   </div>
@@ -1566,16 +1447,15 @@ transition: background .15s, color .15s;
     <div style="flex:1;">
       <div style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px;">Rosa</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Bakgrunn</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#FFB2E3;"></div>
         <code style="font-size:11px;color:var(--muted);">#FFB2E3</code>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-size:10px;color:var(--muted);width:72px;">Tekst/kant</span>
+        
         <div style="width:16px;height:16px;border-radius:4px;background:#E880C4;"></div>
         <code style="font-size:11px;color:var(--muted);">#E880C4</code>
       </div>
-      <div style="margin-top:8px;font-size:12px;font-weight:500;color:#E880C4;">Prøvetekst i tekstfarge</div>
       <div style="margin-top:4px;height:1px;background:#E880C4;border-radius:1px;width:80%;"></div>
     </div>
   </div>
@@ -1659,15 +1539,13 @@ transition: background .15s, color .15s;
   </div>
 </div>
 
-<p style="font-size:12px;color:var(--muted);margin-top:16px;font-weight:300;">Swift UI-navnene følger konvensjonen: Lightest · Light · MediumLight · <strong>Medium</strong> (base/300) · <strong>Dark</strong> (400) · Darkest (500). Lysegul bruker Darkest (500) for tekst/kant siden 400-steget er for lyst mot hvit.</p>
-
   </div>
 </section>
 
 <footer>
   <div class="foot-logo">K<span class="o"></span>NKA</div>
-  <p>Intern utviklerguide · Gruppe-diagrammer · Mai 2026</p>
-  <a href="#topp" style="font-size:13px;color:var(--muted);text-decoration:none;font-weight:300;transition:color .2s;" onmouseover="this.style.color='var(--rosa-acc)'" onmouseout="this.style.color='var(--muted)'">↑ Tilbake til topp</a>
+  <p>Design System · Mai 2026</p>
+  <a href="#topp" style="font-size:13px;color:var(--muted);text-decoration:none;font-weight:300;transition:color .2s;" onmouseover="this.style.color='var(--rosa-acc)'" onmouseout="this.style.color='var(--muted)'">↑ Top</a>
 </footer>
 
 </body>
