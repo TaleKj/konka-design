@@ -143,8 +143,7 @@ color: var(–blue-acc); border-radius: 4px; padding: 1px 6px; margin-left: 4px;
 
 /* DIAGRAM CARDS */
 .diagrams-grid {
-display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-gap: 28px;
+display: flex; flex-wrap: wrap; gap: 24px; justify-content: flex-start;
 }
 .diagram-card {
 background: var(–white); border-radius: 20px;
@@ -152,6 +151,8 @@ box-shadow: var(–card-shadow);
 overflow: hidden;
 border: 1.5px solid transparent;
 transition: transform .25s, border-color .25s, box-shadow .25s;
+width: 390px;
+flex-shrink: 0;
 }
 .diagram-card:hover {
 transform: translateY(-4px);
@@ -162,7 +163,7 @@ box-shadow: 0 4px 16px rgba(232,128,196,.2), 0 8px 32px rgba(232,128,196,.1);
 .app-card {
 background: var(–white);
 border-radius: 16px;
-padding: 14px 16px 18px;
+padding: 16px 20px 20px;
 margin: 8px;
 box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
 }
@@ -201,10 +202,10 @@ margin: 10px 12px 0 0;
 
 /* PARTICIPANT CIRCLE — 30px matches app bar height exactly */
 .pc {
-width: 34px; height: 34px; border-radius: 50%;
+width: 36px; height: 36px; border-radius: 50%;
 display: flex; align-items: center; justify-content: center;
 font-family: ‘DM Sans’, -apple-system, BlinkMacSystemFont, ‘Segoe UI’, sans-serif;
-font-size: 12px; font-weight: 600;
+font-size: 13px; font-weight: 600;
 color: white; flex-shrink: 0;
 }
 .pc-sm { width: 22px; height: 22px; font-size: 9px; }
@@ -522,39 +523,37 @@ transition: background .15s, color .15s;
       <!-- Donut chart — matching app proportions: Mia 36%, Sara 20%, Lars 18%, Erik 15%, Nora 11% -->
       <!-- circumference = 2π×80 = 502.65 -->
       <div style="position:relative;width:100%;padding-bottom:0;margin-bottom:12px;">
-        <svg width="100%" viewBox="0 0 260 260" style="display:block;">
-          <!-- Base -->
-          <circle cx="130" cy="130" r="110" fill="none" stroke="#F2F2F7" stroke-width="46"/>
-          <!-- Nora 11% = 76.0 -->
-          <circle cx="130" cy="130" r="110" fill="none" stroke="#B7A0EC" stroke-width="46"
-            stroke-dasharray="691.15" stroke-dashoffset="0" transform="rotate(-90 130 130)"/>
-          <!-- Erik 15% = 103.7, offset 76.0 -->
-          <circle cx="130" cy="130" r="110" fill="none" stroke="#8FD6E7" stroke-width="46"
-            stroke-dasharray="103.7 587.45" stroke-dashoffset="-76.0" transform="rotate(-90 130 130)"/>
-          <!-- Lars 18% = 124.4, offset 179.7 -->
-          <circle cx="130" cy="130" r="110" fill="none" stroke="#F8C696" stroke-width="46"
-            stroke-dasharray="124.4 566.75" stroke-dashoffset="-179.7" transform="rotate(-90 130 130)"/>
-          <!-- Sara 20% = 138.2, offset 304.1 -->
-          <circle cx="130" cy="130" r="110" fill="none" stroke="#FFA39B" stroke-width="46"
-            stroke-dasharray="138.2 552.95" stroke-dashoffset="-304.1" transform="rotate(-90 130 130)"/>
-          <!-- Mia 36% = 248.8, offset 442.3 -->
-          <circle cx="130" cy="130" r="110" fill="none" stroke="#91BCFF" stroke-width="46"
-            stroke-dasharray="248.8 442.35" stroke-dashoffset="-442.3" transform="rotate(-90 130 130)"/>
-          <!-- White dividers -->
-          <circle cx="130" cy="130" r="110" fill="none" stroke="white" stroke-width="3"
-            stroke-dasharray="3 688.15" stroke-dashoffset="0" transform="rotate(-90 130 130)"/>
-          <circle cx="130" cy="130" r="110" fill="none" stroke="white" stroke-width="3"
-            stroke-dasharray="3 688.15" stroke-dashoffset="-76.0" transform="rotate(-90 130 130)"/>
-          <circle cx="130" cy="130" r="110" fill="none" stroke="white" stroke-width="3"
-            stroke-dasharray="3 688.15" stroke-dashoffset="-179.7" transform="rotate(-90 130 130)"/>
-          <circle cx="130" cy="130" r="110" fill="none" stroke="white" stroke-width="3"
-            stroke-dasharray="3 688.15" stroke-dashoffset="-304.1" transform="rotate(-90 130 130)"/>
-          <circle cx="130" cy="130" r="110" fill="none" stroke="white" stroke-width="3"
-            stroke-dasharray="3 688.15" stroke-dashoffset="-442.3" transform="rotate(-90 130 130)"/>
-          <!-- Center clock icon -->
-          <svg x="106" y="106" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          <!-- Center value -->
-          <text x="130" y="148" text-anchor="middle" font-size="26" font-weight="700" fill="#1C1C1E" font-family="-apple-system,sans-serif" letter-spacing="-0.5">155t</text>
+        <svg width="220" height="220" viewBox="0 0 220 220" style="display:block;margin:0 auto;">
+          <circle cx="110" cy="110" r="82" fill="none" stroke="#F2F2F7" stroke-width="32"/>
+          <!-- Nora 11%=56.7 -->
+          <circle cx="110" cy="110" r="82" fill="none" stroke="#B7A0EC" stroke-width="32"
+            stroke-dasharray="515.2" stroke-dashoffset="0" transform="rotate(-90 110 110)"/>
+          <!-- Erik 15%=77.3, offset 56.7 -->
+          <circle cx="110" cy="110" r="82" fill="none" stroke="#8FD6E7" stroke-width="32"
+            stroke-dasharray="77.3 437.9" stroke-dashoffset="-56.7" transform="rotate(-90 110 110)"/>
+          <!-- Lars 18%=92.7, offset 134.0 -->
+          <circle cx="110" cy="110" r="82" fill="none" stroke="#F8C696" stroke-width="32"
+            stroke-dasharray="92.7 422.5" stroke-dashoffset="-134.0" transform="rotate(-90 110 110)"/>
+          <!-- Sara 20%=103.0, offset 226.7 -->
+          <circle cx="110" cy="110" r="82" fill="none" stroke="#FFA39B" stroke-width="32"
+            stroke-dasharray="103.0 412.2" stroke-dashoffset="-226.7" transform="rotate(-90 110 110)"/>
+          <!-- Mia 36%=185.5, offset 329.7 -->
+          <circle cx="110" cy="110" r="82" fill="none" stroke="#91BCFF" stroke-width="32"
+            stroke-dasharray="185.5 329.7" stroke-dashoffset="-329.7" transform="rotate(-90 110 110)"/>
+          <!-- White divider lines (thin) -->
+          <circle cx="110" cy="110" r="82" fill="none" stroke="white" stroke-width="2"
+            stroke-dasharray="2 513.2" stroke-dashoffset="0" transform="rotate(-90 110 110)"/>
+          <circle cx="110" cy="110" r="82" fill="none" stroke="white" stroke-width="2"
+            stroke-dasharray="2 513.2" stroke-dashoffset="-56.7" transform="rotate(-90 110 110)"/>
+          <circle cx="110" cy="110" r="82" fill="none" stroke="white" stroke-width="2"
+            stroke-dasharray="2 513.2" stroke-dashoffset="-134.0" transform="rotate(-90 110 110)"/>
+          <circle cx="110" cy="110" r="82" fill="none" stroke="white" stroke-width="2"
+            stroke-dasharray="2 513.2" stroke-dashoffset="-226.7" transform="rotate(-90 110 110)"/>
+          <circle cx="110" cy="110" r="82" fill="none" stroke="white" stroke-width="2"
+            stroke-dasharray="2 513.2" stroke-dashoffset="-329.7" transform="rotate(-90 110 110)"/>
+          <!-- Center: clock icon small, value below -->
+          <svg x="90" y="82" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <text x="110" y="138" text-anchor="middle" font-size="22" font-weight="700" fill="#1C1C1E" font-family="-apple-system,sans-serif" letter-spacing="-0.5">155t</text>
         </svg>
       </div>
       <!-- Page dots -->
@@ -603,11 +602,11 @@ transition: background .15s, color .15s;
         <span style="width:18px;text-align:center">M</span><span style="width:18px;text-align:center">T</span><span style="width:18px;text-align:center">O</span><span style="width:18px;text-align:center">T</span><span style="width:18px;text-align:center">F</span><span style="width:18px;text-align:center">L</span><span style="width:18px;text-align:center">S</span>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-mia" style="width:34px;height:34px;font-size:12px;">MK</div><div style="display:flex;gap:4px;"><div style="width:14px;height:14px;border-radius:50%;background:#91BCFF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#91BCFF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#91BCFF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#91BCFF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-sara" style="width:34px;height:34px;font-size:12px;">SL</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#FFA39B;"></div><div style="width:14px;height:14px;border-radius:50%;background:#FFA39B;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#FFA39B;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#FFA39B;"></div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-lars" style="width:34px;height:34px;font-size:12px;">LA</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-erik" style="width:34px;height:34px;font-size:12px;">EH</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#8FD6E7;"></div><div style="width:18px;height:18px;border-radius:50%;background:#8FD6E7;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#8FD6E7;"></div><div style="width:18px;height:18px;border-radius:50%;background:#8FD6E7;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-nora" style="width:34px;height:34px;font-size:12px;">NO</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-mia" style="width:36px;height:36px;font-size:13px;">MK</div><div style="display:flex;gap:4px;"><div style="width:14px;height:14px;border-radius:50%;background:#91BCFF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#91BCFF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#91BCFF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#91BCFF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-sara" style="width:36px;height:36px;font-size:13px;">SL</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#FFA39B;"></div><div style="width:14px;height:14px;border-radius:50%;background:#FFA39B;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#FFA39B;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#FFA39B;"></div></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-lars" style="width:36px;height:36px;font-size:13px;">LA</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-erik" style="width:36px;height:36px;font-size:13px;">EH</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#8FD6E7;"></div><div style="width:18px;height:18px;border-radius:50%;background:#8FD6E7;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#8FD6E7;"></div><div style="width:18px;height:18px;border-radius:50%;background:#8FD6E7;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-nora" style="width:36px;height:36px;font-size:13px;">NO</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div></div></div>
       </div>
     </div>
   </div>
@@ -742,36 +741,36 @@ transition: background .15s, color .15s;
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;">
         <div style="display:flex;align-items:center;gap:10px;">
-          <div class="pc p-mia" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">MK</div>
-          <div style="flex:1;height:34px;border-radius:100px;overflow:hidden;display:flex;">
+          <div class="pc p-mia" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">MK</div>
+          <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
             <div style="width:72%;background:#91BCFF;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;border-right:2px solid white;">72%</div>
             <div style="width:28%;background:#FFA39B;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">28%</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
-          <div class="pc p-sara" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">SL</div>
-          <div style="flex:1;height:34px;border-radius:100px;overflow:hidden;display:flex;">
+          <div class="pc p-sara" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">SL</div>
+          <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
             <div style="width:53%;background:#91BCFF;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;border-right:2px solid white;">53%</div>
             <div style="width:47%;background:#FFA39B;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">47%</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
-          <div class="pc p-lars" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">LA</div>
-          <div style="flex:1;height:34px;border-radius:100px;overflow:hidden;display:flex;">
+          <div class="pc p-lars" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">LA</div>
+          <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
             <div style="width:38%;background:#91BCFF;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;border-right:2px solid white;">38%</div>
             <div style="width:62%;background:#FFA39B;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">62%</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
-          <div class="pc p-erik" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">EH</div>
-          <div style="flex:1;height:34px;border-radius:100px;overflow:hidden;display:flex;">
+          <div class="pc p-erik" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">EH</div>
+          <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
             <div style="width:21%;background:#91BCFF;display:flex;align-items:center;justify-content:center;font-size:11px;color:white;font-weight:600;border-right:2px solid white;">21%</div>
             <div style="width:79%;background:#FFA39B;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">79%</div>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
-          <div class="pc p-nora" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">NO</div>
-          <div style="flex:1;height:34px;border-radius:100px;overflow:hidden;display:flex;">
+          <div class="pc p-nora" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">NO</div>
+          <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
             <div style="width:60%;background:#91BCFF;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;border-right:2px solid white;">60%</div>
             <div style="width:40%;background:#FFA39B;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">40%</div>
           </div>
@@ -827,8 +826,8 @@ transition: background .15s, color .15s;
       <div style="display:flex;flex-direction:column;gap:10px;">
 
         <div style="display:flex;align-items:center;gap:8px;">
-          <div class="pc" style="width:34px;height:34px;font-size:12px;flex-shrink:0;background:#91BCFF;">MK</div>
-          <div style="flex:1;height:34px;border-radius:100px;overflow:hidden;display:flex;">
+          <div class="pc" style="width:36px;height:36px;font-size:13px;flex-shrink:0;background:#91BCFF;">MK</div>
+          <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
             <div style="width:8%;background:#C6B8F0;border-right:2px solid white;"></div>
             <div style="width:12%;background:#AADEEE;display:flex;align-items:center;justify-content:center;border-right:2px solid white;font-size:12px;color:white;font-weight:600;">12%</div>
             <div style="width:42%;background:#91BCFF;display:flex;align-items:center;justify-content:center;border-right:2px solid white;font-size:12px;color:white;font-weight:600;">42%</div>
@@ -839,8 +838,8 @@ transition: background .15s, color .15s;
         </div>
 
         <div style="display:flex;align-items:center;gap:8px;">
-          <div class="pc" style="width:34px;height:34px;font-size:12px;flex-shrink:0;background:#FFA39B;">SL</div>
-          <div style="flex:1;height:34px;border-radius:100px;overflow:hidden;display:flex;">
+          <div class="pc" style="width:36px;height:36px;font-size:13px;flex-shrink:0;background:#FFA39B;">SL</div>
+          <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
             <div style="width:6%;background:#C6B8F0;border-right:2px solid white;"></div>
             <div style="width:18%;background:#AADEEE;display:flex;align-items:center;justify-content:center;border-right:2px solid white;font-size:12px;color:white;font-weight:600;">18%</div>
             <div style="width:48%;background:#91BCFF;display:flex;align-items:center;justify-content:center;border-right:2px solid white;font-size:12px;color:white;font-weight:600;">48%</div>
@@ -851,8 +850,8 @@ transition: background .15s, color .15s;
         </div>
 
         <div style="display:flex;align-items:center;gap:8px;">
-          <div class="pc" style="width:34px;height:34px;font-size:12px;flex-shrink:0;background:#F8C696;">LA</div>
-          <div style="flex:1;height:34px;border-radius:100px;overflow:hidden;display:flex;">
+          <div class="pc" style="width:36px;height:36px;font-size:13px;flex-shrink:0;background:#F8C696;">LA</div>
+          <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
             <div style="width:5%;background:#C6B8F0;border-right:2px solid white;"></div>
             <div style="width:8%;background:#AADEEE;border-right:2px solid white;"></div>
             <div style="width:28%;background:#91BCFF;display:flex;align-items:center;justify-content:center;border-right:2px solid white;font-size:12px;color:white;font-weight:600;">28%</div>
@@ -863,8 +862,8 @@ transition: background .15s, color .15s;
         </div>
 
         <div style="display:flex;align-items:center;gap:8px;">
-          <div class="pc" style="width:34px;height:34px;font-size:12px;flex-shrink:0;background:#8FD6E7;">EH</div>
-          <div style="flex:1;height:34px;border-radius:100px;overflow:hidden;display:flex;">
+          <div class="pc" style="width:36px;height:36px;font-size:13px;flex-shrink:0;background:#8FD6E7;">EH</div>
+          <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
             <div style="width:4%;background:#C6B8F0;border-right:2px solid white;"></div>
             <div style="width:6%;background:#AADEEE;border-right:2px solid white;"></div>
             <div style="width:22%;background:#91BCFF;display:flex;align-items:center;justify-content:center;border-right:2px solid white;font-size:12px;color:white;font-weight:600;">22%</div>
@@ -875,8 +874,8 @@ transition: background .15s, color .15s;
         </div>
 
         <div style="display:flex;align-items:center;gap:8px;">
-          <div class="pc" style="width:34px;height:34px;font-size:12px;flex-shrink:0;background:#B7A0EC;">NO</div>
-          <div style="flex:1;height:34px;border-radius:100px;overflow:hidden;display:flex;">
+          <div class="pc" style="width:36px;height:36px;font-size:13px;flex-shrink:0;background:#B7A0EC;">NO</div>
+          <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
             <div style="width:12%;background:#C6B8F0;display:flex;align-items:center;justify-content:center;border-right:2px solid white;font-size:12px;color:white;font-weight:600;">12%</div>
             <div style="width:22%;background:#AADEEE;display:flex;align-items:center;justify-content:center;border-right:2px solid white;font-size:12px;color:white;font-weight:600;">22%</div>
             <div style="width:46%;background:#91BCFF;display:flex;align-items:center;justify-content:center;border-right:2px solid white;font-size:12px;color:white;font-weight:600;">46%</div>
@@ -901,11 +900,11 @@ transition: background .15s, color .15s;
     <div class="app-card">
       <div class="app-card-title">Wattmåleren</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-mia" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">MK</div><div style="flex:1;height:34px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:85%;height:100%;background:#91BCFF;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">215 W</div></div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-sara" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">SL</div><div style="flex:1;height:34px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:72%;height:100%;background:#FFA39B;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">182 W</div></div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-lars" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">LA</div><div style="flex:1;height:34px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:62%;height:100%;background:#F8C696;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">158 W</div></div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-erik" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">EH</div><div style="flex:1;height:34px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:50%;height:100%;background:#8FD6E7;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">127 W</div></div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-nora" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">NO</div><div style="flex:1;height:34px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:40%;height:100%;background:#B7A0EC;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">102 W</div></div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-mia" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">MK</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:85%;height:100%;background:#91BCFF;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">215 W</div></div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-sara" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">SL</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:72%;height:100%;background:#FFA39B;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">182 W</div></div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-lars" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">LA</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:62%;height:100%;background:#F8C696;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">158 W</div></div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-erik" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">EH</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:50%;height:100%;background:#8FD6E7;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">127 W</div></div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-nora" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">NO</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:40%;height:100%;background:#B7A0EC;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">102 W</div></div></div>
       </div>
       <p style="font-size:11px;color:#aaa;margin-top:8px;text-align:center;">Beste enkelttur: M 245 · S 198 · L 171 · E 143 · N 118 W</p>
     </div>
@@ -926,11 +925,11 @@ transition: background .15s, color .15s;
         <div style="background:#F2F2F7;color:#888;border-radius:20px;padding:5px 14px;font-size:12px;">Sykling</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-mia" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">MK</div><div style="flex:1;height:34px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:92%;height:100%;background:#91BCFF;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">182 spm</div></div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-sara" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">SL</div><div style="flex:1;height:34px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:84%;height:100%;background:#FFA39B;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">174 spm</div></div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-lars" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">LA</div><div style="flex:1;height:34px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:80%;height:100%;background:#F8C696;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">168 spm</div></div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-erik" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">EH</div><div style="flex:1;height:34px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:74%;height:100%;background:#8FD6E7;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">162 spm</div></div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-nora" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">NO</div><div style="flex:1;height:34px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:68%;height:100%;background:#B7A0EC;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">155 spm</div></div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-mia" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">MK</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:92%;height:100%;background:#91BCFF;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">182 spm</div></div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-sara" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">SL</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:84%;height:100%;background:#FFA39B;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">174 spm</div></div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-lars" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">LA</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:80%;height:100%;background:#F8C696;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">168 spm</div></div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-erik" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">EH</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:74%;height:100%;background:#8FD6E7;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">162 spm</div></div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-nora" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">NO</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:68%;height:100%;background:#B7A0EC;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">155 spm</div></div></div>
       </div>
       <p style="font-size:11px;color:#aaa;margin-top:14px;text-align:center;">Optimal løpefrekvens: 170–185 spm</p>
     </div>
@@ -1157,11 +1156,11 @@ transition: background .15s, color .15s;
     <div class="app-card">
       <div class="app-card-title">All-round</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-mia" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">MK</div><div style="display:flex;gap:6px;flex-wrap:wrap;"><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏃</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚴</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏊</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🧗</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">⛷️</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚣</div></div><span style="font-size:13px;color:#888;margin-left:2px;font-weight:500;">6</span></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-nora" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">NO</div><div style="display:flex;gap:6px;flex-wrap:wrap;"><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏃</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚴</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏊</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🧗</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">⛷️</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🚣</div></div><span style="font-size:13px;color:#888;margin-left:2px;font-weight:500;">5</span></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-sara" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">SL</div><div style="display:flex;gap:6px;flex-wrap:wrap;"><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏃</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚴</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏊</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🧗</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">⛷️</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🚣</div></div><span style="font-size:13px;color:#888;margin-left:2px;font-weight:500;">4</span></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-lars" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">LA</div><div style="display:flex;gap:6px;flex-wrap:wrap;"><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏃</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚴</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🏊</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🧗</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">⛷️</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🚣</div></div><span style="font-size:13px;color:#888;margin-left:2px;font-weight:500;">3</span></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-erik" style="width:34px;height:34px;font-size:12px;flex-shrink:0;">EH</div><div style="display:flex;gap:6px;flex-wrap:wrap;"><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏃</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚴</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🏊</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🧗</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">⛷️</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🚣</div></div><span style="font-size:13px;color:#888;margin-left:2px;font-weight:500;">2</span></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-mia" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">MK</div><div style="display:flex;gap:6px;flex-wrap:wrap;"><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏃</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚴</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏊</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🧗</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">⛷️</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚣</div></div><span style="font-size:13px;color:#888;margin-left:2px;font-weight:500;">6</span></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-nora" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">NO</div><div style="display:flex;gap:6px;flex-wrap:wrap;"><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏃</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚴</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏊</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🧗</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">⛷️</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🚣</div></div><span style="font-size:13px;color:#888;margin-left:2px;font-weight:500;">5</span></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-sara" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">SL</div><div style="display:flex;gap:6px;flex-wrap:wrap;"><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏃</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚴</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏊</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🧗</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">⛷️</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🚣</div></div><span style="font-size:13px;color:#888;margin-left:2px;font-weight:500;">4</span></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-lars" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">LA</div><div style="display:flex;gap:6px;flex-wrap:wrap;"><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏃</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚴</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🏊</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🧗</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">⛷️</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🚣</div></div><span style="font-size:13px;color:#888;margin-left:2px;font-weight:500;">3</span></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-erik" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">EH</div><div style="display:flex;gap:6px;flex-wrap:wrap;"><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏃</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🚴</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🏊</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🧗</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">⛷️</div><div style="width:28px;height:28px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0.25;filter:grayscale(1);">🚣</div></div><span style="font-size:13px;color:#888;margin-left:2px;font-weight:500;">2</span></div>
       </div>
     </div>
   </div>
