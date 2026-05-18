@@ -585,6 +585,285 @@ footer p {
 /* Pattern card — same as diagram-card but slightly smaller content */
 .pattern-card .app-card { min-height: 0; }
 
+/* ═══════════════════════════════════════════
+   PERSONAL SCREENS & EXTENDED PATTERNS
+   ═══════════════════════════════════════════ */
+
+/* Weekday tracker circles (M T O T F L S) */
+.weekday-row {
+  display: flex; gap: 6px; justify-content: center;
+  margin: 14px 0 18px;
+}
+.weekday-row .day {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--lysegul);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600;
+  color: var(--text);
+}
+.weekday-row .day.empty {
+  background: var(--off);
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+
+/* Goal progress bar with icon */
+.goal-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 4px 0;
+}
+.goal-row .goal-icon {
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: #888;
+}
+.goal-row .goal-bar {
+  flex: 1;
+  height: 22px;
+  background: var(--off);
+  border-radius: 100px;
+  display: flex; align-items: center;
+  padding: 0 12px;
+  font-size: 11px;
+  color: #B0B0B0;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+.goal-row .goal-fill {
+  position: absolute; top: 0; left: 0;
+  height: 100%;
+  background: var(--blue);
+  border-radius: 100px;
+}
+.goal-row .goal-text {
+  position: relative; z-index: 1;
+}
+
+/* Sport stat row (round icon badge + value) */
+.stat-row {
+  display: flex; align-items: center; gap: 10px;
+  background: white;
+  border-radius: 100px;
+  padding: 4px 14px 4px 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+}
+.stat-row .stat-badge {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; flex-shrink: 0;
+}
+.stat-row .stat-val {
+  font-size: 13px; font-weight: 500;
+  color: var(--text);
+}
+
+/* Big uppercase tab switch (I ÅR / HISTORIKK) */
+.big-tabs {
+  background: var(--off);
+  border-radius: 100px;
+  padding: 4px;
+  display: flex;
+}
+.big-tabs .big-tab {
+  flex: 1; text-align: center;
+  padding: 9px 0;
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 1.5px;
+  color: #888;
+  border-radius: 100px;
+}
+.big-tabs .big-tab.active {
+  background: white;
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+
+/* Year comparison row (2026 vs 2025) */
+.compare-row {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 8px;
+}
+.compare-row .year {
+  font-size: 12px; color: #888;
+  min-width: 38px;
+}
+.compare-row .bar-wrap {
+  flex: 1;
+  height: 16px;
+  background: var(--off);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.compare-row .bar-fill {
+  height: 100%;
+  border-radius: 100px;
+}
+.compare-row .val {
+  font-size: 11px; font-weight: 500;
+  color: var(--text);
+  min-width: 46px;
+  text-align: right;
+}
+
+/* Stats card (white block with title) */
+.stats-card {
+  background: white;
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.05);
+  margin-bottom: 10px;
+}
+.stats-card-title {
+  font-size: 14px; font-weight: 600;
+  text-align: center; color: var(--text);
+  margin-bottom: 10px;
+}
+
+/* Pink callout card (Sett ukentlige treningsmål) */
+.pink-callout {
+  background: #FFC8E1;
+  border-radius: 18px;
+  padding: 16px 14px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+.pink-callout-title {
+  font-size: 13px; font-weight: 500;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.pink-callout-icons {
+  display: flex; justify-content: space-around;
+  gap: 8px;
+}
+.pink-callout-icon {
+  background: white;
+  border-radius: 50%;
+  width: 56px; height: 56px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  position: relative;
+}
+.pink-callout-icon .lbl {
+  position: absolute;
+  bottom: -16px;
+  font-size: 10px; font-weight: 500;
+  color: var(--text);
+}
+
+/* User variant cards (avatar selector) */
+.user-variants {
+  display: flex; gap: 10px;
+  margin-bottom: 24px;
+}
+.user-variant {
+  background: var(--blue-bg);
+  border-radius: 12px;
+  padding: 20px 10px 14px;
+  text-align: center;
+  font-size: 32px;
+  border: 2px solid transparent;
+  flex: 1;
+}
+.user-variant.selected {
+  border-color: var(--blue-acc);
+  background: var(--blue-bg);
+}
+
+/* Big destructive buttons (Logg ut / Slett bruker) */
+.big-btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 100px;
+  text-align: center;
+  font-size: 14px; font-weight: 500;
+  color: white;
+  border: none;
+  margin-bottom: 8px;
+  display: block;
+}
+.big-btn.neutral { background: #555; }
+.big-btn.destructive { background: #1C1C1E; }
+
+/* Vertical bar chart (monthly distribution) */
+.bar-chart {
+  display: flex; align-items: flex-end;
+  gap: 3px;
+  height: 80px;
+  padding: 4px 0;
+}
+.bar-chart .b {
+  flex: 1;
+  background: var(--blue);
+  border-radius: 2px;
+  min-width: 3px;
+  min-height: 4px;
+}
+.bar-chart .b.faint { background: var(--rosa); opacity: .6; }
+
+/* Mountain stat hero */
+.mountain-hero {
+  text-align: center;
+  position: relative;
+}
+.mountain-hero .num {
+  font-size: 26px; font-weight: 700;
+  color: var(--text);
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+.mountain-hero .label {
+  font-size: 12px; color: #888;
+  margin-top: 2px;
+}
+
+/* Empty state */
+.empty-state {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  text-align: center;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 6px;
+}
+.empty-state .icon {
+  font-size: 18px;
+  color: #888;
+}
+.empty-state .txt {
+  font-size: 12px; color: #888;
+}
+
+/* Mini step-line chart (monthly accumulation) */
+.step-line-chart {
+  width: 100%;
+  height: 80px;
+  position: relative;
+}
+
+/* Page dots */
+.page-dots {
+  display: flex; gap: 4px;
+  justify-content: center;
+  margin: 6px 0;
+}
+.page-dots .pd {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #D8D8D8;
+}
+.page-dots .pd.active {
+  width: 18px;
+  background: var(--rosa-acc);
+  border-radius: 3px;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .diagram-card { width: 100%; max-width: 420px; }
@@ -623,7 +902,8 @@ footer p {
     <div class="toc reveal d2">
       <div class="toc-title">Jump to</div>
       <div class="toc-sections">
-        <a href="#skjermer" class="toc-sec-link">📱 Screens</a>
+        <a href="#skjermer" class="toc-sec-link">📱 Group screens</a>
+        <a href="#personlige" class="toc-sec-link">👤 Personal screens</a>
         <a href="#diagrammer" class="toc-sec-link">📊 Diagrams</a>
         <a href="#monstre" class="toc-sec-link">🧩 UI patterns</a>
         <a href="#deltakerfarger" class="toc-sec-link">🎨 Colour palette</a>
@@ -638,6 +918,14 @@ footer p {
         <a href="#sk-steg3" class="toc-link"><span class="toc-num">E</span>✅ Opprett — steg 3</a>
         <a href="#sk-innstillinger" class="toc-link"><span class="toc-num">F</span>⚙️ Gruppe-innstillinger</a>
         <a href="#sk-header" class="toc-link"><span class="toc-num">G</span>📈 Gruppe-header</a>
+      </div>
+      <div class="toc-divider">Personal screens</div>
+      <div class="toc-grid">
+        <a href="#sk-hjem" class="toc-link"><span class="toc-num">H</span>🏠 Hjem (Tale)</a>
+        <a href="#sk-innstillinger-pers" class="toc-link"><span class="toc-num">I</span>⚙️ Innstillinger</a>
+        <a href="#sk-stats-aar" class="toc-link"><span class="toc-num">J</span>📊 Stats — I ÅR</a>
+        <a href="#sk-stats-hist" class="toc-link"><span class="toc-num">K</span>📈 Stats — HISTORIKK</a>
+        <a href="#sk-stats-bars" class="toc-link"><span class="toc-num">L</span>📉 Månedsgraf</a>
       </div>
       <div class="toc-divider">Diagrammer</div>
       <div class="toc-grid">
@@ -666,6 +954,18 @@ footer p {
         <a href="#p-seg" class="toc-link"><span class="toc-num">ζ</span>🎚 Segmented control</a>
         <a href="#p-tabs" class="toc-link"><span class="toc-num">η</span>🗂 Tab pills</a>
         <a href="#p-bottomtabs" class="toc-link"><span class="toc-num">θ</span>📐 Bottom tab bar</a>
+        <a href="#p-weekdays" class="toc-link"><span class="toc-num">ι</span>📅 Weekday tracker</a>
+        <a href="#p-goal" class="toc-link"><span class="toc-num">κ</span>🎯 Goal progress</a>
+        <a href="#p-compare" class="toc-link"><span class="toc-num">λ</span>📊 Year comparison</a>
+        <a href="#p-statrow" class="toc-link"><span class="toc-num">μ</span>🏅 Stat row</a>
+        <a href="#p-bigtabs" class="toc-link"><span class="toc-num">ν</span>🔠 Big tabs</a>
+        <a href="#p-bigbtn" class="toc-link"><span class="toc-num">ξ</span>⏹ Big buttons</a>
+        <a href="#p-pink" class="toc-link"><span class="toc-num">ο</span>🌸 Pink callout</a>
+        <a href="#p-barchart" class="toc-link"><span class="toc-num">π</span>📊 Bar chart</a>
+        <a href="#p-mountain" class="toc-link"><span class="toc-num">ρ</span>⛰️ Mountain hero</a>
+        <a href="#p-uservariant" class="toc-link"><span class="toc-num">σ</span>👤 User variant</a>
+        <a href="#p-empty" class="toc-link"><span class="toc-num">τ</span>🌫 Empty state</a>
+        <a href="#p-dots" class="toc-link"><span class="toc-num">φ</span>⚫ Page dots</a>
       </div>
     </div>
   </div>
@@ -970,6 +1270,306 @@ footer p {
               <div class="pc" style="width:22px;height:22px;font-size:9px;background:#FAD067;">TK</div>
               <span style="font-size:12px;font-weight:500;color:#1C1C1E;">38%</span>
             </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL SCREENS -->
+<section class="section" id="personlige">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">Personal screens</p>
+      <h2 class="h-mix">My <span class="blob blob-rosa">stats</span> &amp; settings</h2>
+    </div>
+    <div class="diagrams-grid">
+      <!-- Hjem (Tale) -->
+      <div class="diagram-card" id="sk-hjem">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">🏠 Hjem (Tale)</span>
+            <span class="diagram-meta-desc">Personal weekly view</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <div class="ios-nav-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+            <div class="ios-nav-title">Tale</div>
+            <div style="width:32px;"></div>
+          </div>
+          <div class="weekday-row">
+            <div class="day">M</div>
+            <div class="day">T</div>
+            <div class="day">O</div>
+            <div class="day">T</div>
+            <div class="day">F</div>
+            <div class="day">L</div>
+            <div class="day">S</div>
+          </div>
+          <!-- Illustration placeholder (sleeping shoes) -->
+          <div style="text-align:center;font-size:60px;line-height:1;margin:14px 0 18px;letter-spacing:-4px;">
+            <span style="display:inline-block;transform:rotate(-15deg);">👟</span><span style="display:inline-block;transform:translateY(-8px);font-size:24px;">💤</span><span style="display:inline-block;transform:rotate(15deg) scaleX(-1);">👟</span>
+          </div>
+          <div class="stats-card" style="margin-bottom:8px;">
+            <p style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:8px;">Ukas mål</p>
+            <div class="goal-row">
+              <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+              <div class="goal-bar"><span class="goal-text">0%</span></div>
+            </div>
+            <div class="goal-row">
+              <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="#888" stroke="none"><circle cx="14" cy="4" r="2"/><path d="M11 7l-3 4 3 3v6h2v-7l-2-2 2-3z"/></svg></div>
+              <div class="goal-bar"><span class="goal-text">0%</span></div>
+            </div>
+            <div class="goal-row">
+              <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+              <div class="goal-bar"><span class="goal-text">0%</span></div>
+            </div>
+          </div>
+          <div class="empty-state">
+            <div class="icon">🚶</div>
+            <div class="txt">Ingen aktiviteter denne uken…</div>
+          </div>
+          <div class="bottom-tabs">
+  <div class="tab active"><svg width="15" height="15" viewBox="0 0 24 24" fill="#E880C4" stroke="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+  <div class="tab "><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><rect x="3" y="12" width="4" height="9" rx="1"/><rect x="10" y="7" width="4" height="14" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg></div>
+  <div class="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><circle cx="9" cy="8" r="4"/><circle cx="17" cy="9" r="3"/><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/><path d="M17 14c2.8 0 5 1.8 5 4"/></svg></div>
+  <div class="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><path d="M1 6v15l7-3 8 3 7-3V3l-7 3-8-3-7 3z"/></svg></div>
+</div>
+        </div>
+      </div>
+
+      <!-- Innstillinger -->
+      <div class="diagram-card" id="sk-innstillinger-pers">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">⚙️ Innstillinger</span>
+            <span class="diagram-meta-desc">Personal settings</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="ios-nav-bar" style="margin-bottom:18px;">
+            <div class="ios-nav-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#91BCFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></div>
+            <div class="ios-nav-title">Innstillinger</div>
+            <div style="width:32px;"></div>
+          </div>
+          <div class="pink-callout">
+            <p class="pink-callout-title">Sett ukentlige treningsmål</p>
+            <div class="pink-callout-icons">
+              <div class="pink-callout-icon" style="position:relative;">🧮<span style="position:absolute;bottom:-16px;font-size:10px;font-weight:500;color:var(--text);white-space:nowrap;">4 stk</span></div>
+              <div class="pink-callout-icon" style="position:relative;">📏<span style="position:absolute;bottom:-16px;font-size:10px;font-weight:500;color:var(--text);white-space:nowrap;">10 km</span></div>
+              <div class="pink-callout-icon" style="position:relative;">⏱<span style="position:absolute;bottom:-16px;font-size:10px;font-weight:500;color:var(--text);white-space:nowrap;">3 t</span></div>
+            </div>
+            <div style="height:16px;"></div>
+          </div>
+          <div class="user-variants">
+            <div class="user-variant selected">⛑️</div>
+            <div class="user-variant">⛑️</div>
+          </div>
+          <button class="big-btn neutral">Logg ut</button>
+          <button class="big-btn destructive">Slett bruker</button>
+          <div class="bottom-tabs">
+  <div class="tab active"><svg width="15" height="15" viewBox="0 0 24 24" fill="#E880C4" stroke="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+  <div class="tab "><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><rect x="3" y="12" width="4" height="9" rx="1"/><rect x="10" y="7" width="4" height="14" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg></div>
+  <div class="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><circle cx="9" cy="8" r="4"/><circle cx="17" cy="9" r="3"/><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/><path d="M17 14c2.8 0 5 1.8 5 4"/></svg></div>
+  <div class="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><path d="M1 6v15l7-3 8 3 7-3V3l-7 3-8-3-7 3z"/></svg></div>
+</div>
+        </div>
+      </div>
+
+      <!-- Stats — I ÅR -->
+      <div class="diagram-card" id="sk-stats-aar">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">📊 Stats — I ÅR</span>
+            <span class="diagram-meta-desc">Year stats + comparison</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="ios-nav-title" style="margin-bottom:14px;">Stats</div>
+          <div class="big-tabs" style="margin-bottom:16px;">
+            <div class="big-tab active">I ÅR</div>
+            <div class="big-tab">HISTORIKK</div>
+          </div>
+          <div class="stats-card">
+            <p style="font-size:13px;font-weight:500;color:var(--text);text-align:center;margin-bottom:10px;">På samme tid i fjor</p>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+              <div style="width:34px;height:34px;border-radius:50%;background:var(--lysegul);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">🎽</div>
+              <div style="flex:1;">
+                <div class="compare-row">
+                  <span class="year">2026</span>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:82%;background:#FFB2E3;"></div></div>
+                  <span class="val">60t 8m</span>
+                </div>
+                <div class="compare-row" style="margin-bottom:0;">
+                  <span class="year">2025</span>
+                  <div class="bar-wrap"><div class="bar-fill" style="width:62%;background:#91BCFF;"></div></div>
+                  <span class="val">45t 59m</span>
+                </div>
+              </div>
+            </div>
+            <div class="seg-ctrl">
+              <div class="seg">Økter</div>
+              <div class="seg">Distanse</div>
+              <div class="seg active">Tid</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <div class="stats-card" style="flex:1;margin-bottom:0;padding:10px;">
+              <p class="stats-card-title" style="font-size:11px;margin-bottom:6px;">Variasjon</p>
+              <svg width="100%" height="120" viewBox="0 0 160 160" style="display:block;margin:0 auto;">
+                <circle cx="80" cy="80" r="60" fill="none" stroke="#F2F2F7" stroke-width="22"/>
+                <circle cx="80" cy="80" r="60" fill="none" stroke="#91BCFF" stroke-width="22" stroke-dasharray="226 377" transform="rotate(-90 80 80)"/>
+                <circle cx="80" cy="80" r="60" fill="none" stroke="#FFB2E3" stroke-width="22" stroke-dasharray="75 302" stroke-dashoffset="-226" transform="rotate(-90 80 80)"/>
+                <circle cx="80" cy="80" r="60" fill="none" stroke="#B7C9F5" stroke-width="22" stroke-dasharray="38 339" stroke-dashoffset="-301" transform="rotate(-90 80 80)"/>
+                <circle cx="80" cy="80" r="60" fill="none" stroke="#FAD067" stroke-width="22" stroke-dasharray="38 339" stroke-dashoffset="-339" transform="rotate(-90 80 80)"/>
+                <svg x="68" y="58" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <text x="80" y="95" text-anchor="middle" font-size="14" font-weight="700" fill="#1C1C1E" font-family="-apple-system,sans-serif">60t8m</text>
+              </svg>
+              <div class="page-dots" style="margin:4px 0 0;">
+                <div class="pd active"></div>
+                <div class="pd"></div>
+                <div class="pd"></div>
+              </div>
+            </div>
+            <div class="stats-card" style="flex:1;margin-bottom:0;padding:10px;">
+              <p class="stats-card-title" style="font-size:11px;margin-bottom:6px;">Lengste økt</p>
+              <div class="seg-ctrl" style="margin-bottom:8px;">
+                <div class="seg active">Distanse</div>
+                <div class="seg">Tid</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div class="stat-row"><div class="stat-badge" style="background:#EAF2FF;">👟</div><span class="stat-val">3.2 km</span></div>
+                <div class="stat-row"><div class="stat-badge" style="background:#FFF89E;">⛑</div><span class="stat-val">10.1 km</span></div>
+                <div class="stat-row"><div class="stat-badge" style="background:#8FD6E7;">⛷</div><span class="stat-val">3.4 km</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-tabs">
+  <div class="tab "><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+  <div class="tab active"><svg width="15" height="15" viewBox="0 0 24 24" fill="#E880C4" stroke="none"><rect x="3" y="12" width="4" height="9" rx="1"/><rect x="10" y="7" width="4" height="14" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg></div>
+  <div class="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><circle cx="9" cy="8" r="4"/><circle cx="17" cy="9" r="3"/><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/><path d="M17 14c2.8 0 5 1.8 5 4"/></svg></div>
+  <div class="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><path d="M1 6v15l7-3 8 3 7-3V3l-7 3-8-3-7 3z"/></svg></div>
+</div>
+        </div>
+      </div>
+
+      <!-- Stats — HISTORIKK -->
+      <div class="diagram-card" id="sk-stats-hist">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">📈 Stats — HISTORIKK</span>
+            <span class="diagram-meta-desc">Lifetime stats + elevation</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="ios-nav-title" style="margin-bottom:14px;">Stats</div>
+          <div class="big-tabs" style="margin-bottom:16px;">
+            <div class="big-tab">I ÅR</div>
+            <div class="big-tab active">HISTORIKK</div>
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:10px;">
+            <div class="stats-card" style="flex:1;margin-bottom:0;padding:10px;">
+              <p class="stats-card-title" style="font-size:11px;margin-bottom:6px;">Variasjon</p>
+              <svg width="100%" height="120" viewBox="0 0 160 160" style="display:block;margin:0 auto;">
+                <circle cx="80" cy="80" r="60" fill="none" stroke="#F2F2F7" stroke-width="22"/>
+                <circle cx="80" cy="80" r="60" fill="none" stroke="#91BCFF" stroke-width="22" stroke-dasharray="375 2" transform="rotate(-90 80 80)"/>
+                <svg x="68" y="58" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <text x="80" y="95" text-anchor="middle" font-size="14" font-weight="700" fill="#1C1C1E" font-family="-apple-system,sans-serif">1986t</text>
+              </svg>
+              <div class="page-dots" style="margin:4px 0 0;">
+                <div class="pd active"></div>
+                <div class="pd"></div>
+                <div class="pd"></div>
+              </div>
+            </div>
+            <div class="stats-card" style="flex:1;margin-bottom:0;padding:10px;">
+              <p class="stats-card-title" style="font-size:11px;margin-bottom:6px;">Lengste økt</p>
+              <div class="seg-ctrl" style="margin-bottom:8px;">
+                <div class="seg active">Distanse</div>
+                <div class="seg">Tid</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div class="stat-row"><div class="stat-badge" style="background:#EAF2FF;">👟</div><span class="stat-val">15.3 km</span></div>
+                <div class="stat-row"><div class="stat-badge" style="background:#FFF89E;">⛑</div><span class="stat-val">51.6 km</span></div>
+                <div class="stat-row"><div class="stat-badge" style="background:#8FD6E7;">⛷</div><span class="stat-val">23.4 km</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-card">
+            <p class="stats-card-title">Høydemeter</p>
+            <div style="display:flex;gap:12px;align-items:center;">
+              <div style="flex:0 0 110px;text-align:center;">
+                <svg width="100" height="80" viewBox="0 0 100 80">
+                  <polygon points="50,10 85,72 15,72" fill="#FFD0E8"/>
+                  <polygon points="50,10 70,42 30,42" fill="white"/>
+                  <path d="M 30,72 L 35,55 L 42,40 L 50,10" stroke="#E880C4" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                  <polygon points="48,18 50,10 56,16" fill="#E880C4"/>
+                </svg>
+                <div class="mountain-hero">
+                  <div class="num">240 964</div>
+                  <div class="label">Total</div>
+                </div>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:5px;">
+                <div class="stat-row"><div class="stat-badge" style="background:#F8C696;">☕</div><span class="stat-val">178 435</span></div>
+                <div class="stat-row"><div class="stat-badge" style="background:#91BCFF;">🎒</div><span class="stat-val">20 213</span></div>
+                <div class="stat-row"><div class="stat-badge" style="background:#EAF2FF;">👟</div><span class="stat-val">15 915</span></div>
+                <div class="stat-row"><div class="stat-badge" style="background:#FFF89E;">⛑</div><span class="stat-val">15 730</span></div>
+                <div class="stat-row"><div class="stat-badge" style="background:#8FD6E7;">⛷</div><span class="stat-val">8 248</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-tabs">
+  <div class="tab "><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+  <div class="tab active"><svg width="15" height="15" viewBox="0 0 24 24" fill="#E880C4" stroke="none"><rect x="3" y="12" width="4" height="9" rx="1"/><rect x="10" y="7" width="4" height="14" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg></div>
+  <div class="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><circle cx="9" cy="8" r="4"/><circle cx="17" cy="9" r="3"/><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/><path d="M17 14c2.8 0 5 1.8 5 4"/></svg></div>
+  <div class="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><path d="M1 6v15l7-3 8 3 7-3V3l-7 3-8-3-7 3z"/></svg></div>
+</div>
+        </div>
+      </div>
+
+      <!-- Månedsgraf -->
+      <div class="diagram-card" id="sk-stats-bars">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">📉 Månedsgraf</span>
+            <span class="diagram-meta-desc">Monthly bar chart</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="ios-nav-title" style="margin-bottom:14px;">Månedsgraf</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <div class="seg-ctrl" style="flex:1;">
+              <div class="seg">Distanse</div>
+              <div class="seg active">Tid</div>
+              <div class="seg">Antall</div>
+            </div>
+            <div style="width:34px;height:34px;border-radius:50%;background:var(--lysegul);display:flex;align-items:center;justify-content:center;font-size:16px;margin-left:8px;flex-shrink:0;">🎽</div>
+          </div>
+          <div class="bar-chart"><div class="b" style="height:38px;"></div><div class="b" style="height:30px;"></div><div class="b" style="height:45px;"></div><div class="b" style="height:16px;"></div><div class="b" style="height:14px;"></div><div class="b" style="height:22px;"></div><div class="b" style="height:28px;"></div><div class="b" style="height:22px;"></div><div class="b" style="height:38px;"></div><div class="b" style="height:40px;"></div><div class="b" style="height:14px;"></div><div class="b" style="height:28px;"></div><div class="b" style="height:18px;"></div><div class="b" style="height:14px;"></div><div class="b" style="height:22px;"></div><div class="b" style="height:45px;"></div><div class="b" style="height:45px;"></div><div class="b" style="height:22px;"></div><div class="b" style="height:18px;"></div><div class="b" style="height:22px;"></div><div class="b" style="height:28px;"></div><div class="b" style="height:45px;"></div><div class="b" style="height:14px;"></div><div class="b" style="height:40px;"></div><div class="b" style="height:22px;"></div><div class="b" style="height:18px;"></div><div class="b" style="height:16px;"></div><div class="b" style="height:16px;"></div><div class="b" style="height:40px;"></div><div class="b" style="height:14px;"></div><div class="b" style="height:40px;"></div><div class="b" style="height:40px;"></div><div class="b" style="height:45px;"></div><div class="b" style="height:14px;"></div><div class="b" style="height:18px;"></div><div class="b" style="height:14px;"></div></div>
+          <div class="seg-ctrl" style="margin:14px 0 12px;max-width:240px;margin-left:auto;margin-right:auto;">
+            <div class="seg">Uke</div>
+            <div class="seg active">Måned</div>
+            <div class="seg">År</div>
+          </div>
+          <div style="background:var(--off);border-radius:14px;padding:12px;text-align:center;">
+            <p style="font-size:12px;color:var(--text);margin-bottom:8px;font-weight:500;">Mai 2026</p>
+            <div style="display:flex;justify-content:space-around;align-items:center;">
+              <div style="text-align:center;"><div style="font-size:16px;font-weight:600;color:var(--text);">8</div><div style="font-size:10px;color:#888;">Antall</div></div>
+              <div style="width:1px;height:24px;background:var(--line);"></div>
+              <div style="text-align:center;"><div style="font-size:16px;font-weight:600;color:var(--text);">5t 7m</div><div style="font-size:10px;color:#888;">Tid</div></div>
+              <div style="width:1px;height:24px;background:var(--line);"></div>
+              <div style="text-align:center;"><div style="font-size:16px;font-weight:600;color:var(--text);">10.7 km</div><div style="font-size:10px;color:#888;">Distanse</div></div>
+            </div>
+            <div style="margin-top:8px;color:#aaa;font-size:14px;">⌄</div>
           </div>
         </div>
       </div>
@@ -1953,6 +2553,302 @@ footer p {
             <div style="display:flex;align-items:center;gap:8px;"><div style="width:18px;height:18px;border-radius:50%;background:white;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;">📊</div>Statistikk</div>
             <div style="display:flex;align-items:center;gap:8px;"><div style="width:18px;height:18px;border-radius:50%;background:var(--rosa-bg);box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;color:var(--rosa-acc);font-size:10px;">👥</div>Grupper (active)</div>
             <div style="display:flex;align-items:center;gap:8px;"><div style="width:18px;height:18px;border-radius:50%;background:white;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;">🗺️</div>Kart</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weekday tracker -->
+      <div class="diagram-card" id="p-weekdays">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">📅 Weekday tracker</span>
+            <span class="diagram-meta-desc">M-T-O-T-F-L-S row</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Weekday tracker</div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:10px;">All-yellow row = the personal "ukas mål" view. M-T-O-T-F-L-S in Norwegian.</p>
+          <div class="weekday-row" style="margin:0 0 16px;">
+            <div class="day">M</div>
+            <div class="day">T</div>
+            <div class="day">O</div>
+            <div class="day">T</div>
+            <div class="day">F</div>
+            <div class="day">L</div>
+            <div class="day">S</div>
+          </div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:10px;">Mixed state (suggestion: filled = active day, empty = rest day)</p>
+          <div class="weekday-row" style="margin:0;">
+            <div class="day">M</div>
+            <div class="day">T</div>
+            <div class="day empty">O</div>
+            <div class="day">T</div>
+            <div class="day empty">F</div>
+            <div class="day">L</div>
+            <div class="day empty">S</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Goal progress -->
+      <div class="diagram-card" id="p-goal">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">🎯 Goal progress</span>
+            <span class="diagram-meta-desc">Progress bar with icon</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Goal progress</div>
+          <div class="goal-row">
+            <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="goal-bar"><span class="goal-text">0%</span></div>
+          </div>
+          <div class="goal-row">
+            <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="#888" stroke="none"><circle cx="14" cy="4" r="2"/><path d="M11 7l-3 4 3 3v6h2v-7l-2-2 2-3z"/></svg></div>
+            <div class="goal-bar"><div class="goal-fill" style="width:62%;background:var(--blue);"></div><span class="goal-text" style="color:white;">62%</span></div>
+          </div>
+          <div class="goal-row">
+            <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+            <div class="goal-bar"><div class="goal-fill" style="width:100%;background:var(--rosa-acc);"></div><span class="goal-text" style="color:white;">100%</span></div>
+          </div>
+          <p style="font-size:10px;color:#aaa;margin-top:12px;line-height:1.5;">Empty: gray track · Filled: blue (in progress) · Complete: rosa</p>
+        </div>
+      </div>
+
+      <!-- Year comparison -->
+      <div class="diagram-card" id="p-compare">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">📊 Year comparison</span>
+            <span class="diagram-meta-desc">Year-over-year bars</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Year comparison</div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:10px;">Current year in rosa, previous in blue.</p>
+          <div class="compare-row">
+            <span class="year">2026</span>
+            <div class="bar-wrap"><div class="bar-fill" style="width:82%;background:#FFB2E3;"></div></div>
+            <span class="val">60t 8m</span>
+          </div>
+          <div class="compare-row">
+            <span class="year">2025</span>
+            <div class="bar-wrap"><div class="bar-fill" style="width:62%;background:#91BCFF;"></div></div>
+            <span class="val">45t 59m</span>
+          </div>
+          <div class="compare-row">
+            <span class="year">2024</span>
+            <div class="bar-wrap"><div class="bar-fill" style="width:42%;background:#B7A0EC;"></div></div>
+            <span class="val">31t 12m</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat row -->
+      <div class="diagram-card" id="p-statrow">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">🏅 Stat row</span>
+            <span class="diagram-meta-desc">Icon badge + value</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Stat row</div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:10px;">Round badge + value pill — used in "Lengste økt", "Høydemeter" osv.</p>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div class="stat-row"><div class="stat-badge" style="background:#EAF2FF;">👟</div><span class="stat-val">15.3 km</span></div>
+            <div class="stat-row"><div class="stat-badge" style="background:#FFF89E;">⛑</div><span class="stat-val">51.6 km</span></div>
+            <div class="stat-row"><div class="stat-badge" style="background:#8FD6E7;">⛷</div><span class="stat-val">23.4 km</span></div>
+            <div class="stat-row"><div class="stat-badge" style="background:#F8C696;">☕</div><span class="stat-val">178 435</span></div>
+            <div class="stat-row"><div class="stat-badge" style="background:#FFB2E3;">🏃</div><span class="stat-val">8 248</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Big tabs -->
+      <div class="diagram-card" id="p-bigtabs">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">🔠 Big tabs</span>
+            <span class="diagram-meta-desc">Uppercase tab switcher</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Big tabs (uppercase)</div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:10px;">For top-level sections — letter-spaced uppercase, white capsule on active.</p>
+          <div class="big-tabs" style="margin-bottom:12px;">
+            <div class="big-tab active">I ÅR</div>
+            <div class="big-tab">HISTORIKK</div>
+          </div>
+          <div class="big-tabs">
+            <div class="big-tab">OVERSIKT</div>
+            <div class="big-tab active">DETALJER</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Big buttons -->
+      <div class="diagram-card" id="p-bigbtn">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">⏹ Big buttons</span>
+            <span class="diagram-meta-desc">Logg ut / Slett bruker</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Big primary buttons</div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:10px;">Full-width action buttons. Suggested: <strong>nøytral grå</strong> for sign-out (less destructive feeling), <strong>solid svart</strong> for permanent delete.</p>
+          <button class="big-btn neutral">Logg ut</button>
+          <button class="big-btn destructive">Slett bruker</button>
+          <div style="height:14px;"></div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:6px;">Alternative (more design-system-aligned):</p>
+          <button class="big-btn neutral" style="background:#888;">Logg ut</button>
+          <button class="big-btn" style="background:var(--rosa-deep);color:white;">Slett bruker</button>
+        </div>
+      </div>
+
+      <!-- Pink callout -->
+      <div class="diagram-card" id="p-pink">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">🌸 Pink callout</span>
+            <span class="diagram-meta-desc">Saturated pink call-to-action</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Pink callout card</div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:10px;">Used for "Sett ukentlige treningsmål" — contains 3 white circle icons over saturated pink.</p>
+          <div class="pink-callout" style="margin-bottom:24px;">
+            <p class="pink-callout-title">Sett ukentlige treningsmål</p>
+            <div class="pink-callout-icons">
+              <div class="pink-callout-icon" style="position:relative;">🧮<span style="position:absolute;bottom:-16px;font-size:10px;font-weight:500;color:var(--text);white-space:nowrap;">4 stk</span></div>
+              <div class="pink-callout-icon" style="position:relative;">📏<span style="position:absolute;bottom:-16px;font-size:10px;font-weight:500;color:var(--text);white-space:nowrap;">10 km</span></div>
+              <div class="pink-callout-icon" style="position:relative;">⏱<span style="position:absolute;bottom:-16px;font-size:10px;font-weight:500;color:var(--text);white-space:nowrap;">3 t</span></div>
+            </div>
+            <div style="height:16px;"></div>
+          </div>
+          <p style="font-size:10px;color:#aaa;margin-top:6px;">Suggestion: dempe litt mot designsystemet ved å gå fra <code style="background:#F2F2F7;padding:1px 4px;border-radius:3px;font-size:10px;">#FFC8E1</code> til <code style="background:#F2F2F7;padding:1px 4px;border-radius:3px;font-size:10px;">var(--rosa-bg)</code></p>
+        </div>
+      </div>
+
+      <!-- Bar chart -->
+      <div class="diagram-card" id="p-barchart">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">📊 Bar chart</span>
+            <span class="diagram-meta-desc">Monthly distribution</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Vertical bar chart</div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:10px;">Compact monthly distribution — blue bars on white background.</p>
+          <div class="bar-chart" style="height:80px;"><div class="b" style="height:38px;"></div><div class="b" style="height:30px;"></div><div class="b" style="height:45px;"></div><div class="b" style="height:16px;"></div><div class="b" style="height:14px;"></div><div class="b" style="height:22px;"></div><div class="b" style="height:28px;"></div><div class="b" style="height:22px;"></div><div class="b" style="height:38px;"></div><div class="b" style="height:40px;"></div><div class="b" style="height:14px;"></div><div class="b" style="height:28px;"></div><div class="b" style="height:18px;"></div><div class="b" style="height:14px;"></div><div class="b" style="height:22px;"></div><div class="b" style="height:45px;"></div><div class="b" style="height:45px;"></div><div class="b" style="height:22px;"></div><div class="b" style="height:18px;"></div><div class="b" style="height:22px;"></div><div class="b" style="height:28px;"></div><div class="b" style="height:45px;"></div><div class="b" style="height:14px;"></div><div class="b" style="height:40px;"></div><div class="b" style="height:22px;"></div><div class="b" style="height:18px;"></div><div class="b" style="height:16px;"></div><div class="b" style="height:16px;"></div><div class="b" style="height:40px;"></div><div class="b" style="height:14px;"></div><div class="b" style="height:40px;"></div><div class="b" style="height:40px;"></div><div class="b" style="height:45px;"></div><div class="b" style="height:14px;"></div><div class="b" style="height:18px;"></div><div class="b" style="height:14px;"></div></div>
+          <div class="seg-ctrl" style="margin:14px 0 0;">
+            <div class="seg">Uke</div>
+            <div class="seg active">Måned</div>
+            <div class="seg">År</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mountain hero -->
+      <div class="diagram-card" id="p-mountain">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">⛰️ Mountain hero</span>
+            <span class="diagram-meta-desc">Stat with illustration</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Mountain stat hero</div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:10px;">Lifetime total (høydemeter) with pink mountain illustration.</p>
+          <div style="text-align:center;">
+            <svg width="160" height="120" viewBox="0 0 100 80">
+              <polygon points="50,10 85,72 15,72" fill="#FFD0E8"/>
+              <polygon points="50,10 70,42 30,42" fill="white"/>
+              <path d="M 30,72 L 35,55 L 42,40 L 50,10" stroke="#E880C4" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <polygon points="48,18 50,10 56,16" fill="#E880C4"/>
+            </svg>
+            <div class="mountain-hero" style="margin-top:6px;">
+              <div class="num">240 964</div>
+              <div class="label">Total høydemeter</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- User variant -->
+      <div class="diagram-card" id="p-uservariant">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">👤 User variant</span>
+            <span class="diagram-meta-desc">Avatar selector</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">User variant selector</div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:10px;">Side-by-side avatar cards — chosen variant has blue border.</p>
+          <div class="user-variants">
+            <div class="user-variant selected">⛑️</div>
+            <div class="user-variant">⛑️</div>
+          </div>
+          <p style="font-size:10px;color:#aaa;margin-top:6px;">Suggestion: bruk <code style="background:#F2F2F7;padding:1px 4px;border-radius:3px;font-size:10px;">var(--rosa-acc)</code> som valgt-border for å matche rosa-tema i resten av systemet.</p>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div class="diagram-card" id="p-empty">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">🌫 Empty state</span>
+            <span class="diagram-meta-desc">No-data placeholder</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Empty state</div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:10px;">Used when no data is available — soft white card with icon and helper text.</p>
+          <div class="empty-state">
+            <div class="icon">🚶</div>
+            <div class="txt">Ingen aktiviteter denne uken…</div>
+          </div>
+          <div style="height:10px;"></div>
+          <div class="empty-state">
+            <div class="icon">🏃</div>
+            <div class="txt">Du har ingen turer ennå</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page dots -->
+      <div class="diagram-card" id="p-dots">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">⚫ Page dots</span>
+            <span class="diagram-meta-desc">Swipe indicator</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Page dots</div>
+          <p style="font-size:10px;color:#aaa;margin-bottom:10px;">Active dot is wider rosa pill, inactive are gray circles. Used under swipeable cards.</p>
+          <div style="background:var(--off);border-radius:12px;padding:24px;display:flex;align-items:center;justify-content:center;">
+            <div class="page-dots" style="margin:0;">
+              <div class="pd active"></div>
+              <div class="pd"></div>
+              <div class="pd"></div>
+            </div>
           </div>
         </div>
       </div>
