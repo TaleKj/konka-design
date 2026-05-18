@@ -72,6 +72,21 @@ body {
 .blob-blue { color: var(--blue-acc); }
 .blob-gold { color: var(--gold-acc); }
 
+
+/* ─── Status tags ─── */
+.status-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.3px;
+  padding: 3px 8px; border-radius: 20px;
+  margin-left: 6px; vertical-align: middle;
+}
+.status-finished {
+  background: #E8F8FC; color: #3090AA;
+}
+.status-inprogress {
+  background: #FFFBE8; color: #B88A18;
+}
+
 /* ─── NAV ─── */
 nav {
   position: fixed; top:0; left:0; right:0; z-index:100;
@@ -943,6 +958,7 @@ footer p {
         <a href="#d-vanedyret" class="toc-link"><span class="toc-num">12</span>🏊 Vanedyret</a>
         <a href="#d-allround" class="toc-link"><span class="toc-num">13</span>🏅 All-round</a>
         <a href="#d-lokalpokal" class="toc-link"><span class="toc-num">14</span>🗺️ LokalPokal</a>
+        <a href="#d-sisteokt" class="toc-link"><span class="toc-num">15</span>⚡ Siste økt</a>
       </div>
       <div class="toc-divider">UI patterns</div>
       <div class="toc-grid">
@@ -1583,14 +1599,14 @@ footer p {
   <div class="container">
     <div class="section-header reveal">
       <p class="label">Components</p>
-      <h2 class="h-mix">14 ways to look at <span class="blob blob-rosa">a group</span></h2>
+      <h2 class="h-mix">15 ways to look at <span class="blob blob-rosa">a group</span></h2>
     </div>
     <div class="diagrams-grid">
       <!-- 1. GRUPPEDATA -->
         <div class="diagram-card" id="d-gruppedata">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">🥧 Gruppedata</span>
+              <span class="diagram-meta-name">🥧 Gruppedata <span class="status-tag status-finished">✓ Ferdig</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
@@ -1679,79 +1695,179 @@ footer p {
         <div class="diagram-card" id="d-aktivitetsstripe">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">📅 Aktivitetsstripe</span>
+              <span class="diagram-meta-name">📅 Aktivitetsstripe <span class="status-tag status-finished">✓ Ferdig</span></span>
             </div>
-            <button class="info-btn">i</button>
+            <button class="info-btn" onclick="this.closest('.diagram-card').querySelector('.akt-back').style.display='flex';this.closest('.diagram-card').querySelector('.akt-front').style.display='none'">i</button>
           </div>
-          <div class="app-card">
-            <div class="app-card-title">Aktivitetsstripe</div>
-            <div style="font-size:10px;color:#aaa;display:flex;gap:4px;padding-left:44px;margin-bottom:6px;">
-              <span style="width:18px;text-align:center">M</span><span style="width:18px;text-align:center">T</span><span style="width:18px;text-align:center">O</span><span style="width:18px;text-align:center">T</span><span style="width:18px;text-align:center">F</span><span style="width:18px;text-align:center">L</span><span style="width:18px;text-align:center">S</span>
+          <!-- FRONT -->
+          <div class="app-card akt-front" style="padding:14px;">
+            <div style="font-size:14px;font-weight:700;color:#070707;margin-bottom:2px;">🗓 Aktivitetsstripe</div>
+            <div style="font-size:11px;color:#B0B0B0;margin-bottom:14px;">Hvem trente hvilke dager — siste 30 dager</div>
+            <div id="akt-grid" style="display:flex;flex-direction:column;gap:7px;"></div>
+            <div style="margin-top:10px;font-size:10px;color:#B0B0B0;text-align:center;">← Scroll for å se alle 30 dager</div>
+            <div style="margin-top:14px;padding-top:12px;border-top:1px solid #F7F7F7;display:flex;justify-content:center;gap:20px;">
+              <div style="display:flex;align-items:center;gap:5px;"><div style="width:10px;height:10px;border-radius:50%;background:#91BCFF;"></div><span style="font-size:10px;color:#888;">Trent</span></div>
+              <div style="display:flex;align-items:center;gap:5px;"><div style="width:10px;height:10px;border-radius:50%;background:#EFEFEF;"></div><span style="font-size:10px;color:#888;">Hviledag</span></div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-mia" style="width:36px;height:36px;font-size:13px;">MK</div><div style="display:flex;gap:4px;"><div style="width:14px;height:14px;border-radius:50%;background:#91BCFF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#91BCFF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#91BCFF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#91BCFF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div></div></div>
-              <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-sara" style="width:36px;height:36px;font-size:13px;">SL</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#FFA39B;"></div><div style="width:14px;height:14px;border-radius:50%;background:#FFA39B;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#FFA39B;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:14px;height:14px;border-radius:50%;background:#FFA39B;"></div></div></div>
-              <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-lars" style="width:36px;height:36px;font-size:13px;">LA</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div><div style="width:18px;height:18px;border-radius:50%;background:#F8C696;"></div></div></div>
-              <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-erik" style="width:36px;height:36px;font-size:13px;">EH</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#8FD6E7;"></div><div style="width:18px;height:18px;border-radius:50%;background:#8FD6E7;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#8FD6E7;"></div><div style="width:18px;height:18px;border-radius:50%;background:#8FD6E7;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div></div></div>
-              <div style="display:flex;align-items:center;gap:8px;"><div class="pc p-nora" style="width:36px;height:36px;font-size:13px;">NO</div><div style="display:flex;gap:4px;"><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div><div style="width:18px;height:18px;border-radius:50%;background:#EFEFEF;"></div><div style="width:18px;height:18px;border-radius:50%;background:#B7A0EC;"></div></div></div>
-            </div>
+          </div>
+          <!-- BACK -->
+          <div class="akt-back" style="display:none;background:#070707;border-radius:12px;padding:20px;flex-direction:column;gap:12px;margin:0 -1px -1px;">
+            <div style="font-size:14px;font-weight:700;color:#fff;">🗓 Aktivitetsstripe</div>
+            <p style="font-size:13px;color:#B0B0B0;line-height:1.65;margin:0;">Viser hvilke dager hver deltaker har trent, illustrert som en rad med fargede rundinger per dag.</p>
+            <p style="font-size:13px;color:#B0B0B0;line-height:1.65;margin:0;">Viser siste 30 dager, med de nyeste dagene til høyre. Scroll til venstre for å se lenger bakover.</p>
+            <p style="font-size:13px;color:#B0B0B0;line-height:1.65;margin:0;">En farget sirkel betyr trent — grå betyr hviledag.</p>
+            <button onclick="this.closest('.diagram-card').querySelector('.akt-back').style.display='none';this.closest('.diagram-card').querySelector('.akt-front').style.display='block'" style="margin-top:4px;padding:8px 16px;border-radius:8px;border:1.5px solid #444;background:transparent;color:#fff;font-size:12px;font-weight:600;cursor:pointer;align-self:flex-start;">← Tilbake</button>
           </div>
         </div>
+        <script>
+        (function(){
+          var PEOPLE = [
+            {id:"M",color:"#91BCFF",rate:0.72},{id:"S",color:"#FFA39B",rate:0.58},
+            {id:"L",color:"#FAD067",rate:0.65},{id:"E",color:"#8FD6E7",rate:0.45},
+            {id:"N",color:"#B7A0EC",rate:0.55}
+          ];
+          var grid = document.getElementById('akt-grid');
+          if(!grid) return;
+          var scrollEls = [];
+          PEOPLE.forEach(function(p){
+            var days = [];
+            for(var i=0;i<30;i++) days.push(Math.random() < p.rate);
+            var count = days.filter(Boolean).length;
+            var row = document.createElement('div');
+            row.style.cssText = 'display:flex;align-items:center;';
+            var av = document.createElement('div');
+            av.style.cssText = 'width:28px;height:28px;border-radius:50%;background:'+p.color+';display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;margin-right:10px;';
+            av.textContent = p.id;
+            var scroller = document.createElement('div');
+            scroller.style.cssText = 'flex:1;overflow-x:auto;scrollbar-width:none;';
+            var inner = document.createElement('div');
+            inner.style.cssText = 'display:flex;gap:6px;padding:2px 0;';
+            days.forEach(function(trained){
+              var dot = document.createElement('div');
+              dot.style.cssText = 'width:16px;height:16px;border-radius:50%;flex-shrink:0;background:'+(trained?p.color:'#EFEFEF')+';transition:transform .12s;cursor:default;';
+              dot.onmouseenter=function(){this.style.transform='scale(1.25)';};
+              dot.onmouseleave=function(){this.style.transform='scale(1)';};
+              inner.appendChild(dot);
+            });
+            scroller.appendChild(inner);
+            var cnt = document.createElement('div');
+            cnt.style.cssText = 'width:20px;flex-shrink:0;margin-left:10px;text-align:right;font-size:11px;font-weight:700;color:'+p.color+';';
+            cnt.textContent = count;
+            row.appendChild(av); row.appendChild(scroller); row.appendChild(cnt);
+            grid.appendChild(row);
+            scrollEls.push(scroller);
+          });
+          // Scroll all to right + sync
+          scrollEls.forEach(function(el){ el.scrollLeft = 99999; });
+          scrollEls.forEach(function(el){
+            el.addEventListener('scroll', function(){
+              var l = el.scrollLeft;
+              scrollEls.forEach(function(o){ if(o!==el) o.scrollLeft=l; });
+            });
+          });
+        })();
+        </script>
 
         <!-- 3. FARTSKONTROLL -->
         <div class="diagram-card" id="d-fartskontroll">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">🏃 Fartskontroll</span>
+              <span class="diagram-meta-name">🏃 Fartskontroll <span class="status-tag status-finished">✓ Ferdig</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
           <div class="app-card">
-            <div class="app-card-title">Fartskontroll</div>
-            <!-- Sport selector pills -->
-            <div style="display:flex;gap:8px;justify-content:center;margin-bottom:12px;flex-wrap:wrap;">
-              <div style="background:#F2F2F7;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:#1C1C1E;">5 km</div>
-              <div style="background:#F2F2F7;border-radius:20px;padding:6px 14px;font-size:12px;color:#888;">10 km</div>
-              <div style="background:#F2F2F7;border-radius:20px;padding:6px 14px;font-size:12px;color:#888;">Halvmaraton</div>
-              <div style="background:#F2F2F7;border-radius:20px;padding:6px 14px;font-size:12px;color:#888;">Maraton</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div>
+                <div style="font-size:14px;font-weight:700;color:#222;">Fartskontroll</div>
+                <div style="font-size:10px;color:#CCC;margin-top:1px;">Beste innsats i år</div>
+              </div>
+              <div style="display:flex;gap:6px;">
+                <!-- Distance pill (active) -->
+                <div style="display:flex;align-items:center;gap:4px;padding:0 10px 0 7px;height:28px;border-radius:14px;background:#FFA39B;color:white;font-size:11px;font-weight:600;">
+                  <span style="width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.28);display:flex;align-items:center;justify-content:center;font-size:10px;">📏</span>
+                  5 km <span style="font-size:7px;opacity:.7;margin-left:1px;">▾</span>
+                </div>
+                <!-- Sport pill -->
+                <div style="display:flex;align-items:center;gap:4px;padding:0 10px 0 7px;height:28px;border-radius:14px;background:#F7F7F7;color:#555;font-size:11px;font-weight:600;">
+                  <span style="width:16px;height:16px;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;font-size:10px;box-shadow:0 1px 3px rgba(0,0,0,.08);">🏃</span>
+                  Løping <span style="font-size:7px;color:#BBB;margin-left:1px;">▾</span>
+                </div>
+              </div>
             </div>
-            <div style="position:relative;width:100%;height:180px;">
-              <!-- Track using SVG -->
-              <svg width="100%" height="180" viewBox="0 0 280 180">
-                <!-- Outer track -->
-                <rect x="10" y="15" width="260" height="150" rx="75" fill="#C8A898"/>
-                <!-- Inner grass -->
-                <rect x="38" y="38" width="204" height="104" rx="52" fill="#9DB888"/>
-                <!-- START text -->
-                <text x="140" y="30" text-anchor="middle" font-size="9" fill="white" font-weight="600" letter-spacing="1">START</text>
-                <!-- White start lines -->
-                <rect x="130" y="15" width="3" height="18" fill="white" opacity="0.7"/>
-                <rect x="147" y="15" width="3" height="18" fill="white" opacity="0.7"/>
+            <!-- Track SVG — palette colours, faithful stadium shape -->
+            <div style="width:100%;margin-bottom:10px;">
+              <svg viewBox="-22 -16 356 214" style="width:100%;display:block;" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer band Gull 200 -->
+                <path fill="#FCE190" d="M161.76 0.11418C146.067 0.0992787 122.458 0.30926 107.404 0.0770261C77.1709-0.389341 61.3287 0.994424 43.5119 11.738C22.0548 24.6768 8.89642 43.8612 3.28216 63.8904C-2.39869 84.1571-0.584886 105.12 7.79102 123.739C18.5615 147.68 42.7465 167.6 66.9165 172.965C84.631 176.898 122.542 174.734 156.644 174.828C203.962 174.958 235.027 179.464 261.861 166.805C284.89 155.94 311.401 127.755 312.065 91.3176C312.451 70.0832 306.713 39.1073 274.078 15.6543C254.381 1.49946 236.344 0.177315 209.04 0.230756C195.794 0.256683 176.857 0.128515 161.76 0.11418Z"/>
+                <!-- Lane ring Gull 50 -->
+                <path fill="#FFFBE8" d="M160.909 26.808C147.891 26.7977 128.308 26.9441 115.82 26.7821C90.7419 26.457 75.4711 25.3986 60.6921 32.8888C42.8934 41.9094 33.8908 54.8611 29.5575 68.9288C25.1374 83.2782 25.6966 98.9138 32.0438 112.866C39.8834 130.098 54.3243 143.273 74.3735 147.013C89.0677 149.755 128.378 148.906 156.665 148.614C177.246 148.402 194.699 148.881 212.718 148.741C230.7 148.6 237.56 148.567 246.72 144.465C268.255 134.823 285.037 116.018 285.587 90.6152C285.907 75.8111 283.108 52.6726 256.312 35.4067C240.267 25.0679 222.776 26.373 200.128 26.4103C189.14 26.4283 173.432 26.818 160.909 26.808Z"/>
+                <!-- Inner field Lysegul 50 -->
+                <path fill="#FFFEEE" d="M160.998 30.9683C148.455 30.9588 129.586 31.093 117.554 30.9446C93.3911 30.6466 78.6775 29.6766 64.4379 36.5415C47.2887 44.8092 38.6146 56.6797 34.4394 69.5732C30.1806 82.7248 30.0287 97.5808 36.1442 110.368C43.6978 126.162 57.3042 138.912 76.6217 142.34C90.7797 144.853 129.988 144.097 157.242 143.83C177.072 143.635 193.555 143.963 210.916 143.834C228.241 143.706 235.962 143.231 244.789 139.471C265.538 130.634 279.904 113.538 280.435 90.2556C280.744 76.6871 278.737 54.6739 252.919 38.8492C237.46 29.3734 220.884 30.8461 199.061 30.8802C188.475 30.8968 173.063 30.9775 160.998 30.9683Z"/>
+                <!-- Lane stripes Gull 100 -->
+                <path fill="none" stroke="#FEF0C0" stroke-width="0.7" d="M4.27099 84.4507C5.26582 60.62 19.27 30.7619 48.2497 14.4629C61.7989 6.8425 76.6567 4.57443 93.3826 4.35271C113.463 4.08652 134.445 4.2233 156.509 4.45445C172.353 4.62043 200.23 4.27278 220.109 4.56005C237.731 4.81472 244.989 6.30142 257.38 11.7505C293.41 27.5946 308.529 61.2954 308.056 90.201C307.624 116.576 290.717 144.592 269.393 157.532C259.348 163.627 246.184 170.071 229.433 170.473C205.887 171.036 182.282 170.81 155.7 170.451C117.504 169.933 77.1546 175.452 50.6674 162.379C19.0914 146.794 3.18353 110.501 4.27099 84.4507Z"/>
+                <path fill="none" stroke="#FEF0C0" stroke-width="0.7" d="M8.8255 84.6988C9.78465 62.0588 22.4157 33.8872 50.5476 18.4105C63.7003 11.1746 78.8322 9.05872 95.0714 8.8528C114.568 8.60557 134.762 8.68253 156.184 8.90836C171.567 9.07052 198.861 8.80202 218.161 9.08056C235.271 9.32748 243.039 10.0138 255.071 15.1942C290.057 30.257 304.092 62.5404 303.64 90.002C303.228 115.059 286.821 141.672 266.121 153.959C256.37 159.747 243.591 165.865 227.328 166.242C204.467 166.771 181.549 166.549 155.74 166.2C140.555 165.994 124.954 166.186 109.961 166.283C88.3365 166.424 68.0723 165.787 52.9568 158.582C22.2166 143.931 7.77703 109.447 8.8255 84.6988Z"/>
+                <path fill="none" stroke="#FEF0C0" stroke-width="0.7" d="M13.1702 84.724C14.0926 63.3131 25.8526 36.4465 53.1138 21.8189C65.8595 14.9799 81.0217 13.2973 96.761 13.1077C115.657 12.8801 135.402 13.1329 156.165 13.3533C171.074 13.5116 197.551 13.0412 216.257 13.3108C232.84 13.5497 240.52 13.7677 252.184 18.6707C286.097 32.9271 299.429 63.8043 299 89.7752C298.608 113.472 282.848 139.637 262.789 151.251C253.341 156.722 240.823 161.502 225.06 161.852C202.903 162.345 180.87 161.499 155.856 161.16C141.109 160.961 125.153 161.337 110.453 161.597C89.3232 161.972 70.2122 161.625 56.1539 154.93C44.0094 149.146 33.6638 139.712 26.6062 129.58C16.421 114.958 12.5746 98.5489 13.1702 84.724Z"/>
+                <path fill="none" stroke="#FEF0C0" stroke-width="0.7" d="M17.5116 84.5578C18.3975 64.4226 30.0063 38.3774 56.4324 24.6318C68.7875 18.2052 83.4852 17.7867 98.7456 17.6147C117.067 17.4081 136.543 17.5993 156.674 17.8147C171.13 17.9694 196.554 17.1663 214.691 17.4272C230.77 17.6585 238.216 17.8665 249.527 22.4821C282.414 35.9027 295.352 64.9459 294.947 89.3696C294.577 111.655 279.442 137.072 259.998 147.986C250.839 153.127 238.568 156.801 223.285 157.124C201.802 157.579 180.265 157.367 156.012 157.038C140.215 156.824 123.889 157.378 108.31 157.607C89.5173 157.883 72.3448 158.276 58.495 151.118C49.4074 146.421 40.5126 139.945 34.4355 132.784C21.6794 117.754 16.8556 99.4657 17.5116 84.5578Z"/>
+                <path fill="none" stroke="#FEF0C0" stroke-width="0.7" d="M22.1552 84.9502C23.0029 66.0947 33.165 41.5071 58.6826 28.6454C70.6129 22.6321 85.2949 22.0569 100.034 21.9019C117.729 21.7157 137.284 21.9106 156.727 22.1204C170.689 22.271 195.052 21.912 212.57 22.1635C228.099 22.3865 237.189 22.268 248.115 26.5948C279.884 39.1757 290.494 66.6949 290.112 89.5666C289.763 110.436 275.387 134.77 256.612 144.983C247.767 149.794 235.686 152.69 220.926 152.988C200.177 153.405 179.104 153.197 155.679 152.88C140.422 152.674 124.926 153.186 109.879 153.394C91.7295 153.645 73.0366 153.527 59.6573 146.818C50.8783 142.416 43.8175 137.019 37.9452 130.311C25.6191 116.23 21.5277 98.9106 22.1552 84.9502Z"/>
+                <!-- Start lines -->
+                <path d="M149.815 26.4296L149.757 0.07" fill="none" stroke="white" stroke-width="2.5" opacity="0.9"/>
+                <path d="M156.06 26.4296L156.002 0.07" fill="none" stroke="white" stroke-width="2.5" opacity="0.9"/>
+                <path d="M162.344 26.4296L162.286 0.07" fill="none" stroke="white" stroke-width="2.5" opacity="0.9"/>
+                <text x="156" y="-5" text-anchor="middle" font-size="9" fill="#C4B48A" font-family="system-ui" font-weight="700" letter-spacing="1">START</text>
+                <!-- LA — fastest, right of start -->
+                <circle cx="174" cy="18" r="12" fill="#FFB2E3" filter="drop-shadow(0 1px 3px rgba(0,0,0,.18))"/>
+                <text x="174" y="22" text-anchor="middle" font-size="8" font-weight="800" fill="white" font-family="system-ui">LA</text>
+                <rect x="158" y="26" width="32" height="14" rx="7" fill="white" fill-opacity="0.88"/>
+                <text x="174" y="36.5" text-anchor="middle" font-size="7" font-weight="700" fill="#444" font-family="system-ui">4:12/km</text>
+                <!-- EH — right curve -->
+                <circle cx="296" cy="88" r="12" fill="#91BCFF" filter="drop-shadow(0 1px 3px rgba(0,0,0,.18))"/>
+                <text x="296" y="92" text-anchor="middle" font-size="8" font-weight="800" fill="white" font-family="system-ui">EH</text>
+                <rect x="278" y="100" width="36" height="14" rx="7" fill="white" fill-opacity="0.88"/>
+                <text x="296" y="110.5" text-anchor="middle" font-size="7" font-weight="700" fill="#444" font-family="system-ui">4:28/km</text>
+                <!-- IO — bottom -->
+                <circle cx="156" cy="160" r="12" fill="#B7A0EC" filter="drop-shadow(0 1px 3px rgba(0,0,0,.18))"/>
+                <text x="156" y="164" text-anchor="middle" font-size="8" font-weight="800" fill="white" font-family="system-ui">IO</text>
+                <rect x="138" y="148" width="36" height="14" rx="7" fill="white" fill-opacity="0.88"/>
+                <text x="156" y="158.5" text-anchor="middle" font-size="7" font-weight="700" fill="#444" font-family="system-ui">4:35/km</text>
+                <!-- SB — left curve -->
+                <circle cx="14" cy="88" r="12" fill="#FAD067" filter="drop-shadow(0 1px 3px rgba(0,0,0,.18))"/>
+                <text x="14" y="92" text-anchor="middle" font-size="8" font-weight="800" fill="white" font-family="system-ui">SB</text>
+                <rect x="-4" y="100" width="36" height="14" rx="7" fill="white" fill-opacity="0.88"/>
+                <text x="14" y="110.5" text-anchor="middle" font-size="7" font-weight="700" fill="#444" font-family="system-ui">4:47/km</text>
+                <!-- HD — top left of start -->
+                <circle cx="136" cy="18" r="12" fill="#F8C696" filter="drop-shadow(0 1px 3px rgba(0,0,0,.18))"/>
+                <text x="136" y="22" text-anchor="middle" font-size="8" font-weight="800" fill="white" font-family="system-ui">HD</text>
+                <rect x="118" y="26" width="36" height="14" rx="7" fill="white" fill-opacity="0.88"/>
+                <text x="136" y="36.5" text-anchor="middle" font-size="7" font-weight="700" fill="#444" font-family="system-ui">5:02/km</text>
               </svg>
-              <!-- Lars - fastest, left side -->
-              <div style="position:absolute;left:5%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;">
-                <div style="font-size:9px;color:#333;font-weight:600;background:rgba(255,255,255,0.9);border-radius:4px;padding:1px 5px;">4:12/km</div>
-                <div class="pc p-lars" style="width:26px;height:26px;font-size:10px;">LA</div>
+            </div>
+            <!-- Compact result row -->
+            <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:8px 4px 4px;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <span style="font-size:8px;color:#D95C52;font-weight:700;">1</span>
+                <div style="width:26px;height:26px;border-radius:50%;background:#FFB2E3;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;box-shadow:0 2px 5px #FFB2E366;">LA</div>
+                <span style="font-size:9px;font-weight:700;color:#D95C52;white-space:nowrap;">4:12/km</span>
               </div>
-              <!-- Mia bottom left -->
-              <div style="position:absolute;left:32%;top:88%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;">
-                <div class="pc p-mia" style="width:26px;height:26px;font-size:10px;">MK</div>
-                <div style="font-size:9px;color:#333;font-weight:600;background:rgba(255,255,255,0.9);border-radius:4px;padding:1px 5px;">4:28/km</div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <span style="font-size:8px;color:#CCC;font-weight:700;">2</span>
+                <div style="width:26px;height:26px;border-radius:50%;background:#91BCFF;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;box-shadow:0 2px 5px #91BCFF66;">EH</div>
+                <span style="font-size:9px;font-weight:700;color:#888;white-space:nowrap;">4:28/km</span>
               </div>
-              <!-- Sara bottom -->
-              <div style="position:absolute;left:52%;top:88%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;">
-                <div class="pc p-sara" style="width:26px;height:26px;font-size:10px;">SL</div>
-                <div style="font-size:9px;color:#333;font-weight:600;background:rgba(255,255,255,0.9);border-radius:4px;padding:1px 5px;">4:35/km</div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <span style="font-size:8px;color:#CCC;font-weight:700;">3</span>
+                <div style="width:26px;height:26px;border-radius:50%;background:#B7A0EC;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;box-shadow:0 2px 5px #B7A0EC66;">IO</div>
+                <span style="font-size:9px;font-weight:700;color:#888;white-space:nowrap;">4:35/km</span>
               </div>
-              <!-- Erik right side -->
-              <div style="position:absolute;right:5%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;">
-                <div style="font-size:9px;color:#333;font-weight:600;background:rgba(255,255,255,0.9);border-radius:4px;padding:1px 5px;">5:02/km</div>
-                <div class="pc p-erik" style="width:26px;height:26px;font-size:10px;">EH</div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <span style="font-size:8px;color:#CCC;font-weight:700;">4</span>
+                <div style="width:26px;height:26px;border-radius:50%;background:#FAD067;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;box-shadow:0 2px 5px #FAD06766;">SB</div>
+                <span style="font-size:9px;font-weight:700;color:#888;white-space:nowrap;">4:47/km</span>
               </div>
-              <!-- Nora top right -->
-              <div style="position:absolute;right:22%;top:8%;transform:translateY(0);display:flex;flex-direction:column;align-items:center;gap:3px;">
-                <div class="pc p-nora" style="width:26px;height:26px;font-size:10px;">NO</div>
-                <div style="font-size:9px;color:#333;font-weight:600;background:rgba(255,255,255,0.9);border-radius:4px;padding:1px 5px;">5:18/km</div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <span style="font-size:8px;color:#CCC;font-weight:700;">5</span>
+                <div style="width:26px;height:26px;border-radius:50%;background:#F8C696;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;box-shadow:0 2px 5px #F8C69666;">HD</div>
+                <span style="font-size:9px;font-weight:700;color:#888;white-space:nowrap;">5:02/km</span>
               </div>
             </div>
           </div>
@@ -1761,62 +1877,118 @@ footer p {
         <div class="diagram-card" id="d-tidspunktet">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">🕐 Tidspunktet</span>
+              <span class="diagram-meta-name">🕐 Tidspunktet <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
             </div>
-            <button class="info-btn">i</button>
+            <button class="info-btn" onclick="document.getElementById('tid-back').style.display='flex';document.getElementById('tid-front').style.display='none'">i</button>
           </div>
-          <div class="app-card">
-            <div class="app-card-title">Tidspunktet</div>
-            <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-              <div style="position:relative;width:200px;height:200px;">
-                <svg width="200" height="200" viewBox="0 0 200 200">
-                  <!-- Clock face -->
-                  <circle cx="100" cy="100" r="96" fill="white" stroke="#EFEFEF" stroke-width="1.5"/>
-                  <!-- Hour ticks -->
-                  <line x1="100" y1="6" x2="100" y2="16" stroke="#D8D8D8" stroke-width="1.5"/>
-                  <line x1="194" y1="100" x2="184" y2="100" stroke="#D8D8D8" stroke-width="1.5"/>
-                  <line x1="100" y1="194" x2="100" y2="184" stroke="#D8D8D8" stroke-width="1.5"/>
-                  <line x1="6" y1="100" x2="16" y2="100" stroke="#D8D8D8" stroke-width="1.5"/>
-                  <!-- Hour labels -->
-                  <text x="100" y="22" text-anchor="middle" font-size="10" fill="#888">12</text>
-                  <text x="178" y="104" text-anchor="middle" font-size="10" fill="#888">6</text>
-                  <text x="100" y="192" text-anchor="middle" font-size="10" fill="#888">0</text>
-                  <text x="22" y="104" text-anchor="middle" font-size="10" fill="#888">18</text>
-                  <!-- Morning arc (Mia+Lars around 6am) -->
-                  <path d="M 157,43 A 60,60 0 0,0 100,40" fill="none" stroke="#91BCFF" stroke-width="5" stroke-linecap="round" opacity="0.35"/>
-                </svg>
-                <!-- Persons placed on clock face -->
-                <!-- Mia ~06:00 (top right) -->
-                <div style="position:absolute;top:22%;left:72%;transform:translate(-50%,-50%);">
-                  <div class="pc p-mia" style="width:26px;height:26px;font-size:10px;">MK</div>
-                </div>
-                <!-- Lars ~07:00 -->
-                <div style="position:absolute;top:32%;left:82%;transform:translate(-50%,-50%);">
-                  <div class="pc p-lars" style="width:26px;height:26px;font-size:10px;">LA</div>
-                </div>
-                <!-- Erik ~12:00 (top) -->
-                <div style="position:absolute;top:10%;left:50%;transform:translate(-50%,-50%);">
-                  <div class="pc p-erik" style="width:26px;height:26px;font-size:10px;">EH</div>
-                </div>
-                <!-- Sara ~17:00 (upper left) -->
-                <div style="position:absolute;top:28%;left:18%;transform:translate(-50%,-50%);">
-                  <div class="pc p-sara" style="width:26px;height:26px;font-size:10px;">SL</div>
-                </div>
-                <!-- Nora ~19:00 (left) -->
-                <div style="position:absolute;top:50%;left:8%;transform:translate(-50%,-50%);">
-                  <div class="pc p-nora" style="width:26px;height:26px;font-size:10px;">NO</div>
-                </div>
-              </div>
-              <div style="font-size:12px;color:#888;text-align:center;">🌅 Mia og Lars er morgenmennesker</div>
+          <!-- FRONT -->
+          <div class="app-card" id="tid-front" style="padding:14px 10px 12px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:#1C1C1E;margin-bottom:4px;">
+              <span style="font-size:19px;">🕐</span>Tidspunktet
             </div>
+            <svg id="tid-svg" viewBox="0 0 380 160" style="width:100%;display:block;overflow:visible;"></svg>
+            <!-- Participant chips -->
+            <div id="tid-chips" style="display:flex;flex-wrap:wrap;gap:7px;padding:8px 4px 2px;"></div>
+          </div>
+          <!-- BACK -->
+          <div id="tid-back" style="display:none;background:#fff;border-radius:12px;padding:18px;flex-direction:column;gap:10px;margin:0 -1px -1px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-size:15px;font-weight:700;color:#1C1C1E;">Om Tidspunktet</div>
+              <button onclick="document.getElementById('tid-back').style.display='none';document.getElementById('tid-front').style.display='block'" style="width:30px;height:30px;border-radius:50%;background:#F2F2F7;border:none;cursor:pointer;font-size:18px;color:#888;display:flex;align-items:center;justify-content:center;">×</button>
+            </div>
+            <p style="font-size:13px;color:#555;line-height:1.7;margin:0;">Ringen viser dagtimene 04:00–23:00 delt i morgen, dag, ettermiddag og kveld. Buene utenfor viser tidsvinduet til hver deltaker.</p>
+            <p style="font-size:13px;color:#555;line-height:1.7;margin:0;">Trykk på en boks for å fremheve deltakeren og se tidsvinduet i midten av ringen.</p>
+            <div id="tid-back-list" style="display:flex;flex-direction:column;gap:8px;margin-top:4px;"></div>
           </div>
         </div>
+        <script>
+        (function(){
+          var PEOPLE = [
+            {id:"E",name:"Emma Hansen", color:"#91BCFF", windows:[{peak:6.25,ws:5.5,we:7.5}]},
+            {id:"M",name:"Mia Andersen",color:"#FFA39B", windows:[{peak:7.75,ws:7.0,we:9.0}]},
+            {id:"L",name:"Lars Berg",   color:"#FAD067", windows:[{peak:12.5,ws:11.75,we:13.25},{peak:17.25,ws:16.5,we:18.0}]},
+            {id:"S",name:"Sara Lund",   color:"#8FD6E7", windows:[{peak:17.5,ws:16.5,we:18.5}]},
+            {id:"N",name:"Nora Viken",  color:"#B7A0EC", windows:[{peak:6.0,ws:5.25,we:7.0},{peak:22.0,ws:21.0,we:22.75}]}
+          ];
+          var SECTIONS=[
+            {from:4,to:8,  color:"#FFF0C2",ink:"#B8860B"},
+            {from:8,to:15, color:"#CCE0FF",ink:"#2563A8"},
+            {from:15,to:18,color:"#FFD6EE",ink:"#B03580"},
+            {from:18,to:23,color:"#DDD4F7",ink:"#5B35A8"}
+          ];
+          function labels(ws){ var l=ws.map(function(w){return fmtH(w.ws)+"–"+fmtH(w.we);}); if(ws.length>1)return"Dobbelttrener"; var pk=ws[0].peak; if(pk<8)return"Morgenfugl"; if(pk<12)return"Formiddagstrener"; if(pk<14)return"Lunsjtimer"; if(pk<17)return"Ettermiddagstrener"; if(pk<20)return"Etter jobb"; return"Nattugla"; }
+          function fmtH(h){var hh=Math.floor(h),mm=Math.round((h-hh)*60);return(hh<10?"0":"")+hh+":"+(mm<10?"0":"")+mm;}
+          var W=380,Ro=95,Ri=56,CX=W/2,CY=Ro+10,LANE_W=4,LANE_GAP=2.5;
+          var sorted=[].concat(PEOPLE).sort(function(a,b){return a.windows[0].peak-b.windows[0].peak;});
+          var laneR={};
+          sorted.forEach(function(p,i){laneR[p.id]=Ro+10+i*(LANE_W+LANE_GAP);});
+          var H=CY+16;
+          function hToA(h){return((Math.max(4,Math.min(23,h))-4)/19)*Math.PI;}
+          function ptAt(r,a){return{x:CX-r*Math.cos(a),y:CY-r*Math.sin(a)};}
+          function arcD(r,h1,h2){var a1=hToA(h1),a2=hToA(h2),s=ptAt(r,a1),e=ptAt(r,a2),large=Math.abs(a2-a1)>Math.PI?1:0;return"M "+s.x+" "+s.y+" A "+r+" "+r+" 0 "+large+" 1 "+e.x+" "+e.y;}
+          function segD(Ro,Ri,h1,h2,iF,iL){var G=0.3,h1g=iF?h1:h1+G,h2g=iL?h2:h2-G;if(h2g<=h1g)return"";var a1=hToA(h1g),a2=hToA(h2g),so=ptAt(Ro,a1),eo=ptAt(Ro,a2),si=ptAt(Ri,a2),ei=ptAt(Ri,a1),large=Math.abs(a2-a1)>Math.PI?1:0;return"M "+so.x+" "+so.y+" A "+Ro+" "+Ro+" 0 "+large+" 1 "+eo.x+" "+eo.y+" L "+si.x+" "+si.y+" A "+Ri+" "+Ri+" 0 "+large+" 0 "+ei.x+" "+ei.y+" Z";}
+          var ns="http://www.w3.org/2000/svg";
+          var svg=document.getElementById("tid-svg");
+          svg.setAttribute("viewBox","0 0 "+W+" "+H);
+          // Clip
+          var defs=document.createElementNS(ns,"defs");
+          var cp=document.createElementNS(ns,"clipPath"); cp.setAttribute("id","tidHalf");
+          var cr=document.createElementNS(ns,"rect"); cr.setAttribute("x",0);cr.setAttribute("y",0);cr.setAttribute("width",W);cr.setAttribute("height",CY+1);
+          cp.appendChild(cr); defs.appendChild(cp); svg.appendChild(defs);
+          // Donut segments
+          var g=document.createElementNS(ns,"g"); g.setAttribute("clip-path","url(#tidHalf)");
+          SECTIONS.forEach(function(s,i){var p=document.createElementNS(ns,"path");p.setAttribute("d",segD(Ro,Ri,s.from,s.to,i===0,i===SECTIONS.length-1));p.setAttribute("fill",s.color);g.appendChild(p);});
+          svg.appendChild(g);
+          // Ticks
+          for(var h=4;h<=23;h++){var a=hToA(h),ev3=h%3===0,ev6=h%6===0,tl=ev3?10:5,sec=SECTIONS.find(function(s){return h>=s.from&&h<=s.to;})||SECTIONS[SECTIONS.length-1],o=ptAt(Ro,a),inner=ptAt(Ro-tl,a);var line=document.createElementNS(ns,"line");line.setAttribute("x1",o.x);line.setAttribute("y1",o.y);line.setAttribute("x2",inner.x);line.setAttribute("y2",inner.y);line.setAttribute("stroke",sec.ink);line.setAttribute("stroke-width",ev3?"1.4":"0.8");line.setAttribute("opacity",ev3?"0.55":"0.28");svg.appendChild(line);if(ev3){var lp=ptAt(Ro-tl-8,a);var t=document.createElementNS(ns,"text");t.setAttribute("x",lp.x);t.setAttribute("y",lp.y);t.setAttribute("text-anchor","middle");t.setAttribute("dominant-baseline","middle");t.setAttribute("font-size",ev6?"8":"7");t.setAttribute("font-weight",ev6?"700":"500");t.setAttribute("fill",sec.ink);t.setAttribute("opacity",ev6?"0.8":"0.5");t.setAttribute("font-family","system-ui,sans-serif");t.textContent=String(h).padStart(2,"0");svg.appendChild(t);}}
+          // Baseline labels
+          var lp=ptAt(Ro,hToA(4)),rp=ptAt(Ro,hToA(23));
+          function addTxt(x,y,txt,anchor){var t=document.createElementNS(ns,"text");t.setAttribute("x",x);t.setAttribute("y",y);t.setAttribute("text-anchor",anchor);t.setAttribute("dominant-baseline","middle");t.setAttribute("font-size","8");t.setAttribute("font-weight","600");t.setAttribute("fill","#8E8E93");t.setAttribute("font-family","system-ui");t.textContent=txt;svg.appendChild(t);}
+          addTxt(lp.x-7,lp.y,"04","end"); addTxt(rp.x+7,rp.y,"23","start");
+          // Emoji
+          function addEmoji(x,y,em){var t=document.createElementNS(ns,"text");t.setAttribute("x",x);t.setAttribute("y",y+14);t.setAttribute("text-anchor","middle");t.setAttribute("font-size","13");t.textContent=em;svg.appendChild(t);}
+          addEmoji(lp.x,lp.y,"🌅"); addEmoji(rp.x,rp.y,"🌙");
+          // Centre text placeholder
+          var cg=document.createElementNS(ns,"g"); cg.setAttribute("id","tid-centre"); svg.appendChild(cg);
+          // Lanes
+          var laneG=document.createElementNS(ns,"g"); svg.appendChild(laneG);
+          var selected=null;
+          function redraw(){
+            while(laneG.firstChild) laneG.removeChild(laneG.firstChild);
+            while(cg.firstChild) cg.removeChild(cg.firstChild);
+            sorted.forEach(function(p){
+              var r=laneR[p.id],isSel=selected===p.id,dim=selected!==null&&!isSel;
+              if(isSel){var track=document.createElementNS(ns,"path");track.setAttribute("d",arcD(r,4,23));track.setAttribute("fill","none");track.setAttribute("stroke",p.color);track.setAttribute("stroke-width",LANE_W);track.setAttribute("stroke-linecap","round");track.setAttribute("opacity","0.18");laneG.appendChild(track);}
+              p.windows.forEach(function(w){var arc=document.createElementNS(ns,"path");arc.setAttribute("d",arcD(r,w.ws,w.we));arc.setAttribute("fill","none");arc.setAttribute("stroke",p.color);arc.setAttribute("stroke-width",LANE_W);arc.setAttribute("stroke-linecap","round");arc.setAttribute("opacity",dim?"0.08":isSel?"1":"0.75");laneG.appendChild(arc);});
+            });
+            if(selected){var sp=PEOPLE.find(function(p){return p.id===selected;});if(sp){var lines=sp.windows.map(function(w){return fmtH(w.ws)+"–"+fmtH(w.we);});var lh=14,tot=lines.length*lh;lines.forEach(function(line,i){var t=document.createElementNS(ns,"text");t.setAttribute("x",CX);t.setAttribute("y",CY-tot/2+i*lh+lh/2-6);t.setAttribute("text-anchor","middle");t.setAttribute("dominant-baseline","middle");t.setAttribute("font-size","10");t.setAttribute("font-weight","700");t.setAttribute("fill",sp.color);t.setAttribute("font-family","system-ui");t.textContent=line;cg.appendChild(t);});}}
+            // Update chip styles
+            document.querySelectorAll(".tid-chip").forEach(function(ch){var id=ch.dataset.id,isSel=id===selected;ch.style.border=isSel?"1.5px solid "+ch.dataset.color:"1.5px solid transparent";ch.style.background=isSel?ch.dataset.color+"18":"#F2F2F7";var span=ch.querySelector("span");if(span){span.style.fontWeight=isSel?"600":"400";span.style.color=isSel?"#1C1C1E":"#8E8E93";}});
+          }
+          // Chips
+          var chips=document.getElementById("tid-chips");
+          PEOPLE.forEach(function(p){
+            var btn=document.createElement("button");
+            btn.className="tid-chip"; btn.dataset.id=p.id; btn.dataset.color=p.color;
+            btn.style.cssText="display:flex;align-items:center;gap:7px;padding:5px 10px 5px 5px;border-radius:20px;border:1.5px solid transparent;background:#F2F2F7;cursor:pointer;font-family:inherit;transition:all .18s;";
+            var av=document.createElement("div"); av.style.cssText="width:24px;height:24px;border-radius:50%;background:"+p.color+";display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0;"; av.textContent=p.id;
+            var sp=document.createElement("span"); sp.style.cssText="font-size:11px;color:#8E8E93;white-space:nowrap;"; sp.textContent=labels(p.windows);
+            btn.appendChild(av); btn.appendChild(sp);
+            btn.addEventListener("click",function(){selected=selected===p.id?null:p.id;redraw();});
+            chips.appendChild(btn);
+          });
+          // Back list
+          var bl=document.getElementById("tid-back-list");
+          PEOPLE.forEach(function(p){var row=document.createElement("div");row.style.cssText="display:flex;align-items:center;gap:10px;";var av=document.createElement("div");av.style.cssText="width:30px;height:30px;border-radius:50%;background:"+p.color+";display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;";av.textContent=p.id;var txt=document.createElement("div");txt.innerHTML='<div style="font-size:13px;color:#1C1C1E;">'+p.name+'</div><div style="font-size:11px;color:#8E8E93;">'+labels(p.windows)+'</div>';row.appendChild(av);row.appendChild(txt);bl.appendChild(row);});
+          redraw();
+        })();
+        </script>
 
         <!-- 5. FOREBYGGERN -->
         <div class="diagram-card" id="d-forebyggern">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">⚖️ Forebyggern</span>
+              <span class="diagram-meta-name">⚖️ Forebyggern <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
@@ -1870,7 +2042,7 @@ footer p {
         <div class="diagram-card" id="d-pulssoner">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">❤️ Pulssoner</span>
+              <span class="diagram-meta-name">❤️ Pulssoner <span class="status-tag status-finished">✓ Ferdig</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
@@ -1980,7 +2152,7 @@ footer p {
         <div class="diagram-card" id="d-wattmaleren">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">⚡ Wattmåleren</span>
+              <span class="diagram-meta-name">⚡ Wattmåleren <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
@@ -2001,7 +2173,7 @@ footer p {
         <div class="diagram-card" id="d-frekvensnerd">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">🔄 Frekvensnerd</span>
+              <span class="diagram-meta-name">🔄 Frekvensnerd <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
@@ -2026,7 +2198,7 @@ footer p {
         <div class="diagram-card" id="d-tourdekonka">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">🚴 Tour de Konka</span>
+              <span class="diagram-meta-name">🚴 Tour de Konka <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
@@ -2077,7 +2249,7 @@ footer p {
         <div class="diagram-card" id="d-topptur">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">⛰️ Topptur</span>
+              <span class="diagram-meta-name">⛰️ Topptur <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
@@ -2123,7 +2295,7 @@ footer p {
         <div class="diagram-card" id="d-streaktarnet">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">🔥 Streak-tårnet</span>
+              <span class="diagram-meta-name">🔥 Streak-tårnet <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
@@ -2183,7 +2355,7 @@ footer p {
         <div class="diagram-card" id="d-vanedyret">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">🏊 Vanedyret</span>
+              <span class="diagram-meta-name">🏊 Vanedyret <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
@@ -2236,7 +2408,7 @@ footer p {
         <div class="diagram-card" id="d-allround">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">🏅 All-round</span>
+              <span class="diagram-meta-name">🏅 All-round <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
@@ -2256,7 +2428,7 @@ footer p {
         <div class="diagram-card" id="d-lokalpokal">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">🗺️ LokalPokal</span>
+              <span class="diagram-meta-name">🗺️ LokalPokal <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
@@ -2279,6 +2451,66 @@ footer p {
             </div>
           </div>
         </div>
+
+        <!-- 15. SISTE ØKT -->
+        <div class="diagram-card" id="d-sisteokt">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+            <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+              <span class="diagram-meta-name">⚡ Siste økt <span class="status-tag status-finished">✓ Ferdig</span></span>
+              <span style="display:block;font-size:10px;color:#aaa;margin-top:2px;">Kun uke-view</span>
+            </div>
+            <button class="info-btn" onclick="document.getElementById('siste-back').style.display='flex';document.getElementById('siste-front').style.display='none'">i</button>
+          </div>
+          <!-- FRONT -->
+          <div class="app-card" id="siste-front" style="padding:14px;">
+            <div style="font-size:14px;font-weight:700;color:#222;margin-bottom:14px;">Siste økt</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="display:flex;gap:9px;align-items:flex-start;padding:10px 12px;background:#FFEEF9;border-radius:14px;border:1.5px solid #FFB2E333;">
+                <div style="width:28px;height:28px;border-radius:50%;background:#FFB2E3;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:11px;">LA</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px;">
+                    <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:12px;font-weight:700;color:#222;">🏃 Løping</span><span style="font-size:10px;font-weight:700;color:#D95C52;">Intervall</span></div>
+                    <span style="font-size:10px;color:#BBBBBB;">I dag</span>
+                  </div>
+                  <p style="margin:0;font-size:11px;color:#666;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">48 min  ·  9,2 km  ·  4:18/km  ·  84 hm  ·  172 spm</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:9px;align-items:flex-start;padding:10px 12px;background:#EAF2FF;border-radius:14px;border:1.5px solid #91BCFF33;">
+                <div style="width:28px;height:28px;border-radius:50%;background:#91BCFF;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:11px;">EH</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px;">
+                    <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:12px;font-weight:700;color:#222;">🚴 Sykling</span><span style="font-size:10px;font-weight:700;color:#3090AA;">Roligøkt</span></div>
+                    <span style="font-size:10px;color:#BBBBBB;">I dag</span>
+                  </div>
+                  <p style="margin:0;font-size:11px;color:#666;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">1 t 12 min  ·  34 km  ·  210 hm  ·  148 W  ·  82 rpm</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:9px;align-items:flex-start;padding:10px 12px;background:#F0ECFC;border-radius:14px;border:1.5px solid #B7A0EC33;">
+                <div style="width:28px;height:28px;border-radius:50%;background:#B7A0EC;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:11px;">IO</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px;">
+                    <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:12px;font-weight:700;color:#222;">🏃 Løping</span><span style="font-size:10px;font-weight:700;color:#B88A18;">Terskel</span></div>
+                    <span style="font-size:10px;color:#BBBBBB;">I går</span>
+                  </div>
+                  <p style="margin:0;font-size:11px;color:#666;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">55 min  ·  11,4 km  ·  4:42/km  ·  60 hm  ·  168 spm</p>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:center;gap:5px;padding:6px 0;color:#BBBBBB;font-size:12px;font-weight:600;">
+                <span style="width:18px;height:18px;border-radius:50%;background:#F0F0F0;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">+</span>2 til
+              </div>
+            </div>
+          </div>
+          <!-- BACK -->
+          <div id="siste-back" style="display:none;background:#fff;border-radius:12px;padding:18px;flex-direction:column;gap:10px;margin:0 -1px -1px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-size:15px;font-weight:700;color:#222;">Om Siste økt</div>
+              <button onclick="document.getElementById('siste-back').style.display='none';document.getElementById('siste-front').style.display='block'" style="width:30px;height:30px;border-radius:50%;background:#F2F2F7;border:none;cursor:pointer;font-size:18px;color:#888;display:flex;align-items:center;justify-content:center;">×</button>
+            </div>
+            <p style="font-size:13px;color:#555;line-height:1.7;margin:0;">Viser siste registrerte økt for hver deltaker. Nøkkeldata hentes fra Garmin — kun felt som faktisk er registrert vises.</p>
+            <p style="font-size:13px;color:#555;line-height:1.7;margin:0;">Økttype klassifiseres automatisk basert på pulsdata og lapsmønster. Vises som standard med 3 deltakere, med mulighet for å vise alle.</p>
+          </div>
+        </div>
+
     </div>
   </div>
 </section>
