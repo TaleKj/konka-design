@@ -5,8 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Konka — Gruppe-diagrammer: Utviklerguide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
 
 :root {
 –korall:     #FFA39B; –korall-light: #FFE8E6;
@@ -49,7 +51,7 @@
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
 body {
-font-family: ‘DM Sans’, sans-serif;
+font-family: ‘DM Sans’, -apple-system, BlinkMacSystemFont, ‘Segoe UI’, sans-serif;
 background: var(–off);
 color: var(–text);
 -webkit-font-smoothing: antialiased;
@@ -68,14 +70,15 @@ height: 60px;
 display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo {
-font-family: ‘Fredoka’, sans-serif;
+font-family: ‘Fredoka’, ‘Nunito’, ‘Varela Round’, system-ui, sans-serif;
 font-size: 20px; font-weight: 700; letter-spacing: 1.5px; color: var(–rosa-acc);
-display: flex; align-items: center; gap: 1px;
+display: flex; align-items: center; gap: 0;
 }
 .nav-logo .o {
-display: inline-block; width: 20px; height: 20px;
+display: inline-flex; width: 20px; height: 20px; min-width: 20px;
 background: var(–kornblomst); border-radius: 50%;
-margin: 0 1px; position: relative; top: 1px;
+margin: 0 2px; position: relative; top: 1px;
+flex-shrink: 0;
 }
 .nav-subtitle { font-size: 13px; color: var(–muted); font-weight: 300; }
 
@@ -92,12 +95,12 @@ display: flex; align-items: center; gap: 10px;
 }
 .page-hero .label::before { content:’’; display:block; width:20px; height:1px; background:var(–muted); }
 .page-hero h1 {
-font-family: ‘DM Sans’, sans-serif;
+font-family: ‘DM Sans’, -apple-system, BlinkMacSystemFont, ‘Segoe UI’, sans-serif;
 font-size: clamp(28px, 4vw, 48px);
 font-weight: 300; letter-spacing: -0.5px; line-height: 1.1;
 margin-bottom: 16px;
 }
-.page-hero h1 .blob { font-family: ‘Fredoka’, sans-serif; font-weight: 600; color: var(–rosa-acc); }
+.page-hero h1 .blob { font-family: ‘Fredoka’, ‘Nunito’, ‘Varela Round’, system-ui, sans-serif; font-weight: 600; color: var(–rosa-acc); }
 .page-hero p { font-size: 15px; color: var(–muted); font-weight: 300; line-height: 1.7; max-width: 580px; }
 
 /* SECTION */
@@ -106,19 +109,19 @@ padding: 64px 0;
 border-bottom: 1px solid var(–line);
 }
 .section-title {
-font-family: ‘DM Sans’, sans-serif;
+font-family: ‘DM Sans’, -apple-system, BlinkMacSystemFont, ‘Segoe UI’, sans-serif;
 font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
 color: var(–muted); margin-bottom: 10px;
 display: flex; align-items: center; gap: 10px;
 }
 .section-title::before { content:’’; display:block; width:20px; height:1px; background:var(–muted); }
 .section h2 {
-font-family: ‘DM Sans’, sans-serif;
+font-family: ‘DM Sans’, -apple-system, BlinkMacSystemFont, ‘Segoe UI’, sans-serif;
 font-size: clamp(22px, 3vw, 32px);
 font-weight: 300; letter-spacing: -0.3px;
 margin-bottom: 36px;
 }
-.section h2 .blob { font-family: ‘Fredoka’, sans-serif; font-weight: 600; color: var(–rosa-acc); }
+.section h2 .blob { font-family: ‘Fredoka’, ‘Nunito’, ‘Varela Round’, system-ui, sans-serif; font-weight: 600; color: var(–rosa-acc); }
 
 /* VIEW LISTS */
 .view-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 0; }
@@ -127,7 +130,7 @@ background: var(–white); border-radius: 16px;
 padding: 28px 24px; box-shadow: var(–card-shadow);
 }
 .view-card h3 {
-font-family: ‘Fredoka’, sans-serif; font-size: 18px; font-weight: 600;
+font-family: ‘Fredoka’, ‘Nunito’, ‘Varela Round’, system-ui, sans-serif; font-size: 18px; font-weight: 600;
 color: var(–rosa-acc); margin-bottom: 4px;
 }
 .view-card .view-sub { font-size: 12px; color: var(–muted); margin-bottom: 16px; }
@@ -164,7 +167,7 @@ margin: 6px;
 box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
 }
 .app-card-title {
-font-family: -apple-system, ‘DM Sans’, sans-serif;
+font-family: ‘DM Sans’, -apple-system, BlinkMacSystemFont, ‘Segoe UI’, sans-serif;
 font-size: 16px; font-weight: 600; color: #1C1C1E;
 text-align: center; margin-bottom: 10px;
 }
@@ -180,7 +183,7 @@ display: flex; align-items: center; justify-content: space-between;
 }
 .diagram-meta-left { display: flex; flex-direction: column; gap: 2px; }
 .diagram-meta-name {
-font-family: ‘Fredoka’, sans-serif; font-size: 14px; font-weight: 600; color: var(–text);
+font-family: ‘Fredoka’, ‘Nunito’, ‘Varela Round’, system-ui, sans-serif; font-size: 14px; font-weight: 600; color: var(–text);
 }
 .diagram-meta-desc { font-size: 10px; color: var(–muted); font-weight: 300; }
 
@@ -200,7 +203,7 @@ margin: 10px 12px 0 0;
 .pc {
 width: 30px; height: 30px; border-radius: 50%;
 display: flex; align-items: center; justify-content: center;
-font-family: -apple-system, ‘DM Sans’, sans-serif;
+font-family: ‘DM Sans’, -apple-system, BlinkMacSystemFont, ‘Segoe UI’, sans-serif;
 font-size: 11px; font-weight: 600;
 color: white; flex-shrink: 0;
 }
@@ -220,7 +223,7 @@ display: flex; gap: 24px; align-items: center; width: 100%;
 position: absolute; top:50%; left:50%; transform: translate(-50%,-50%);
 text-align: center;
 }
-.donut-center .val { font-family: ‘Fredoka’, sans-serif; font-size: 20px; font-weight: 600; color: var(–text); }
+.donut-center .val { font-family: ‘Fredoka’, ‘Nunito’, ‘Varela Round’, system-ui, sans-serif; font-size: 20px; font-weight: 600; color: var(–text); }
 .donut-center .sub { font-size: 10px; color: var(–muted); }
 .gruppedata-legend { display: flex; flex-direction: column; gap: 8px; }
 .legend-row { display: flex; align-items: center; gap: 8px; font-size: 12px; }
@@ -390,7 +393,7 @@ display: flex; align-items: center; gap: 8px;
 padding: 5px 0; border-bottom: 1px solid var(–line); font-size: 13px;
 }
 .logic-row:last-child { border-bottom: none; }
-.logic-num { font-family: ‘Fredoka’, sans-serif; font-size: 13px; color: var(–muted); min-width: 20px; }
+.logic-num { font-family: ‘Fredoka’, ‘Nunito’, ‘Varela Round’, system-ui, sans-serif; font-size: 13px; color: var(–muted); min-width: 20px; }
 
 /* FOOTER */
 footer {
@@ -400,11 +403,11 @@ flex-wrap: wrap; gap: 16px; border-top: 1px solid var(–line);
 background: var(–white);
 }
 .foot-logo {
-font-family: ‘Fredoka’, sans-serif; font-size: 18px; font-weight: 700;
+font-family: ‘Fredoka’, ‘Nunito’, ‘Varela Round’, system-ui, sans-serif; font-size: 18px; font-weight: 700;
 letter-spacing: 1.5px; color: var(–rosa-acc);
 display: flex; align-items: center;
 }
-.foot-logo .o { display: inline-block; width: 17px; height: 17px; background: var(–kornblomst); border-radius: 50%; margin: 0 1px; position: relative; top: 1px; }
+.foot-logo .o { display: inline-flex; width: 17px; height: 17px; min-width: 17px; background: var(–kornblomst); border-radius: 50%; margin: 0 2px; position: relative; top: 1px; flex-shrink: 0; }
 footer p { font-size: 13px; color: var(–muted); font-weight: 300; }
 
 /* TOC */
@@ -428,7 +431,7 @@ color: var(–text); font-size: 13px;
 transition: background .15s, color .15s;
 }
 .toc-link:hover { background: var(–white); color: var(–rosa-acc); }
-.toc-num { font-family: ‘Fredoka’, sans-serif; font-size: 11px; color: var(–muted); min-width: 16px; }
+.toc-num { font-family: ‘Fredoka’, ‘Nunito’, ‘Varela Round’, system-ui, sans-serif; font-size: 11px; color: var(–muted); min-width: 16px; }
 .toc-nisje-dot { width: 6px; height: 6px; border-radius: 50%; background: var(–kornblomst); flex-shrink: 0; }
 
 @media (max-width: 700px) {
@@ -1273,6 +1276,7 @@ transition: background .15s, color .15s;
   </div>
 
 </div><!-- /diagrams-grid -->
+```
 
   </div>
 </section>
