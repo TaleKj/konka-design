@@ -1988,54 +1988,109 @@ footer p {
         <div class="diagram-card" id="d-forebyggern">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">⚖️ Forebyggern <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
+              <span class="diagram-meta-name">⚖️ Forebyggern <span class="status-tag status-finished">✓ Ferdig</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
           <div class="app-card">
             <div class="app-card-title">Forebyggern</div>
-            <div style="display:flex;gap:20px;justify-content:center;margin-bottom:12px;">
-              <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#555;"><div style="width:10px;height:10px;border-radius:2px;background:#91BCFF;"></div>Kondis</div>
-              <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#555;"><div style="width:10px;height:10px;border-radius:2px;background:#FFA39B;"></div>Styrke</div>
+            <div style="font-size:11px;color:#aaa;text-align:center;margin-bottom:8px;">Fordeling mellom kondisjons- og styrketrening</div>
+            <div style="display:flex;gap:20px;justify-content:center;margin-bottom:0;">
+              <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#555;"><div style="width:10px;height:10px;border-radius:3px;background:#91BCFF;"></div>Kondis</div>
+              <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#555;"><div style="width:10px;height:10px;border-radius:3px;background:#FFA39B;"></div>Styrke</div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div style="display:flex;align-items:center;gap:10px;">
-                <div class="pc p-mia" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">MK</div>
-                <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
-                  <div style="width:72%;background:#91BCFF;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;border-right:2px solid white;">72%</div>
-                  <div style="width:28%;background:#FFA39B;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">28%</div>
-                </div>
-              </div>
-              <div style="display:flex;align-items:center;gap:10px;">
-                <div class="pc p-sara" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">SL</div>
-                <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
-                  <div style="width:53%;background:#91BCFF;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;border-right:2px solid white;">53%</div>
-                  <div style="width:47%;background:#FFA39B;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">47%</div>
-                </div>
-              </div>
-              <div style="display:flex;align-items:center;gap:10px;">
-                <div class="pc p-lars" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">LA</div>
-                <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
-                  <div style="width:38%;background:#91BCFF;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;border-right:2px solid white;">38%</div>
-                  <div style="width:62%;background:#FFA39B;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">62%</div>
-                </div>
-              </div>
-              <div style="display:flex;align-items:center;gap:10px;">
-                <div class="pc p-erik" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">EH</div>
-                <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
-                  <div style="width:21%;background:#91BCFF;display:flex;align-items:center;justify-content:center;font-size:11px;color:white;font-weight:600;border-right:2px solid white;">21%</div>
-                  <div style="width:79%;background:#FFA39B;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">79%</div>
-                </div>
-              </div>
-              <div style="display:flex;align-items:center;gap:10px;">
-                <div class="pc p-nora" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">NO</div>
-                <div style="flex:1;height:36px;border-radius:100px;overflow:hidden;display:flex;">
-                  <div style="width:60%;background:#91BCFF;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;border-right:2px solid white;">60%</div>
-                  <div style="width:40%;background:#FFA39B;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">40%</div>
-                </div>
-              </div>
+            <!-- Vektskål — viser valgt deltaker, tipper etter balanse -->
+            <div style="margin-top:2px;">
+              <svg width="100%" viewBox="0 0 360 250" style="display:block;overflow:visible;" id="forb-svg" xmlns="http://www.w3.org/2000/svg">
+                <!-- Stativ -->
+                <rect x="140" y="226" width="80" height="8" rx="4" fill="#3F3530"/>
+                <rect x="177" y="92" width="6" height="136" rx="3" fill="#3F3530"/>
+                <circle cx="180" cy="92" r="6" fill="#FAD067"/>
+                <!-- Tverrstang (roterer) -->
+                <g id="forb-beam" style="transform:rotate(-3.08deg);transform-origin:180px 92px;transition:transform 700ms cubic-bezier(.34,1.2,.55,1);">
+                  <rect x="50" y="89" width="260" height="6" rx="3" fill="#3F3530"/>
+                  <circle cx="50" cy="92" r="5" fill="#3F3530"/>
+                  <circle cx="310" cy="92" r="5" fill="#3F3530"/>
+                </g>
+                <!-- Tau -->
+                <line id="forb-rope-l" x1="50.19" y1="98.98" x2="50.19" y2="144.98" stroke="#C9B9AE" stroke-width="1.5" stroke-linecap="round" style="transition:all 700ms cubic-bezier(.34,1.2,.55,1);"/>
+                <line id="forb-rope-r" x1="309.81" y1="85.02" x2="309.81" y2="131.02" stroke="#C9B9AE" stroke-width="1.5" stroke-linecap="round" style="transition:all 700ms cubic-bezier(.34,1.2,.55,1);"/>
+                <!-- Venstre skål (kondis) -->
+                <g style="transition:all 700ms cubic-bezier(.34,1.2,.55,1);">
+                  <rect id="forb-block-l" x="21.75" y="120.98" width="56.88" height="18" rx="4" fill="#91BCFF" style="transition:all 600ms cubic-bezier(.34,1.2,.55,1);"/>
+                  <path id="forb-bowl-l" d="M -1.81 144.98 A 52 52 0 0 0 102.19 144.98 Z" fill="#C9DCFF" style="transition:all 700ms cubic-bezier(.34,1.2,.55,1);"/>
+                </g>
+                <!-- Høyre skål (styrke) -->
+                <g style="transition:all 700ms cubic-bezier(.34,1.2,.55,1);">
+                  <rect id="forb-block-r" x="293.25" y="107.02" width="33.12" height="18" rx="4" fill="#FFA39B" style="transition:all 600ms cubic-bezier(.34,1.2,.55,1);"/>
+                  <path id="forb-bowl-r" d="M 257.81 131.02 A 52 52 0 0 0 361.81 131.02 Z" fill="#FFD0CB" style="transition:all 700ms cubic-bezier(.34,1.2,.55,1);"/>
+                </g>
+              </svg>
             </div>
+            <!-- Valgt deltakers status -->
+            <div style="display:flex;justify-content:center;align-items:baseline;gap:10px;margin-top:-4px;margin-bottom:14px;">
+              <span id="forb-kondis-val" style="font-family:'Fredoka',sans-serif;font-size:18px;font-weight:600;color:#91BCFF;font-variant-numeric:tabular-nums;">72%</span>
+              <span id="forb-status" style="font-size:11px;color:#aaa;">MK trener mest kondis</span>
+              <span id="forb-styrke-val" style="font-family:'Fredoka',sans-serif;font-size:18px;font-weight:600;color:#FFA39B;font-variant-numeric:tabular-nums;">28%</span>
+            </div>
+            <!-- Navnesirkler som velger -->
+            <div id="forb-pickers" style="display:flex;justify-content:space-around;gap:6px;padding:0 4px;">
+              <button data-id="mia" class="forb-pick" style="width:38px;height:38px;border-radius:50%;background:#91BCFF;color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer;border:2.5px solid #1C1C1E;padding:0;transform:translateY(-3px);transition:all .25s cubic-bezier(.34,1.2,.55,1);">MK</button>
+              <button data-id="sara" class="forb-pick" style="width:38px;height:38px;border-radius:50%;background:#FFA39B;color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer;border:2.5px solid transparent;padding:0;transition:all .25s cubic-bezier(.34,1.2,.55,1);">SL</button>
+              <button data-id="lars" class="forb-pick" style="width:38px;height:38px;border-radius:50%;background:#F8C696;color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer;border:2.5px solid transparent;padding:0;transition:all .25s cubic-bezier(.34,1.2,.55,1);">LA</button>
+              <button data-id="erik" class="forb-pick" style="width:38px;height:38px;border-radius:50%;background:#8FD6E7;color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer;border:2.5px solid transparent;padding:0;transition:all .25s cubic-bezier(.34,1.2,.55,1);">EH</button>
+              <button data-id="nora" class="forb-pick" style="width:38px;height:38px;border-radius:50%;background:#B7A0EC;color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer;border:2.5px solid transparent;padding:0;transition:all .25s cubic-bezier(.34,1.2,.55,1);">NO</button>
+            </div>
+            <p style="font-size:10.5px;color:#aaa;text-align:center;margin:12px 0 0;">Trykk på en deltaker for å se deres balanse</p>
           </div>
+          <script>
+          (function(){
+            var P = {
+              mia:  {initials:"MK", color:"#91BCFF", kondis:72, styrke:28},
+              sara: {initials:"SL", color:"#FFA39B", kondis:58, styrke:42},
+              lars: {initials:"LA", color:"#F8C696", kondis:45, styrke:55},
+              erik: {initials:"EH", color:"#8FD6E7", kondis:24, styrke:76},
+              nora: {initials:"NO", color:"#B7A0EC", kondis:63, styrke:37}
+            };
+            var card = document.getElementById("d-forebyggern");
+            var CX=180, PIVOT_Y=92, BEAM_HALF=130, ROPE_LEN=46, BOWL_R=52, BLOCK_H=18, BLOCK_MAX_W=72, BLOCK_MIN_W=18;
+            function bw(a){ return BLOCK_MIN_W+(BLOCK_MAX_W-BLOCK_MIN_W)*(a/100); }
+            function update(id){
+              var p = P[id];
+              var tilt = (p.styrke-p.kondis)/100;
+              var tiltDeg = tilt*7;
+              var rad = tiltDeg*Math.PI/180;
+              var leftEndX = CX+Math.cos(Math.PI+rad)*BEAM_HALF;
+              var leftEndY = PIVOT_Y+Math.sin(Math.PI+rad)*BEAM_HALF;
+              var rightEndX = CX+Math.cos(rad)*BEAM_HALF;
+              var rightEndY = PIVOT_Y+Math.sin(rad)*BEAM_HALF;
+              var lpx=leftEndX, lpy=leftEndY+ROPE_LEN, rpx=rightEndX, rpy=rightEndY+ROPE_LEN;
+              card.querySelector("#forb-beam").style.transform = "rotate("+tiltDeg+"deg)";
+              var rl=card.querySelector("#forb-rope-l"); rl.setAttribute("x1",leftEndX); rl.setAttribute("y1",leftEndY); rl.setAttribute("x2",lpx); rl.setAttribute("y2",lpy);
+              var rr=card.querySelector("#forb-rope-r"); rr.setAttribute("x1",rightEndX); rr.setAttribute("y1",rightEndY); rr.setAttribute("x2",rpx); rr.setAttribute("y2",rpy);
+              var kw=bw(p.kondis), sw=bw(p.styrke);
+              var bl=card.querySelector("#forb-block-l"); bl.setAttribute("x",lpx-kw/2); bl.setAttribute("y",lpy-6-BLOCK_H); bl.setAttribute("width",kw); bl.setAttribute("fill",p.color);
+              var br=card.querySelector("#forb-block-r"); br.setAttribute("x",rpx-sw/2); br.setAttribute("y",rpy-6-BLOCK_H); br.setAttribute("width",sw); br.setAttribute("fill",p.color);
+              card.querySelector("#forb-bowl-l").setAttribute("d","M "+(lpx-BOWL_R)+" "+lpy+" A "+BOWL_R+" "+BOWL_R+" 0 0 0 "+(lpx+BOWL_R)+" "+lpy+" Z");
+              card.querySelector("#forb-bowl-r").setAttribute("d","M "+(rpx-BOWL_R)+" "+rpy+" A "+BOWL_R+" "+BOWL_R+" 0 0 0 "+(rpx+BOWL_R)+" "+rpy+" Z");
+              card.querySelector("#forb-kondis-val").textContent = p.kondis+"%";
+              card.querySelector("#forb-styrke-val").textContent = p.styrke+"%";
+              var diff = p.kondis-p.styrke, label;
+              if(Math.abs(diff)<12) label="i god balanse";
+              else if(diff>0) label="trener mest kondis";
+              else label="trener mest styrke";
+              card.querySelector("#forb-status").textContent = p.initials+" "+label;
+              card.querySelectorAll(".forb-pick").forEach(function(btn){
+                var sel = btn.getAttribute("data-id")===id;
+                btn.style.border = sel ? "2.5px solid #1C1C1E" : "2.5px solid transparent";
+                btn.style.transform = sel ? "translateY(-3px)" : "translateY(0)";
+              });
+            }
+            card.querySelectorAll(".forb-pick").forEach(function(btn){
+              btn.addEventListener("click",function(){ update(btn.getAttribute("data-id")); });
+            });
+          })();
+          </script>
         </div>
 
         <!-- 6. PULSSONER -->
@@ -2249,44 +2304,96 @@ footer p {
         <div class="diagram-card" id="d-topptur">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">⛰️ Topptur <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
+              <span class="diagram-meta-name">⛰️ Topptur <span class="status-tag status-finished">✓ Ferdig</span></span>
             </div>
             <button class="info-btn">i</button>
           </div>
           <div class="app-card">
-            <div class="app-card-title">Topptur</div>
-            <div style="width:100%;position:relative;height:180px;">
-              <svg width="100%" height="180" viewBox="0 0 300 180">
-                <polygon points="150,18 275,175 25,175" fill="#EDE0D0" opacity="0.8"/>
-                <polygon points="150,18 230,175 70,175" fill="#DDD0BC" opacity="0.7"/>
-                <polygon points="150,18 168,65 132,65" fill="white" opacity="0.95"/>
-                <rect x="0" y="170" width="300" height="10" fill="#C8B8A0" opacity="0.6"/>
-              </svg>
-              <div style="position:absolute;top:32%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;">
-                <div class="pc p-mia" style="width:26px;height:26px;font-size:10px;">MK</div>
-                <div style="font-size:9px;color:#888;font-weight:500;">4 200 hm</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <div>
+                <div style="font-size:14px;font-weight:700;color:#222;">Topptur</div>
+                <div style="font-size:10px;color:#CCC;margin-top:1px;">Samlet høydemeter</div>
               </div>
-              <div style="position:absolute;top:48%;left:42%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;">
-                <div class="pc p-sara" style="width:26px;height:26px;font-size:10px;">SL</div>
-                <div style="font-size:9px;color:#888;font-weight:500;">3 600 hm</div>
-              </div>
-              <div style="position:absolute;top:62%;left:37%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;">
-                <div class="pc p-lars" style="width:26px;height:26px;font-size:10px;">LA</div>
-                <div style="font-size:9px;color:#888;font-weight:500;">2 900 hm</div>
-              </div>
-              <div style="position:absolute;top:74%;left:31%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;">
-                <div class="pc p-erik" style="width:26px;height:26px;font-size:10px;">EH</div>
-                <div style="font-size:9px;color:#888;font-weight:500;">2 200 hm</div>
-              </div>
-              <div style="position:absolute;top:84%;left:25%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;">
-                <div class="pc p-nora" style="width:26px;height:26px;font-size:10px;">NO</div>
-                <div style="font-size:9px;color:#888;font-weight:500;">1 400 hm</div>
+              <div style="display:flex;gap:6px;">
+                <!-- Sport pill (active) -->
+                <div style="display:flex;align-items:center;gap:4px;padding:0 10px 0 7px;height:28px;border-radius:14px;background:#F7F7F7;color:#555;font-size:11px;font-weight:600;">
+                  <span style="width:16px;height:16px;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;font-size:10px;box-shadow:0 1px 3px rgba(0,0,0,.08);">⛰️</span>
+                  Alle <span style="font-size:7px;color:#BBB;margin-left:1px;">▾</span>
+                </div>
               </div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px;">
-              <div style="display:flex;align-items:center;gap:8px;font-size:13px;"><div class="pc p-mia" style="width:24px;height:24px;font-size:9px;">MK</div><span style="font-weight:600;color:#1C1C1E;">4 200 hm</span><span style="color:#aaa;margin-left:auto;">—</span></div>
-              <div style="display:flex;align-items:center;gap:8px;font-size:13px;"><div class="pc p-sara" style="width:24px;height:24px;font-size:9px;">SL</div><span style="font-weight:600;color:#1C1C1E;">3 600 hm</span><span style="color:#aaa;margin-left:auto;">−600</span></div>
-              <div style="display:flex;align-items:center;gap:8px;font-size:13px;"><div class="pc p-lars" style="width:24px;height:24px;font-size:9px;">LA</div><span style="font-weight:600;color:#1C1C1E;">2 900 hm</span><span style="color:#aaa;margin-left:auto;">−1 300</span></div>
+            <!-- Fjell SVG — palette-trofaste gråtoner, sti følger fjellryggen -->
+            <div style="width:100%;position:relative;margin-bottom:8px;aspect-ratio:378.945/271.868;">
+              <svg viewBox="0 0 378.945 271.868" style="width:100%;height:100%;display:block;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="topptur-mtn" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#EFEFEF"/>
+                    <stop offset="60%" stop-color="#E0E0E0"/>
+                    <stop offset="100%" stop-color="#D8D8D8"/>
+                  </linearGradient>
+                  <clipPath id="topptur-clip">
+                    <path d="M32.7929 252.753C19.4034 244.778 36.311 222.245 39.0088 217.079C47.9419 199.969 50.7996 195.918 55.3215 187.476C71.6342 157.022 101.271 111.447 108.92 110.234C122.126 108.139 132.902 129.642 145.818 129.089C162.131 128.39 183.548 99.9097 204.078 64.8423C215.73 44.9398 232.431 17.7049 240.976 19.1015C256.648 21.6632 274.766 65.8898 284.476 86.4905C300.674 120.856 317.335 149.923 338.464 197.525C343.637 209.181 366.935 233.043 331.303 243.531C298.737 253.117 228.699 246.734 209.337 249.047C168.226 253.958 155.698 270.597 114.121 271.748C67.9447 273.026 51.599 263.954 32.7929 252.753Z"/>
+                  </clipPath>
+                </defs>
+                <!-- Fjell -->
+                <path d="M32.7929 252.753C19.4034 244.778 36.311 222.245 39.0088 217.079C47.9419 199.969 50.7996 195.918 55.3215 187.476C71.6342 157.022 101.271 111.447 108.92 110.234C122.126 108.139 132.902 129.642 145.818 129.089C162.131 128.39 183.548 99.9097 204.078 64.8423C215.73 44.9398 232.431 17.7049 240.976 19.1015C256.648 21.6632 274.766 65.8898 284.476 86.4905C300.674 120.856 317.335 149.923 338.464 197.525C343.637 209.181 366.935 233.043 331.303 243.531C298.737 253.117 228.699 246.734 209.337 249.047C168.226 253.958 155.698 270.597 114.121 271.748C67.9447 273.026 51.599 263.954 32.7929 252.753Z" fill="url(#topptur-mtn)"/>
+                <g clip-path="url(#topptur-clip)">
+                  <path d="M70.7182 160.456C63.3825 168.902 34.5101 199.247 29.0707 209.11C24.0111 218.285 16.7094 235.358 17.8657 246.424C19.3592 260.718 45.169 265.606 55.8382 269C96.5072 281.938 140.943 275.146 180.961 262.415C194.589 258.08 209.561 253.324 223.913 252.695C245.69 251.741 266.426 262.099 289.276 259.907C311.485 257.776 358.536 254.505 361.486 224.788C362.064 218.967 357.463 215.147 354.95 210.364C344.999 191.428 334.402 173.898 322.268 156.119C317.053 148.476 316.038 140.065 310.601 132.595C308.708 129.995 306.533 126.506 304.989 123.707C304.514 122.845 299.769 115.601 299.769 115.601C299.769 115.601 310.092 140.141 313.842 150.478C319.568 166.261 322.432 172.995 327.539 194.707C331.788 212.768 325.843 221.644 312.735 219.647C302.318 218.061 285.599 192.645 284.296 195.627C282.465 199.818 280.842 203.909 277.976 210.491C273.481 220.816 257.78 228.616 246.249 222.808C229.343 214.292 230.15 200.35 227.96 183.963C226.605 173.83 224.551 152.621 224.551 152.621C224.332 150.637 223.722 173.339 223.602 175.873C222.807 192.697 225.059 224.665 205.55 232.941C196.824 236.642 193.346 218.576 192.788 223.22C192.61 224.706 192.814 229.525 188.08 230.647C182.189 232.044 180.027 225.729 174.113 213.5C167.595 200.022 151.137 165.324 147.346 157.686C145.536 154.04 150.429 165.709 152.015 172.737C154.764 184.925 168.841 228.846 157.588 233.838C149.529 237.412 143.572 225.386 141.121 221.339C140.631 220.531 140.628 230.329 135.83 238.898C128.967 251.154 97.6949 263.201 88.5195 251.441C83.5397 245.058 89.4195 225.812 91.0095 218.203C91.6597 215.092 92.8687 212.429 93.8107 209.424C94.0988 208.505 89.1083 218.589 75.7582 226.983C71.1516 229.88 56.5403 239.475 49.6674 223.481C43.8609 209.969 66.5995 167.095 70.7182 160.456Z" fill="#B0B0B0" opacity="0.32"/>
+                </g>
+                <path d="M124.764 121.495C123.111 119.784 119.196 117.173 118.103 116.596C114.55 114.717 110.385 114.375 107.069 116.959C97.5998 124.336 91.4291 137.099 85.1362 146.716C84.3874 147.861 78.4656 156.767 81.0995 157.24C83.521 157.676 89.0967 149.36 90.9222 148.047C95.786 144.549 100.945 146.194 105.455 143.571C109.72 141.09 111.439 135.424 115.681 132.563C119.96 129.678 135.189 139.109 135.057 134.451C134.884 128.328 129.93 126.844 124.764 121.495Z" fill="#FFFFFF" opacity="0.95"/>
+                <path d="M211.316 65.2848C217.734 53.1379 221.707 45.2605 230.718 34.6676C233.819 31.0224 239.31 23.6587 244.341 27.6163C254.249 35.4098 265.336 60.2363 270.968 72.8927C274.486 80.7995 279.92 89.0018 282.32 97.201C282.413 97.5173 283.541 100.355 281.701 100.355C281.058 100.355 266.944 78.7484 258.996 77.1606C252.373 75.8375 247.393 83.0091 241.038 84.2118C230.428 86.22 228.51 78.7307 219.365 78.274C209.937 77.8031 208.516 85.4837 200.995 87.7375C200.376 87.923 199.672 88.6306 199.137 88.2941C198.215 87.7135 207.394 72.7072 211.316 65.2848Z" fill="#FFFFFF" opacity="0.95"/>
+                <!-- Flagg på toppen (241, 19) -->
+                <line x1="241" y1="19" x2="241" y2="-1" stroke="#888888" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M 241 -1 L 255.5 2.5 L 241 6 Z" fill="#FFB2E3"/>
+                <!-- Full sti (stiplet grå) -->
+                <path d="M 50.00 265.00 C 51.87 251.19, 56.59 200.97, 61.22 182.12 C 65.86 163.28, 68.76 164.69, 77.80 151.95 C 86.85 139.20, 105.37 110.33, 115.48 105.65 C 125.60 100.98, 129.94 121.17, 138.49 123.88 C 147.04 126.59, 158.51 126.99, 166.78 121.91 C 175.05 116.83, 181.08 103.94, 188.13 93.38 C 195.19 82.82, 203.59 67.60, 209.12 58.57 C 214.65 49.54, 215.98 45.77, 221.29 39.18 C 226.60 32.58, 237.72 22.36, 241.00 19.00" stroke="#B0B0B0" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="0.1 4.5" opacity="0.55"/>
+                <!-- Klatret sti (solid, leder-farge) -->
+                <path d="M 50.00 265.00 C 51.87 251.19, 56.59 200.97, 61.22 182.12 C 65.86 163.28, 68.76 164.69, 77.80 151.95 C 86.85 139.20, 105.37 110.33, 115.48 105.65 C 125.60 100.98, 129.94 121.17, 138.49 123.88 C 147.04 126.59, 158.51 126.99, 166.78 121.91 C 175.05 116.83, 181.08 103.94, 188.13 93.38 C 195.19 82.82, 203.59 67.60, 209.12 58.57 L 213.14 52.17" stroke="#91BCFF" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0.85" style="filter:drop-shadow(0 1px 1.5px rgba(0,0,0,0.18));"/>
+              </svg>
+              <!-- Navnesirkler på stien (kun initialer) -->
+              <div style="position:absolute;left:56.2%;top:19.2%;transform:translate(-50%,-50%);">
+                <div style="width:28px;height:28px;border-radius:50%;background:#91BCFF;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;border:2px solid white;box-shadow:0 0 0 2.5px #91BCFF, 0 2px 6px rgba(0,0,0,.22);">MK</div>
+              </div>
+              <div style="position:absolute;left:46.7%;top:39.9%;transform:translate(-50%,-50%);">
+                <div style="width:28px;height:28px;border-radius:50%;background:#FFA39B;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.18);">SL</div>
+              </div>
+              <div style="position:absolute;left:32.1%;top:40.6%;transform:translate(-50%,-50%);">
+                <div style="width:28px;height:28px;border-radius:50%;background:#F8C696;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.18);">LA</div>
+              </div>
+              <div style="position:absolute;left:24.0%;top:49.9%;transform:translate(-50%,-50%);">
+                <div style="width:28px;height:28px;border-radius:50%;background:#8FD6E7;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.18);">EH</div>
+              </div>
+              <div style="position:absolute;left:16.0%;top:68.4%;transform:translate(-50%,-50%);">
+                <div style="width:28px;height:28px;border-radius:50%;background:#B7A0EC;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.18);">NO</div>
+              </div>
+            </div>
+            <!-- Kompakt leaderboard -->
+            <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;padding:6px 4px 2px;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <span style="font-size:8px;color:#D95C52;font-weight:700;">1</span>
+                <div style="width:26px;height:26px;border-radius:50%;background:#91BCFF;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;box-shadow:0 2px 5px #91BCFF66;">MK</div>
+                <span style="font-size:9px;font-weight:700;color:#D95C52;white-space:nowrap;">1 240 hm</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <span style="font-size:8px;color:#CCC;font-weight:700;">2</span>
+                <div style="width:26px;height:26px;border-radius:50%;background:#FFA39B;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;box-shadow:0 2px 5px #FFA39B66;">SL</div>
+                <span style="font-size:9px;font-weight:700;color:#888;white-space:nowrap;">980 hm</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <span style="font-size:8px;color:#CCC;font-weight:700;">3</span>
+                <div style="width:26px;height:26px;border-radius:50%;background:#F8C696;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;box-shadow:0 2px 5px #F8C69666;">LA</div>
+                <span style="font-size:9px;font-weight:700;color:#888;white-space:nowrap;">720 hm</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <span style="font-size:8px;color:#CCC;font-weight:700;">4</span>
+                <div style="width:26px;height:26px;border-radius:50%;background:#8FD6E7;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;box-shadow:0 2px 5px #8FD6E766;">EH</div>
+                <span style="font-size:9px;font-weight:700;color:#888;white-space:nowrap;">540 hm</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <span style="font-size:8px;color:#CCC;font-weight:700;">5</span>
+                <div style="width:26px;height:26px;border-radius:50%;background:#B7A0EC;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:10px;box-shadow:0 2px 5px #B7A0EC66;">NO</div>
+                <span style="font-size:9px;font-weight:700;color:#888;white-space:nowrap;">310 hm</span>
+              </div>
             </div>
           </div>
         </div>
