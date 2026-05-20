@@ -2188,46 +2188,390 @@ footer p {
         <div class="diagram-card" id="d-wattmaleren">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">⚡ Wattmåleren <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
+              <span class="diagram-meta-name">⚡ Wattmåleren <span class="status-tag status-finished">✓ Ferdig</span></span>
             </div>
-            <button class="info-btn">i</button>
+            <button class="info-btn" onclick="this.closest('.diagram-card').querySelector('.watt-back').style.display='flex';this.closest('.diagram-card').querySelector('.watt-front').style.display='none'">i</button>
           </div>
-          <div class="app-card">
-            <div class="app-card-title">Wattmåleren</div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-mia" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">MK</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:85%;height:100%;background:#91BCFF;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">215 W</div></div></div>
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-sara" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">SL</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:72%;height:100%;background:#FFA39B;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">182 W</div></div></div>
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-lars" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">LA</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:62%;height:100%;background:#F8C696;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">158 W</div></div></div>
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-erik" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">EH</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:50%;height:100%;background:#8FD6E7;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">127 W</div></div></div>
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-nora" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">NO</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:40%;height:100%;background:#B7A0EC;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">102 W</div></div></div>
+          <div class="app-card" style="position:relative;">
+            <!-- FRONT -->
+            <div class="watt-front">
+              <!-- header: tittel + dropdown-piller -->
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;gap:8px;">
+                <div>
+                  <div style="font-size:14px;font-weight:700;color:#222;display:flex;align-items:center;gap:5px;">⚡ Wattmåleren</div>
+                  <div class="watt-sub" style="font-size:10px;color:#CCC;margin-top:1px;">Gjennomsnittswatt · på tvers av kondisjonssporter</div>
+                </div>
+                <div style="display:flex;gap:6px;flex-shrink:0;">
+                  <!-- metrikk-pill -->
+                  <div style="position:relative;">
+                    <button class="watt-pill" data-menu="metric" style="display:flex;align-items:center;gap:5px;padding:0 9px 0 6px;height:28px;border-radius:14px;border:none;cursor:pointer;background:#F7F7F7;color:#555;font-size:11px;font-weight:600;">
+                      <span style="width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;font-size:10px;" class="watt-pill-icon">⌀</span>
+                      <span class="watt-pill-label">Snitt</span>
+                      <span style="font-size:7px;color:#BBB;margin-left:1px;">▾</span>
+                    </button>
+                    <div class="watt-dropdown" data-for="metric" style="display:none;position:absolute;top:32px;right:0;z-index:20;background:#fff;border-radius:12px;padding:5px;min-width:150px;box-shadow:0 6px 24px rgba(0,0,0,.14),0 1px 4px rgba(0,0,0,.08);border:1px solid #F0F0F0;"></div>
+                  </div>
+                  <!-- sport-pill (aktiv-farge = kornblomst) -->
+                  <div style="position:relative;">
+                    <button class="watt-pill" data-menu="sport" style="display:flex;align-items:center;gap:5px;padding:0 9px 0 6px;height:28px;border-radius:14px;border:none;cursor:pointer;background:#91BCFF;color:#fff;font-size:11px;font-weight:600;">
+                      <span style="width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.26);display:flex;align-items:center;justify-content:center;font-size:10px;" class="watt-pill-icon">⚡</span>
+                      <span class="watt-pill-label">Alle</span>
+                      <span style="font-size:7px;opacity:.8;margin-left:1px;">▾</span>
+                    </button>
+                    <div class="watt-dropdown" data-for="sport" style="display:none;position:absolute;top:32px;right:0;z-index:20;background:#fff;border-radius:12px;padding:5px;min-width:150px;box-shadow:0 6px 24px rgba(0,0,0,.14),0 1px 4px rgba(0,0,0,.08);border:1px solid #F0F0F0;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- måler -->
+              <div style="position:relative;width:300px;max-width:100%;margin:0 auto;">
+                <svg class="watt-gauge" viewBox="0 0 300 172" style="width:100%;display:block;overflow:visible;" xmlns="http://www.w3.org/2000/svg"></svg>
+              </div>
+
+              <!-- verdi under skiva -->
+              <div style="text-align:center;margin-top:6px;">
+                <span class="watt-value" style="font-size:38px;font-weight:800;letter-spacing:-0.5px;color:#1C1C1E;font-variant-numeric:tabular-nums;">215</span><span class="watt-unit" style="font-size:14px;font-weight:600;color:#9A9AA0;margin-left:4px;">W</span>
+                <div class="watt-value-sub" style="font-size:11px;font-weight:500;color:#B8B8C0;">watt</div>
+              </div>
+
+              <!-- sone-forklaring -->
+              <div style="display:flex;justify-content:center;gap:14px;margin-top:6px;margin-bottom:6px;">
+                <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#9A9AA0;font-weight:500;"><span style="width:9px;height:9px;border-radius:50%;background:#AADEEE;"></span>Utholdenhet</span>
+                <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#9A9AA0;font-weight:500;"><span style="width:9px;height:9px;border-radius:50%;background:#FCE190;"></span>Terskel</span>
+                <span style="display:flex;align-items:center;gap:5px;font-size:10px;color:#9A9AA0;font-weight:500;"><span style="width:9px;height:9px;border-radius:50%;background:#FFBAB3;"></span>Maks</span>
+              </div>
+
+              <!-- navnesirkel-velgere (Forebyggern-stil) -->
+              <div class="watt-pickers" style="display:flex;justify-content:space-around;gap:6px;padding:4px 4px 0;margin-top:6px;border-top:1px solid #F2F2F2;padding-top:14px;"></div>
+              <p style="font-size:10.5px;color:#aaa;text-align:center;margin:12px 0 0;">Trykk på en deltaker for å se deres watt</p>
             </div>
-            <p style="font-size:11px;color:#aaa;margin-top:8px;text-align:center;">Beste enkelttur: M 245 · S 198 · L 171 · E 143 · N 118 W</p>
+
+            <!-- BACK (info-flipp) -->
+            <div class="watt-back" style="display:none;position:absolute;inset:0;background:#1C1C1E;border-radius:16px;padding:22px 22px 20px;color:#fff;flex-direction:column;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><span style="font-size:18px;">⚡</span><span style="font-size:16px;font-weight:700;">Wattmåleren</span></div>
+              <p style="font-size:12.5px;line-height:1.65;color:#D6D6D6;margin:0;">Måleren viser <b style="color:#fff;">watt</b> — et direkte mål på effekt. Velg snittwatt i perioden eller beste enkelttur, samlet eller per sport. Fargesonene viser hva tallet betyr: <b style="color:#AADEEE;">utholdenhet</b>, <b style="color:#FCE190;">terskel</b> og <b style="color:#FFBAB3;">maks</b>.</p>
+              <p style="font-size:12.5px;line-height:1.65;color:#D6D6D6;margin-top:12px;">Det er ingen «vinner» her — god trening betyr ulik watt på ulike økter. Krever utstyr som måler watt; deltakere uten vises uten verdi.</p>
+              <button onclick="this.closest('.diagram-card').querySelector('.watt-back').style.display='none';this.closest('.diagram-card').querySelector('.watt-front').style.display='block'" style="margin-top:auto;align-self:flex-start;padding:8px 16px;border-radius:8px;border:1.5px solid #444;background:transparent;color:#fff;font-size:12px;font-weight:600;cursor:pointer;">← Tilbake</button>
+            </div>
           </div>
+          <script>
+          (function(){
+            var card = document.getElementById("d-wattmaleren");
+            var MAX_W = 350;
+            var PAL = {
+              kornblomst:{base:"#91BCFF",dark:"#5E96F0"},
+              korall:    {base:"#FFA39B",dark:"#D95C52"},
+              fersken:   {base:"#F8C696",dark:"#CC8442"},
+              mint:      {base:"#8FD6E7",dark:"#3E96AC"},
+              lavendel:  {base:"#B7A0EC",dark:"#7A5BC8"}
+            };
+            var MEMBERS = [
+              {id:"MK",color:"kornblomst",snitt:{alle:215,sykling:228,lop:196,ro:205},best:{alle:261,sykling:284,lop:238,ro:252}},
+              {id:"SL",color:"korall",    snitt:{alle:182,sykling:190,lop:171,ro:null},best:{alle:224,sykling:241,lop:205,ro:null}},
+              {id:"LA",color:"fersken",   snitt:{alle:158,sykling:166,lop:149,ro:152}, best:{alle:198,sykling:212,lop:181,ro:189}},
+              {id:"EH",color:"mint",      snitt:{alle:127,sykling:134,lop:119,ro:null},best:{alle:164,sykling:178,lop:146,ro:null}},
+              {id:"NO",color:"lavendel",  snitt:{alle:102,sykling:null,lop:98, ro:109}, best:{alle:138,sykling:null,lop:124,ro:151}}
+            ];
+            var SPORTS = [
+              {key:"alle",   label:"Alle",   icon:"⚡",short:"på tvers av kondisjonssporter"},
+              {key:"sykling",label:"Sykling",icon:"🚴",short:"sykling"},
+              {key:"lop",    label:"Løping", icon:"🏃",short:"løping"},
+              {key:"ro",     label:"Roing",  icon:"🚣",short:"roing"}
+            ];
+            var METRICS = [
+              {key:"snitt",label:"Snitt",    icon:"⌀",short:"Gjennomsnittswatt"},
+              {key:"best", label:"Beste tur",icon:"★",short:"Beste enkelttur"}
+            ];
+            var ZONES = [
+              {to:0.42,color:"#AADEEE",label:"Utholdenhet"},
+              {to:0.72,color:"#FCE190",label:"Terskel"},
+              {to:1.0, color:"#FFBAB3",label:"Maks"}
+            ];
+            var G = {cx:150,cy:150,r:120,rInner:88,startA:180,endA:0};
+
+            var state = {sport:"alle",metric:"snitt",selected:"MK",shown:0};
+
+            function polar(cx,cy,r,deg){var a=deg*Math.PI/180;return [cx+r*Math.cos(a),cy-r*Math.sin(a)];}
+            function valToAngle(t){return G.startA+(G.endA-G.startA)*t;}
+            function arcPath(r,t0,t1){
+              var a0=valToAngle(t0),a1=valToAngle(t1);
+              var p0=polar(G.cx,G.cy,r,a0),p1=polar(G.cx,G.cy,r,a1);
+              var large=Math.abs(a1-a0)>180?1:0;
+              return "M "+p0[0]+" "+p0[1]+" A "+r+" "+r+" 0 "+large+" 1 "+p1[0]+" "+p1[1];
+            }
+            function svgEl(tag,attrs){
+              var e=document.createElementNS("http://www.w3.org/2000/svg",tag);
+              for(var k in attrs){e.setAttribute(k,attrs[k]);}
+              return e;
+            }
+
+            var gauge = card.querySelector(".watt-gauge");
+            // statiske lag bygges én gang
+            var zoneLayer = svgEl("g",{}); gauge.appendChild(zoneLayer);
+            var tickLayer = svgEl("g",{}); gauge.appendChild(tickLayer);
+            var needle = svgEl("line",{"stroke-width":"3.5","stroke-linecap":"round"}); gauge.appendChild(needle);
+            var hub = svgEl("circle",{cx:G.cx,cy:G.cy,r:18,stroke:"#fff","stroke-width":"3"}); gauge.appendChild(hub);
+            var hubText = svgEl("text",{x:G.cx,y:G.cy+4,"text-anchor":"middle","font-size":"13","font-weight":"700","letter-spacing":"0.3"}); gauge.appendChild(hubText);
+
+            (function buildStatic(){
+              var mid=(G.r+G.rInner)/2, sw=G.r-G.rInner, from=0;
+              for(var i=0;i<ZONES.length;i++){
+                zoneLayer.appendChild(svgEl("path",{d:arcPath(mid,from,ZONES[i].to),fill:"none",stroke:ZONES[i].color,"stroke-width":sw}));
+                from=ZONES[i].to;
+              }
+              var marks=[0,50,100,150,200,250,300,350];
+              for(var j=0;j<marks.length;j++){
+                var w=marks[j], tt=w/MAX_W, a=valToAngle(tt), major=(w%100===0);
+                var pi=polar(G.cx,G.cy,G.rInner-3,a), po=polar(G.cx,G.cy,G.r+2,a);
+                tickLayer.appendChild(svgEl("line",{x1:pi[0],y1:pi[1],x2:po[0],y2:po[1],stroke:major?"#fff":"#ffffffcc","stroke-width":major?2:1.2}));
+                if(major){
+                  var pt=polar(G.cx,G.cy,G.rInner-15,a);
+                  var t=svgEl("text",{x:pt[0],y:pt[1]+3,"text-anchor":"middle","font-size":"9","font-weight":"600",fill:"#9A9AA0"});
+                  t.textContent=w; tickLayer.appendChild(t);
+                }
+              }
+            })();
+
+            function curMember(){ for(var i=0;i<MEMBERS.length;i++){if(MEMBERS[i].id===state.selected)return MEMBERS[i];} }
+            function curValue(m){ return m[state.metric][state.sport]; }
+
+            var raf=null;
+            function animateNeedle(target,col){
+              if(raf)cancelAnimationFrame(raf);
+              var from=state.shown, start=null, dur=650;
+              function tick(ts){
+                if(!start)start=ts;
+                var p=Math.min((ts-start)/dur,1), e=1-Math.pow(1-p,3);
+                state.shown=from+(target-from)*e;
+                var a=valToAngle(state.shown), tip=polar(G.cx,G.cy,G.r-16,a);
+                needle.setAttribute("x1",G.cx);needle.setAttribute("y1",G.cy);
+                needle.setAttribute("x2",tip[0]);needle.setAttribute("y2",tip[1]);
+                needle.setAttribute("stroke",col);
+                if(p<1)raf=requestAnimationFrame(tick);
+              }
+              raf=requestAnimationFrame(tick);
+            }
+
+            function render(){
+              var m=curMember(), pal=PAL[m.color], v=curValue(m), has=(v!=null);
+              // undertittel
+              var sp=SPORTS.filter(function(s){return s.key===state.sport;})[0];
+              var me=METRICS.filter(function(x){return x.key===state.metric;})[0];
+              card.querySelector(".watt-sub").textContent = me.short+" · "+sp.short;
+              // verdi
+              card.querySelector(".watt-value").textContent = has? v : "—";
+              card.querySelector(".watt-value").style.color = has? "#1C1C1E":"#C7C7CC";
+              card.querySelector(".watt-unit").textContent = has? "W":"";
+              card.querySelector(".watt-value-sub").textContent = has? "watt":"ingen wattmåler";
+              // nav
+              hub.setAttribute("fill", has? pal.base : "#E6E6EA");
+              hubText.setAttribute("fill", has? "#fff":"#A8A8B0");
+              hubText.textContent = m.id;
+              // nål
+              needle.style.display = has? "block":"none";
+              animateNeedle(has? Math.min(v/MAX_W,1):0, pal.dark);
+              // pickers aktiv-stil
+              card.querySelectorAll(".watt-pick").forEach(function(btn){
+                var id=btn.getAttribute("data-id");
+                var mm=null; for(var i=0;i<MEMBERS.length;i++){if(MEMBERS[i].id===id)mm=MEMBERS[i];}
+                var pv=mm[state.metric][state.sport], ph=(pv!=null), pp=PAL[mm.color], sel=(id===state.selected);
+                btn.style.background = ph? pp.base : "#E6E6EA";
+                btn.style.color = ph? "#fff":"#A8A8B0";
+                btn.style.border = sel? ("2.5px solid "+(ph?pp.dark:"#B8B8C0")) : "2.5px solid transparent";
+                btn.style.boxShadow = sel? "0 0 0 2px #fff inset":"none";
+                btn.style.transform = sel? "translateY(-3px)":"translateY(0)";
+              });
+            }
+
+            // bygg pickers
+            var pickWrap=card.querySelector(".watt-pickers");
+            MEMBERS.forEach(function(m){
+              var b=document.createElement("button");
+              b.className="watt-pick"; b.setAttribute("data-id",m.id);
+              b.textContent=m.id;
+              b.style.cssText="width:38px;height:38px;border-radius:50%;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;letter-spacing:0.3px;transition:all .25s cubic-bezier(.34,1.2,.55,1);border:2.5px solid transparent;";
+              b.addEventListener("click",function(){state.selected=m.id;render();});
+              pickWrap.appendChild(b);
+            });
+
+            // bygg dropdowns
+            function buildDropdown(which,options){
+              var dd=card.querySelector('.watt-dropdown[data-for="'+which+'"]');
+              dd.innerHTML="";
+              options.forEach(function(o){
+                var b=document.createElement("button");
+                var sel=(which==="sport"?state.sport:state.metric)===o.key;
+                b.style.cssText="display:flex;align-items:center;gap:8px;width:100%;padding:8px 10px;border-radius:8px;border:none;cursor:pointer;background:"+(sel?"#F4F4F6":"transparent")+";text-align:left;font-size:12.5px;font-weight:"+(sel?700:500)+";color:#1C1C1E;";
+                b.innerHTML='<span style="width:16px;text-align:center;">'+o.icon+'</span>'+o.label+(sel?'<span style="margin-left:auto;color:#E880C4;">✓</span>':'');
+                b.addEventListener("click",function(ev){
+                  ev.stopPropagation();
+                  if(which==="sport")state.sport=o.key; else state.metric=o.key;
+                  // oppdater pill-label/-ikon
+                  var pill=card.querySelector('.watt-pill[data-menu="'+which+'"]');
+                  pill.querySelector(".watt-pill-label").textContent = (which==="sport"&&o.label==="Alle")?"Alle":o.label;
+                  pill.querySelector(".watt-pill-icon").textContent = o.icon;
+                  dd.style.display="none";
+                  buildDropdown("sport",SPORTS); buildDropdown("metric",METRICS);
+                  render();
+                });
+                dd.appendChild(b);
+              });
+            }
+            buildDropdown("sport",SPORTS);
+            buildDropdown("metric",METRICS);
+
+            // pill toggle + lukk ved utenfor-klikk
+            card.querySelectorAll(".watt-pill").forEach(function(pill){
+              pill.addEventListener("click",function(ev){
+                ev.stopPropagation();
+                var which=pill.getAttribute("data-menu");
+                var dd=card.querySelector('.watt-dropdown[data-for="'+which+'"]');
+                var open=dd.style.display!=="none";
+                card.querySelectorAll(".watt-dropdown").forEach(function(d){d.style.display="none";});
+                dd.style.display=open?"none":"block";
+              });
+            });
+            document.addEventListener("click",function(){
+              card.querySelectorAll(".watt-dropdown").forEach(function(d){d.style.display="none";});
+            });
+
+            render();
+          })();
+          </script>
         </div>
 
         <!-- 8. FREKVENSNERD -->
         <div class="diagram-card" id="d-frekvensnerd">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">🔄 Frekvensnerd <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
+              <span class="diagram-meta-name">🔄 Frekvensnerd <span class="status-tag status-finished">✓ Ferdig</span></span>
             </div>
-            <button class="info-btn">i</button>
+            <button class="info-btn" onclick="this.closest('.diagram-card').querySelector('.freq-back').style.display='flex';this.closest('.diagram-card').querySelector('.freq-front').style.display='none'">i</button>
           </div>
-          <div class="app-card">
-            <div class="app-card-title">Frekvensnerd</div>
-            <div style="display:flex;gap:8px;justify-content:center;margin-bottom:14px;">
-              <div style="background:#1C1C1E;color:white;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;">Løping</div>
-              <div style="background:#F2F2F7;color:#888;border-radius:20px;padding:5px 14px;font-size:12px;">Sykling</div>
+          <div class="app-card" style="position:relative;">
+            <!-- FRONT -->
+            <div class="freq-front">
+              <div class="app-card-title">Stegfrekvens</div>
+              <!-- sport-toggle -->
+              <div style="display:flex;gap:8px;justify-content:center;margin-bottom:14px;">
+                <button class="freq-tab" data-sport="lop" style="background:#1C1C1E;color:white;border:none;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;">Løping</button>
+                <button class="freq-tab" data-sport="sykkel" style="background:#F2F2F7;color:#888;border:none;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:400;cursor:pointer;">Sykling</button>
+              </div>
+              <!-- akse -->
+              <div style="display:flex;padding-left:34px;margin-bottom:4px;">
+                <div class="freq-axis" style="flex:1;display:flex;justify-content:space-between;"></div>
+                <div style="width:34px;"></div>
+              </div>
+              <!-- rader -->
+              <div class="freq-rows" style="display:flex;flex-direction:column;gap:6px;"></div>
+              <!-- forklaring -->
+              <div style="display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:12px;padding-top:10px;border-top:1px solid #F0F0F0;">
+                <span style="display:inline-flex;align-items:center;font-size:10px;color:#999;"><span style="width:20px;height:12px;border-radius:4px;margin-right:6px;flex-shrink:0;background:var(--rosa-bg);border:1.5px dashed var(--rosa-acc);"></span><span class="freq-legend-zone">Optimalt 170–185 spm</span></span>
+                <span style="display:inline-flex;align-items:center;font-size:10px;color:#999;"><span style="width:20px;height:10px;border-radius:100px;margin-right:6px;flex-shrink:0;background:rgba(145,188,255,0.4);position:relative;overflow:hidden;"><span style="position:absolute;right:0;top:0;bottom:0;width:55%;background:#91BCFF;border-radius:100px;"></span></span>Intervall · % i sone</span>
+              </div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-mia" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">MK</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:92%;height:100%;background:#91BCFF;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">182 spm</div></div></div>
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-sara" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">SL</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:84%;height:100%;background:#FFA39B;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">174 spm</div></div></div>
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-lars" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">LA</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:80%;height:100%;background:#F8C696;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">168 spm</div></div></div>
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-erik" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">EH</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:74%;height:100%;background:#8FD6E7;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">162 spm</div></div></div>
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-nora" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">NO</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:68%;height:100%;background:#B7A0EC;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">155 spm</div></div></div>
+            <!-- BACK (info-flipp) -->
+            <div class="freq-back" style="display:none;position:absolute;inset:0;background:#1C1C1E;border-radius:16px;padding:22px 22px 20px;color:#fff;flex-direction:column;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><span style="font-size:18px;">🔄</span><span style="font-size:16px;font-weight:700;">Frekvensnerd</span></div>
+              <p style="font-size:12.5px;line-height:1.65;color:#D6D6D6;margin:0;">Hver pille viser <b style="color:#fff;">frekvensintervallet</b> (laveste–høyeste steg-/tråkkfrekvens) en deltaker holdt i perioden. Det <b style="color:#FFB2E3;">rosa feltet</b> er det optimale området.</p>
+              <p style="font-size:12.5px;line-height:1.65;color:#D6D6D6;margin-top:12px;">Delen av pillen <b style="color:#FFB2E3;">inni sonen</b> er i full farge; delen utenfor er dempet. Prosenten viser hvor stor andel av intervallet som lå optimalt. Velg sport med knappen — krever relevant måleutstyr.</p>
+              <button onclick="this.closest('.diagram-card').querySelector('.freq-back').style.display='none';this.closest('.diagram-card').querySelector('.freq-front').style.display='block'" style="margin-top:auto;align-self:flex-start;padding:8px 16px;border-radius:8px;border:1.5px solid #444;background:transparent;color:#fff;font-size:12px;font-weight:600;cursor:pointer;">← Tilbake</button>
             </div>
-            <p style="font-size:11px;color:#aaa;margin-top:14px;text-align:center;">Optimal løpefrekvens: 170–185 spm</p>
           </div>
+          <script>
+          (function(){
+            var card = document.getElementById("d-frekvensnerd");
+            // deltakere: id (initialer) + palettfarge
+            var MEMBERS = [
+              { id:"MK", color:"#91BCFF" },
+              { id:"SL", color:"#FFA39B" },
+              { id:"LA", color:"#F8C696" },
+              { id:"EH", color:"#8FD6E7" },
+              { id:"NO", color:"#B7A0EC" }
+            ];
+            // data per sport: [min,maks]-intervall gjennom perioden
+            var DATA = {
+              lop: {
+                unit:"spm", title:"Stegfrekvens", min:140, max:200, opt:[170,185],
+                ticks:[140,155,170,185,200],
+                ranges:{ MK:[176,192], SL:[171,184], LA:[162,178], EH:[168,183], NO:[150,167] }
+              },
+              sykkel: {
+                unit:"RPM", title:"Tråkkfrekvens", min:55, max:115, opt:[80,100],
+                ticks:[55,70,85,100,115],
+                ranges:{ MK:[88,106], SL:[82,99], LA:[74,92], EH:[79,97], NO:[60,78] }
+              }
+            };
+            var state = { sport:"lop" };
+
+            function render(){
+              var d = DATA[state.sport];
+              var span = d.max - d.min;
+              function pct(v){ return ((v - d.min) / span) * 100; }
+              var optLo = pct(d.opt[0]), optHi = pct(d.opt[1]);
+
+              // tittel + akse + forklaring
+              card.querySelector(".app-card-title").textContent = d.title;
+              var axis = card.querySelector(".freq-axis");
+              axis.innerHTML = "";
+              d.ticks.forEach(function(t){
+                var s = document.createElement("span");
+                s.textContent = t;
+                s.style.cssText = "font-size:9.5px;color:#bbb;font-weight:500;";
+                axis.appendChild(s);
+              });
+              card.querySelector(".freq-legend-zone").textContent =
+                "Optimalt " + d.opt[0] + "–" + d.opt[1] + " " + d.unit;
+
+              // rader
+              var wrap = card.querySelector(".freq-rows");
+              wrap.innerHTML = "";
+              MEMBERS.forEach(function(m){
+                var r = d.ranges[m.id], lo = r[0], hi = r[1];
+                var loP = pct(lo), hiP = pct(hi);
+                var segLo = Math.max(loP, optLo), segHi = Math.min(hiP, optHi);
+                var hasOv = segHi > segLo;
+                var overlap = Math.max(0, Math.min(hi, d.opt[1]) - Math.max(lo, d.opt[0]));
+                var inPct = Math.round((overlap / (hi - lo)) * 100);
+
+                var row = document.createElement("div");
+                row.style.cssText = "display:flex;align-items:center;";
+                row.innerHTML =
+                  '<div style="width:34px;flex-shrink:0;">' +
+                    '<div style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:\'DM Sans\',sans-serif;font-size:11px;font-weight:600;color:#fff;background:' + m.color + ';">' + m.id + '</div>' +
+                  '</div>' +
+                  '<div style="flex:1;height:24px;position:relative;">' +
+                    // sone-felt (rosa, appens hovedfarge)
+                    '<div style="position:absolute;top:2px;bottom:2px;left:' + optLo + '%;width:' + (optHi - optLo) + '%;background:var(--rosa-bg);border:1.5px dashed var(--rosa-acc);border-radius:8px;z-index:0;"></div>' +
+                    // intervall-pille (dempet)
+                    '<div style="position:absolute;top:50%;transform:translateY(-50%);left:' + loP + '%;width:' + (hiP - loP) + '%;height:16px;background:' + m.color + ';opacity:0.4;border-radius:100px;z-index:1;"></div>' +
+                    // overlapp-del (full farge)
+                    (hasOv ? '<div style="position:absolute;top:50%;transform:translateY(-50%);left:' + segLo + '%;width:' + (segHi - segLo) + '%;height:16px;background:' + m.color + ';border-radius:100px;z-index:2;box-shadow:0 1px 4px ' + m.color + '80;"></div>' : '') +
+                  '</div>' +
+                  '<div style="width:34px;display:flex;justify-content:flex-end;flex-shrink:0;">' +
+                    '<span style="font-size:11.5px;font-weight:700;white-space:nowrap;color:' + (inPct >= 50 ? "var(--rosa-acc)" : "#B0B0B6") + ';">' + inPct + '%</span>' +
+                  '</div>';
+                wrap.appendChild(row);
+              });
+            }
+
+            // sport-toggle
+            card.querySelectorAll(".freq-tab").forEach(function(tab){
+              tab.addEventListener("click", function(){
+                state.sport = tab.getAttribute("data-sport");
+                card.querySelectorAll(".freq-tab").forEach(function(t){
+                  var on = t.getAttribute("data-sport") === state.sport;
+                  t.style.background = on ? "#1C1C1E" : "#F2F2F7";
+                  t.style.color = on ? "#fff" : "#888";
+                  t.style.fontWeight = on ? "600" : "400";
+                });
+                render();
+              });
+            });
+
+            render();
+          })();
+          </script>
         </div>
 
         <!-- 9. TOUR DE KONKA -->
