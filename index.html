@@ -2380,25 +2380,163 @@ footer p {
         <div class="diagram-card" id="d-frekvensnerd">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">🔄 Frekvensnerd <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
+              <span class="diagram-meta-name">🔄 Frekvensnerd <span class="status-tag status-finished">✓ Ferdig</span></span>
             </div>
-            <button class="info-btn">i</button>
+            <button class="info-btn" onclick="this.closest('.diagram-card').querySelector('.freq-back').style.display='flex';this.closest('.diagram-card').querySelector('.freq-front').style.display='block'">i</button>
           </div>
-          <div class="app-card">
-            <div class="app-card-title">Frekvensnerd</div>
-            <div style="display:flex;gap:8px;justify-content:center;margin-bottom:14px;">
-              <div style="background:#1C1C1E;color:white;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;">Løping</div>
-              <div style="background:#F2F2F7;color:#888;border-radius:20px;padding:5px 14px;font-size:12px;">Sykling</div>
+          <div class="app-card" style="position:relative;">
+            <!-- FRONT -->
+            <div class="freq-front">
+              <!-- Tittel midtstilt på egen linje -->
+              <div class="app-card-title freq-title">Stegfrekvens</div>
+
+              <!-- Sport-knapper -->
+              <div style="display:flex;gap:8px;justify-content:center;margin-bottom:14px;">
+                <button class="freq-toggle" data-sport="lop" style="background:#1C1C1E;color:#fff;border:none;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">Løping</button>
+                <button class="freq-toggle" data-sport="sykkel" style="background:#F2F2F7;color:#888;border:none;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:400;cursor:pointer;font-family:'DM Sans',sans-serif;">Sykling</button>
+              </div>
+
+              <!-- Akse-skala -->
+              <div style="display:flex;padding-left:34px;margin-bottom:4px;">
+                <div class="freq-ticks" style="flex:1;display:flex;justify-content:space-between;"></div>
+                <div style="width:34px;"></div>
+              </div>
+
+              <!-- Rader — tett pakket -->
+              <div class="freq-rows" style="display:flex;flex-direction:column;gap:6px;"></div>
+
+              <!-- Forklaring — én kompakt linje -->
+              <div style="display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:12px;padding-top:10px;border-top:1px solid #F0F0F0;">
+                <span style="display:inline-flex;align-items:center;font-size:10px;color:#999;">
+                  <span class="freq-legend-zone" style="width:20px;height:12px;border-radius:4px;margin-right:6px;flex-shrink:0;background:rgba(255,178,227,0.18);border:1.5px dashed #E880C4;"></span>
+                  <span class="freq-legend-opt">Optimalt 170–185 spm</span>
+                </span>
+                <span style="display:inline-flex;align-items:center;font-size:10px;color:#999;">
+                  <span style="width:20px;height:10px;border-radius:100px;margin-right:6px;flex-shrink:0;background:rgba(145,188,255,0.4);position:relative;overflow:hidden;">
+                    <span style="position:absolute;right:0;top:0;bottom:0;width:55%;background:#91BCFF;border-radius:100px;"></span>
+                  </span>
+                  Intervall · % i sone
+                </span>
+              </div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-mia" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">MK</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:92%;height:100%;background:#91BCFF;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">182 spm</div></div></div>
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-sara" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">SL</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:84%;height:100%;background:#FFA39B;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">174 spm</div></div></div>
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-lars" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">LA</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:80%;height:100%;background:#F8C696;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">168 spm</div></div></div>
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-erik" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">EH</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:74%;height:100%;background:#8FD6E7;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">162 spm</div></div></div>
-              <div style="display:flex;align-items:center;gap:12px;"><div class="pc p-nora" style="width:36px;height:36px;font-size:13px;flex-shrink:0;">NO</div><div style="flex:1;height:36px;background:#F2F2F7;border-radius:100px;overflow:hidden;"><div style="width:68%;height:100%;background:#B7A0EC;border-radius:100px;display:flex;align-items:center;padding-left:10px;font-size:13px;font-weight:600;color:white;">155 spm</div></div></div>
+
+            <!-- BACK (info-flipp) -->
+            <div class="freq-back" style="display:none;position:absolute;inset:0;background:#fff;border-radius:16px;padding:14px 18px 16px;flex-direction:column;gap:7px;">
+              <div class="app-card-title" style="margin-bottom:2px;">Frekvensnerd</div>
+              <p style="font-size:12.5px;line-height:1.5;color:#444;margin:0;">Hver pille viser <strong>frekvensintervallet</strong> (laveste–høyeste) en deltaker holdt gjennom perioden. Det fargede feltet er det <strong>optimale området</strong>.</p>
+              <p style="font-size:12.5px;line-height:1.5;color:#444;margin:0;">Delen av pillen <strong style="color:#C050A0;">inni sonen</strong> er i full farge; delen utenfor er dempet. Prosenten viser hvor stor andel av intervallet som lå optimalt.</p>
+              <p style="font-size:12.5px;line-height:1.5;color:#aaa;margin:2px 0 0;">Velg sport med knappen. Krever relevant måleutstyr.</p>
+              <button onclick="this.closest('.diagram-card').querySelector('.freq-back').style.display='none';this.closest('.diagram-card').querySelector('.freq-front').style.display='block'" style="margin-top:6px;align-self:flex-start;padding:7px 14px;border-radius:8px;border:1.5px solid #ddd;background:transparent;color:#333;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">← Tilbake</button>
             </div>
-            <p style="font-size:11px;color:#aaa;margin-top:14px;text-align:center;">Optimal løpefrekvens: 170–185 spm</p>
           </div>
+          <script>
+          (function(){
+            var card = document.getElementById("d-frekvensnerd");
+            var PALETTE = {
+              korall:{bar:"#FFA39B"}, fersken:{bar:"#F8C696"}, gull:{bar:"#FAD067"},
+              mint:{bar:"#8FD6E7"}, kornblomst:{bar:"#91BCFF"}, lavendel:{bar:"#B7A0EC"}, rosa:{bar:"#FFB2E3"}
+            };
+            var ZONE = { edge:"#E880C4", fill:"rgba(255,178,227,0.18)", text:"#C050A0" };
+            var MEMBERS = [
+              {id:"m1", initials:"MK", color:"kornblomst"},
+              {id:"m2", initials:"SL", color:"korall"},
+              {id:"m3", initials:"LA", color:"fersken"},
+              {id:"m4", initials:"EH", color:"mint"},
+              {id:"m5", initials:"NO", color:"lavendel"}
+            ];
+            var DATA = {
+              lop: {
+                unit:"spm", axisMin:140, axisMax:200, optimal:[170,185],
+                label:"Stegfrekvens", ticks:[140,155,170,185,200],
+                ranges:{ m1:[176,192], m2:[171,184], m3:[162,178], m4:[168,183], m5:[150,167] }
+              },
+              sykkel: {
+                unit:"RPM", axisMin:55, axisMax:115, optimal:[80,100],
+                label:"Tråkkfrekvens", ticks:[55,70,85,100,115],
+                ranges:{ m1:[88,106], m2:[82,99], m3:[74,92], m4:[79,97], m5:[60,78] }
+              }
+            };
+            var sport = "lop";
+
+            function render(){
+              var d = DATA[sport];
+              var span = d.axisMax - d.axisMin;
+              function pct(v){ return ((v - d.axisMin) / span) * 100; }
+              var optA = d.optimal[0], optB = d.optimal[1];
+              var optLoPct = pct(optA), optHiPct = pct(optB);
+
+              // Tittel
+              card.querySelector(".freq-title").textContent = d.label;
+
+              // Toggle-stiler
+              card.querySelectorAll(".freq-toggle").forEach(function(btn){
+                var on = btn.getAttribute("data-sport") === sport;
+                btn.style.background = on ? "#1C1C1E" : "#F2F2F7";
+                btn.style.color = on ? "#fff" : "#888";
+                btn.style.fontWeight = on ? "600" : "400";
+              });
+
+              // Akse-ticks
+              var ticksEl = card.querySelector(".freq-ticks");
+              ticksEl.innerHTML = "";
+              d.ticks.forEach(function(t){
+                var s = document.createElement("span");
+                s.style.cssText = "font-size:9.5px;color:#bbb;font-weight:500;";
+                s.textContent = t;
+                ticksEl.appendChild(s);
+              });
+
+              // Rader
+              var rowsEl = card.querySelector(".freq-rows");
+              rowsEl.innerHTML = "";
+              MEMBERS.forEach(function(m){
+                var r = d.ranges[m.id];
+                var lo = r[0], hi = r[1];
+                var overlap = Math.max(0, Math.min(hi, optB) - Math.max(lo, optA));
+                var inPct = Math.round((overlap / (hi - lo)) * 100);
+                var loPct = pct(lo), hiPct = pct(hi);
+                var c = PALETTE[m.color];
+                var segLo = Math.max(loPct, optLoPct);
+                var segHi = Math.min(hiPct, optHiPct);
+                var hasOverlap = segHi > segLo;
+
+                var row = document.createElement("div");
+                row.style.cssText = "display:flex;align-items:center;";
+
+                var overlapHtml = hasOverlap
+                  ? '<div style="position:absolute;top:50%;transform:translateY(-50%);left:'+segLo+'%;width:'+(segHi-segLo)+'%;height:16px;background:'+c.bar+';border-radius:100px;z-index:2;box-shadow:0 1px 4px '+c.bar+'80;"></div>'
+                  : '';
+
+                row.innerHTML =
+                  '<div style="width:34px;flex-shrink:0;">' +
+                    '<div style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:\'DM Sans\',sans-serif;font-size:11px;font-weight:600;color:#fff;background:'+c.bar+';">'+m.initials+'</div>' +
+                  '</div>' +
+                  '<div style="flex:1;height:24px;position:relative;">' +
+                    '<div style="position:absolute;top:2px;bottom:2px;left:'+optLoPct+'%;width:'+(optHiPct-optLoPct)+'%;background:'+ZONE.fill+';border:1.5px dashed '+ZONE.edge+';border-radius:8px;z-index:0;"></div>' +
+                    '<div style="position:absolute;top:50%;transform:translateY(-50%);left:'+loPct+'%;width:'+(hiPct-loPct)+'%;height:16px;background:'+c.bar+';opacity:0.4;border-radius:100px;z-index:1;"></div>' +
+                    overlapHtml +
+                  '</div>' +
+                  '<div style="width:34px;display:flex;justify-content:flex-end;flex-shrink:0;">' +
+                    '<span style="font-size:11.5px;font-weight:700;white-space:nowrap;color:'+(inPct>=50?ZONE.text:"#B0B0B6")+';">'+inPct+'%</span>' +
+                  '</div>';
+
+                rowsEl.appendChild(row);
+              });
+
+              // Forklaring
+              card.querySelector(".freq-legend-opt").textContent = "Optimalt "+optA+"–"+optB+" "+d.unit;
+            }
+
+            card.querySelectorAll(".freq-toggle").forEach(function(btn){
+              btn.addEventListener("click", function(){
+                sport = btn.getAttribute("data-sport");
+                render();
+              });
+            });
+
+            render();
+          })();
+          </script>
         </div>
 
         <!-- 8. TOUR DE KONKA -->
