@@ -1877,7 +1877,7 @@ footer p {
         <div class="diagram-card" id="d-tidspunktet">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;">
             <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-              <span class="diagram-meta-name">🕐 Tidspunktet <span class="status-tag status-inprogress">⏳ Under arbeid</span></span>
+              <span class="diagram-meta-name">🕐 Tidspunktet <span class="status-tag status-finished">✓ Ferdig</span></span>
             </div>
             <button class="info-btn" onclick="document.getElementById('tid-back').style.display='flex';document.getElementById('tid-front').style.display='none'">i</button>
           </div>
@@ -1886,9 +1886,10 @@ footer p {
             <div style="display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:#1C1C1E;margin-bottom:4px;">
               <span style="font-size:19px;">🕐</span>Tidspunktet
             </div>
-            <svg id="tid-svg" viewBox="0 0 380 160" style="width:100%;display:block;overflow:visible;"></svg>
-            <!-- Participant chips -->
-            <div id="tid-chips" style="display:flex;flex-wrap:wrap;gap:7px;padding:8px 4px 2px;"></div>
+            <div style="font-size:11px;color:#aaa;margin-bottom:10px;">Når på dagen trener dere vanligvis?</div>
+            <!-- Kort-rutenett -->
+            <div id="tid-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;"></div>
+            <p style="font-size:10.5px;color:#aaa;text-align:center;margin:12px 0 0;">Trykk på et kort for å se det typiske klokkeslettet</p>
           </div>
           <!-- BACK -->
           <div id="tid-back" style="display:none;background:#fff;border-radius:12px;padding:18px;flex-direction:column;gap:10px;margin:0 -1px -1px;">
@@ -1896,8 +1897,8 @@ footer p {
               <div style="font-size:15px;font-weight:700;color:#1C1C1E;">Om Tidspunktet</div>
               <button onclick="document.getElementById('tid-back').style.display='none';document.getElementById('tid-front').style.display='block'" style="width:30px;height:30px;border-radius:50%;background:#F2F2F7;border:none;cursor:pointer;font-size:18px;color:#888;display:flex;align-items:center;justify-content:center;">×</button>
             </div>
-            <p style="font-size:13px;color:#555;line-height:1.7;margin:0;">Ringen viser dagtimene 04:00–23:00 delt i morgen, dag, ettermiddag og kveld. Buene utenfor viser tidsvinduet til hver deltaker.</p>
-            <p style="font-size:13px;color:#555;line-height:1.7;margin:0;">Trykk på en boks for å fremheve deltakeren og se tidsvinduet i midten av ringen.</p>
+            <p style="font-size:13px;color:#555;line-height:1.7;margin:0;">Hver deltaker får en kategori basert på når de vanligvis trener — morgenfugl 🌅, etter jobb 💼, kveldsøkter 🌙 og så videre. Trykk på et kort for å se det typiske klokkeslettet.</p>
+            <p style="font-size:13px;color:#555;line-height:1.7;margin:0;">Trener noen konsekvent på to forskjellige tidspunkter (minst 3 ganger per uke i begge), merkes de som «Variert» 🔄 og viser begge tidsvinduene.</p>
             <div id="tid-back-list" style="display:flex;flex-direction:column;gap:8px;margin-top:4px;"></div>
           </div>
         </div>
@@ -1910,77 +1911,57 @@ footer p {
             {id:"S",name:"Sara Lund",   color:"#8FD6E7", windows:[{peak:17.5,ws:16.5,we:18.5}]},
             {id:"N",name:"Nora Viken",  color:"#B7A0EC", windows:[{peak:6.0,ws:5.25,we:7.0},{peak:22.0,ws:21.0,we:22.75}]}
           ];
-          var SECTIONS=[
-            {from:4,to:8,  color:"#FFF0C2",ink:"#B8860B"},
-            {from:8,to:15, color:"#CCE0FF",ink:"#2563A8"},
-            {from:15,to:18,color:"#FFD6EE",ink:"#B03580"},
-            {from:18,to:23,color:"#DDD4F7",ink:"#5B35A8"}
-          ];
-          function labels(ws){ var l=ws.map(function(w){return fmtH(w.ws)+"–"+fmtH(w.we);}); if(ws.length>1)return"Dobbelttrener"; var pk=ws[0].peak; if(pk<8)return"Morgenfugl"; if(pk<12)return"Formiddagstrener"; if(pk<14)return"Lunsjtimer"; if(pk<17)return"Ettermiddagstrener"; if(pk<20)return"Etter jobb"; return"Nattugla"; }
-          function fmtH(h){var hh=Math.floor(h),mm=Math.round((h-hh)*60);return(hh<10?"0":"")+hh+":"+(mm<10?"0":"")+mm;}
-          var W=380,Ro=95,Ri=56,CX=W/2,CY=Ro+10,LANE_W=4,LANE_GAP=2.5;
-          var sorted=[].concat(PEOPLE).sort(function(a,b){return a.windows[0].peak-b.windows[0].peak;});
-          var laneR={};
-          sorted.forEach(function(p,i){laneR[p.id]=Ro+10+i*(LANE_W+LANE_GAP);});
-          var H=CY+16;
-          function hToA(h){return((Math.max(4,Math.min(23,h))-4)/19)*Math.PI;}
-          function ptAt(r,a){return{x:CX-r*Math.cos(a),y:CY-r*Math.sin(a)};}
-          function arcD(r,h1,h2){var a1=hToA(h1),a2=hToA(h2),s=ptAt(r,a1),e=ptAt(r,a2),large=Math.abs(a2-a1)>Math.PI?1:0;return"M "+s.x+" "+s.y+" A "+r+" "+r+" 0 "+large+" 1 "+e.x+" "+e.y;}
-          function segD(Ro,Ri,h1,h2,iF,iL){var G=0.3,h1g=iF?h1:h1+G,h2g=iL?h2:h2-G;if(h2g<=h1g)return"";var a1=hToA(h1g),a2=hToA(h2g),so=ptAt(Ro,a1),eo=ptAt(Ro,a2),si=ptAt(Ri,a2),ei=ptAt(Ri,a1),large=Math.abs(a2-a1)>Math.PI?1:0;return"M "+so.x+" "+so.y+" A "+Ro+" "+Ro+" 0 "+large+" 1 "+eo.x+" "+eo.y+" L "+si.x+" "+si.y+" A "+Ri+" "+Ri+" 0 "+large+" 0 "+ei.x+" "+ei.y+" Z";}
-          var ns="http://www.w3.org/2000/svg";
-          var svg=document.getElementById("tid-svg");
-          svg.setAttribute("viewBox","0 0 "+W+" "+H);
-          // Clip
-          var defs=document.createElementNS(ns,"defs");
-          var cp=document.createElementNS(ns,"clipPath"); cp.setAttribute("id","tidHalf");
-          var cr=document.createElementNS(ns,"rect"); cr.setAttribute("x",0);cr.setAttribute("y",0);cr.setAttribute("width",W);cr.setAttribute("height",CY+1);
-          cp.appendChild(cr); defs.appendChild(cp); svg.appendChild(defs);
-          // Donut segments
-          var g=document.createElementNS(ns,"g"); g.setAttribute("clip-path","url(#tidHalf)");
-          SECTIONS.forEach(function(s,i){var p=document.createElementNS(ns,"path");p.setAttribute("d",segD(Ro,Ri,s.from,s.to,i===0,i===SECTIONS.length-1));p.setAttribute("fill",s.color);g.appendChild(p);});
-          svg.appendChild(g);
-          // Ticks
-          for(var h=4;h<=23;h++){var a=hToA(h),ev3=h%3===0,ev6=h%6===0,tl=ev3?10:5,sec=SECTIONS.find(function(s){return h>=s.from&&h<=s.to;})||SECTIONS[SECTIONS.length-1],o=ptAt(Ro,a),inner=ptAt(Ro-tl,a);var line=document.createElementNS(ns,"line");line.setAttribute("x1",o.x);line.setAttribute("y1",o.y);line.setAttribute("x2",inner.x);line.setAttribute("y2",inner.y);line.setAttribute("stroke",sec.ink);line.setAttribute("stroke-width",ev3?"1.4":"0.8");line.setAttribute("opacity",ev3?"0.55":"0.28");svg.appendChild(line);if(ev3){var lp=ptAt(Ro-tl-8,a);var t=document.createElementNS(ns,"text");t.setAttribute("x",lp.x);t.setAttribute("y",lp.y);t.setAttribute("text-anchor","middle");t.setAttribute("dominant-baseline","middle");t.setAttribute("font-size",ev6?"8":"7");t.setAttribute("font-weight",ev6?"700":"500");t.setAttribute("fill",sec.ink);t.setAttribute("opacity",ev6?"0.8":"0.5");t.setAttribute("font-family","system-ui,sans-serif");t.textContent=String(h).padStart(2,"0");svg.appendChild(t);}}
-          // Baseline labels
-          var lp=ptAt(Ro,hToA(4)),rp=ptAt(Ro,hToA(23));
-          function addTxt(x,y,txt,anchor){var t=document.createElementNS(ns,"text");t.setAttribute("x",x);t.setAttribute("y",y);t.setAttribute("text-anchor",anchor);t.setAttribute("dominant-baseline","middle");t.setAttribute("font-size","8");t.setAttribute("font-weight","600");t.setAttribute("fill","#8E8E93");t.setAttribute("font-family","system-ui");t.textContent=txt;svg.appendChild(t);}
-          addTxt(lp.x-7,lp.y,"04","end"); addTxt(rp.x+7,rp.y,"23","start");
-          // Emoji
-          function addEmoji(x,y,em){var t=document.createElementNS(ns,"text");t.setAttribute("x",x);t.setAttribute("y",y+14);t.setAttribute("text-anchor","middle");t.setAttribute("font-size","13");t.textContent=em;svg.appendChild(t);}
-          addEmoji(lp.x,lp.y,"🌅"); addEmoji(rp.x,rp.y,"🌙");
-          // Centre text placeholder
-          var cg=document.createElementNS(ns,"g"); cg.setAttribute("id","tid-centre"); svg.appendChild(cg);
-          // Lanes
-          var laneG=document.createElementNS(ns,"g"); svg.appendChild(laneG);
-          var selected=null;
-          function redraw(){
-            while(laneG.firstChild) laneG.removeChild(laneG.firstChild);
-            while(cg.firstChild) cg.removeChild(cg.firstChild);
-            sorted.forEach(function(p){
-              var r=laneR[p.id],isSel=selected===p.id,dim=selected!==null&&!isSel;
-              if(isSel){var track=document.createElementNS(ns,"path");track.setAttribute("d",arcD(r,4,23));track.setAttribute("fill","none");track.setAttribute("stroke",p.color);track.setAttribute("stroke-width",LANE_W);track.setAttribute("stroke-linecap","round");track.setAttribute("opacity","0.18");laneG.appendChild(track);}
-              p.windows.forEach(function(w){var arc=document.createElementNS(ns,"path");arc.setAttribute("d",arcD(r,w.ws,w.we));arc.setAttribute("fill","none");arc.setAttribute("stroke",p.color);arc.setAttribute("stroke-width",LANE_W);arc.setAttribute("stroke-linecap","round");arc.setAttribute("opacity",dim?"0.08":isSel?"1":"0.75");laneG.appendChild(arc);});
-            });
-            if(selected){var sp=PEOPLE.find(function(p){return p.id===selected;});if(sp){var lines=sp.windows.map(function(w){return fmtH(w.ws)+"–"+fmtH(w.we);});var lh=14,tot=lines.length*lh;lines.forEach(function(line,i){var t=document.createElementNS(ns,"text");t.setAttribute("x",CX);t.setAttribute("y",CY-tot/2+i*lh+lh/2-6);t.setAttribute("text-anchor","middle");t.setAttribute("dominant-baseline","middle");t.setAttribute("font-size","10");t.setAttribute("font-weight","700");t.setAttribute("fill",sp.color);t.setAttribute("font-family","system-ui");t.textContent=line;cg.appendChild(t);});}}
-            // Update chip styles
-            document.querySelectorAll(".tid-chip").forEach(function(ch){var id=ch.dataset.id,isSel=id===selected;ch.style.border=isSel?"1.5px solid "+ch.dataset.color:"1.5px solid transparent";ch.style.background=isSel?ch.dataset.color+"18":"#F2F2F7";var span=ch.querySelector("span");if(span){span.style.fontWeight=isSel?"600":"400";span.style.color=isSel?"#1C1C1E":"#8E8E93";}});
+          var CATS = {
+            morgenfugl:  {label:"Morgenfugl",  emoji:"🌅", tint:"#FFF6DE", ink:"#B8860B"},
+            formiddag:   {label:"Formiddag",   emoji:"🌤️", tint:"#EAF2FF", ink:"#2563A8"},
+            lunsj:       {label:"Lunsjtimer",  emoji:"🥪", tint:"#EAF2FF", ink:"#2563A8"},
+            ettermiddag: {label:"Ettermiddag", emoji:"☀️", tint:"#FFEBF6", ink:"#B03580"},
+            etterjobb:   {label:"Etter jobb",  emoji:"💼", tint:"#FFEBF6", ink:"#B03580"},
+            kveld:       {label:"Kveldsøkter", emoji:"🌙", tint:"#F1ECFC", ink:"#5B35A8"},
+            dobbel:      {label:"Variert",     emoji:"🔄", tint:"#EAF7EF", ink:"#2E8B57"}
+          };
+          function catFor(ws){
+            if(ws.length>1) return "dobbel";
+            var pk=ws[0].peak;
+            if(pk<8)  return "morgenfugl";
+            if(pk<11) return "formiddag";
+            if(pk<14) return "lunsj";
+            if(pk<17) return "ettermiddag";
+            if(pk<20) return "etterjobb";
+            return "kveld";
           }
-          // Chips
-          var chips=document.getElementById("tid-chips");
-          PEOPLE.forEach(function(p){
-            var btn=document.createElement("button");
-            btn.className="tid-chip"; btn.dataset.id=p.id; btn.dataset.color=p.color;
-            btn.style.cssText="display:flex;align-items:center;gap:7px;padding:5px 10px 5px 5px;border-radius:20px;border:1.5px solid transparent;background:#F2F2F7;cursor:pointer;font-family:inherit;transition:all .18s;";
-            var av=document.createElement("div"); av.style.cssText="width:24px;height:24px;border-radius:50%;background:"+p.color+";display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0;"; av.textContent=p.id;
-            var sp=document.createElement("span"); sp.style.cssText="font-size:11px;color:#8E8E93;white-space:nowrap;"; sp.textContent=labels(p.windows);
-            btn.appendChild(av); btn.appendChild(sp);
-            btn.addEventListener("click",function(){selected=selected===p.id?null:p.id;redraw();});
-            chips.appendChild(btn);
-          });
-          // Back list
+          function fmtH(h){var hh=Math.floor(h),mm=Math.round((h-hh)*60);return(hh<10?"0":"")+hh+":"+(mm<10?"0":"")+mm;}
+          var revealed=null;
+          var grid=document.getElementById("tid-grid");
+          function buildCards(){
+            grid.innerHTML="";
+            PEOPLE.forEach(function(p){
+              var cat=CATS[catFor(p.windows)];
+              var isRev=revealed===p.id;
+              var btn=document.createElement("button");
+              btn.dataset.id=p.id;
+              btn.style.cssText="position:relative;background:"+cat.tint+";border-radius:14px;border:none;padding:11px 4px 9px;cursor:pointer;overflow:hidden;font-family:inherit;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;transition:transform .15s;";
+              var times=p.windows.map(function(w){return '<span style="font-size:10px;font-weight:700;color:'+cat.ink+';font-variant-numeric:tabular-nums;line-height:1.3;">'+fmtH(w.ws)+"–"+fmtH(w.we)+'</span>';}).join("");
+              if(isRev){
+                btn.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;gap:3px;"><span style="font-size:17px;">'+cat.emoji+'</span>'+times+'</div>';
+              } else {
+                btn.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;gap:5px;"><div style="width:34px;height:34px;border-radius:50%;background:'+p.color+';display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.15);">'+p.id+'</div><span style="font-size:10px;font-weight:700;color:'+cat.ink+';line-height:1.15;text-align:center;">'+cat.label+'</span></div>';
+              }
+              btn.addEventListener("click",function(){revealed=revealed===p.id?null:p.id;buildCards();});
+              grid.appendChild(btn);
+            });
+          }
+          buildCards();
+          // Back-liste
           var bl=document.getElementById("tid-back-list");
-          PEOPLE.forEach(function(p){var row=document.createElement("div");row.style.cssText="display:flex;align-items:center;gap:10px;";var av=document.createElement("div");av.style.cssText="width:30px;height:30px;border-radius:50%;background:"+p.color+";display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;";av.textContent=p.id;var txt=document.createElement("div");txt.innerHTML='<div style="font-size:13px;color:#1C1C1E;">'+p.name+'</div><div style="font-size:11px;color:#8E8E93;">'+labels(p.windows)+'</div>';row.appendChild(av);row.appendChild(txt);bl.appendChild(row);});
-          redraw();
+          PEOPLE.forEach(function(p){
+            var cat=CATS[catFor(p.windows)];
+            var times=p.windows.map(function(w){return fmtH(w.ws)+"–"+fmtH(w.we);}).join(", ");
+            var row=document.createElement("div");
+            row.style.cssText="display:flex;align-items:center;gap:10px;";
+            row.innerHTML='<div style="width:32px;height:32px;border-radius:50%;background:'+p.color+';display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;">'+p.id+'</div><div><div style="font-size:14px;color:#3A3A3C;">'+p.name+'</div><div style="font-size:11px;color:#8E8E93;">'+cat.emoji+" "+cat.label+" · "+times+'</div></div>';
+            bl.appendChild(row);
+          });
         })();
         </script>
 
