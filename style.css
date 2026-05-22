@@ -1,32 +1,84 @@
 :root {
-  /* Same palette as index.html */
-  --gold:      #FAD067;
-  --gold-acc:  #E8B830;
+  /* ════════════════════════════════════════════════════════════
+     TONAL FARGESKALA  (kilde: colorpalettev2 — Color Palette Studio)
+     Hver medlemsfarge har sju steg: 50 · 100 · 200 · 300(BASE) · 400 · 500.
+     BRUKSREGEL (konsekvent på tvers av systemet):
+       • 300  = BASE — fyll på sirkler/brikker, medlemsidentitet
+       • 400  = lett aksent — hårfine kanter, ikon-strek, dekor på lys flate
+       • 500  = TEKST & dyp aksent — navn/tall i medlemsfarge (best kontrast),
+                solide ikon på farget flate, hover
+       • 50/100 = soft bakgrunn (tinted surfaces, callouts)
+     ════════════════════════════════════════════════════════════ */
 
-  --blue:      #91BCFF;
-  --blue-acc:  #6A9FEE;
-  --blue-bg:   #EAF2FF;
+  /* KORALL */
+  --korall-50:#FFE8E6; --korall-100:#FFD0CB; --korall-200:#FFBAB3;
+  --korall-300:#FFA39B; --korall-400:#F07C72; --korall-500:#D95C52;
+  /* FERSKEN */
+  --fersken-50:#FEF0E0; --fersken-100:#FBDFC0; --fersken-200:#F9CEAA;
+  --fersken-300:#F8C696; --fersken-400:#E8A76A; --fersken-500:#CC8442;
+  /* GULL */
+  --gull-50:#FFFBE8; --gull-100:#FEF0C0; --gull-200:#FCE190;
+  --gull-300:#FAD067; --gull-400:#E0B034; --gull-500:#B88A18;
+  /* LYSEGUL  (200 og 300 er begge BASE i kilden; 300 = #F4EFA5) */
+  --lysegul-50:#FFFEEE; --lysegul-100:#FFFCC6; --lysegul-200:#FFF89E;
+  --lysegul-300:#F4EFA5; --lysegul-400:#D8D470; --lysegul-500:#B0AA3E;
+  /* MINT */
+  --mint-50:#E8F8FC; --mint-100:#C6EDF6; --mint-200:#AADEEE;
+  --mint-300:#8FD6E7; --mint-400:#5CB8D0; --mint-500:#3090AA;
+  /* KORNBLOMST */
+  --kornblomst-50:#EAF2FF; --kornblomst-100:#CCE0FF; --kornblomst-200:#AECEFF;
+  --kornblomst-300:#91BCFF; --kornblomst-400:#5E96F0; --kornblomst-500:#2E6CD4;
+  /* LAVENDEL */
+  --lavendel-50:#F0ECFC; --lavendel-100:#DDD4F7; --lavendel-200:#CABAF2;
+  --lavendel-300:#B7A0EC; --lavendel-400:#9074D8; --lavendel-500:#6A4CB8;
+  /* ROSA */
+  --rosa-50:#FFEEF9; --rosa-100:#FFD6F0; --rosa-200:#FFC4EA;
+  --rosa-300:#FFB2E3; --rosa-400:#E880C4; --rosa-500:#C050A0;
+  /* NØYTRALER */
+  --neu-0:#FFFFFF; --neu-50:#F7F7F7; --neu-100:#EFEFEF;
+  --neu-200:#D8D8D8; --neu-300:#B0B0B0; --neu-400:#888888; --neu-500:#555555; --neu-ink:#070707;
 
-  --rosa:      #FFB2E3;
-  --rosa-bg:   #FFEEF9;
-  --rosa-acc:  #E880C4;
-  --rosa-deep: #C050A0;
+  /* ── Semantiske aliaser (beholdt for bakoverkompatibilitet) ── */
+  --gold:      var(--gull-300);
+  --gold-acc:  #E8B830;               /* historisk gull-aksent (mellom 400/500) */
 
-  /* Extended palette for member colours (design-system specific) */
-  --korall:        #FFA39B;  --korall-light:    #FFE8E6;
-  --fersken:       #F8C696;  --fersken-light:   #FEF0E0;
-  --gull:          #FAD067;  --gull-light:      #FFFBE8;
-  --lysegul:       #FFF89E;  --lysegul-light:   #FFFEEE;
-  --mint:          #8FD6E7;  --mint-light:      #E8F8FC;
-  --kornblomst:    #91BCFF;  --kornblomst-light:#EAF2FF;
-  --lavendel:      #B7A0EC;  --lavendel-light:  #F0ECFC;
-  --rosa-pal:      #FFB2E3;  --rosa-pal-light:  #FFEEF9;
+  --blue:      var(--kornblomst-300);
+  --blue-acc:  #6A9FEE;               /* historisk blå-aksent (mellom 300/400) */
+  --blue-bg:   var(--kornblomst-50);
 
-  --white:  #FFFFFF;
-  --off:    #F7F7F7;
-  --line:   #EFEFEF;
-  --muted:  #888888;
+  --rosa:      var(--rosa-300);
+  --rosa-bg:   var(--rosa-50);
+  --rosa-acc:  var(--rosa-400);
+  --rosa-deep: var(--rosa-500);
+
+  /* Medlemsfarge-aliaser (BASE + light) */
+  --korall:     var(--korall-300);     --korall-light:    var(--korall-50);
+  --fersken:    var(--fersken-300);    --fersken-light:   var(--fersken-50);
+  --gull:       var(--gull-300);       --gull-light:      var(--gull-50);
+  --lysegul:    var(--lysegul-200);    --lysegul-light:   var(--lysegul-50);
+  --mint:       var(--mint-300);       --mint-light:      var(--mint-50);
+  --kornblomst: var(--kornblomst-300); --kornblomst-light:var(--kornblomst-50);
+  --lavendel:   var(--lavendel-300);   --lavendel-light:  var(--lavendel-50);
+  --rosa-pal:   var(--rosa-300);       --rosa-pal-light:  var(--rosa-50);
+
+  --white:  var(--neu-0);
+  --off:    var(--neu-50);
+  --line:   var(--neu-100);
+  --muted:  var(--neu-400);
   --text:   #111111;
+
+  /* ════════════════════════════════════════════════════════════
+     TYPOGRAFI-SKALA  (navngitte trinn — bruk disse på nye komponenter)
+       micro 9 · caption 11 · body 13 · label 14 · title 16 · h 20 · stat 38 · hero 60
+     ════════════════════════════════════════════════════════════ */
+  --fs-micro:   9px;   /* badges, aksetall, sub-labels      */
+  --fs-caption: 11px;  /* hjelpetekst, kort-labels          */
+  --fs-body:    13px;  /* brødtekst, listerader             */
+  --fs-label:   14px;  /* fremhevet label / mindre titler   */
+  --fs-title:   16px;  /* kort- og skjermtitler             */
+  --fs-h:       20px;  /* seksjons-/skjermheader            */
+  --fs-stat:    38px;  /* store talldisplay                 */
+  --fs-hero:    60px;  /* hero-tall                         */
 
   --max: 1100px;
   --pad: clamp(20px, 5vw, 60px);
@@ -390,7 +442,7 @@ footer p {
 }
 .step-bar .line { flex: 1; height: 2.5px; }
 .step-bar .active { background: #91BCFF; }
-.step-bar .inactive { background: #DDDDDD; }
+.step-bar .inactive { background: #D8D8D8; }
 .step-label {
   font-size: 10px; font-weight: 500;
   letter-spacing: 1.5px; text-transform: uppercase;
@@ -401,7 +453,7 @@ footer p {
 .form-label {
   font-size: 10px; font-weight: 500;
   letter-spacing: 1.5px; text-transform: uppercase;
-  color: #BBBBBB;
+  color: #B0B0B0;
   margin-bottom: 8px;
 }
 
@@ -452,7 +504,7 @@ footer p {
   font-size: 12px; color: #1C1C1E;
 }
 .user-chip .close-x {
-  color: #888; font-size: 11px;
+  color: #888888; font-size: 11px;
   margin-left: 2px;
 }
 
@@ -485,7 +537,7 @@ footer p {
 
 /* Segmented control (Uke / År) */
 .seg-ctrl {
-  background: #E8E8EE;
+  background: #EFEFEF;
   border-radius: 100px;
   padding: 3px;
   display: flex;
@@ -495,7 +547,7 @@ footer p {
   flex: 1; text-align: center;
   padding: 7px 0;
   font-size: 12px; font-weight: 500;
-  color: #888; border-radius: 100px;
+  color: #888888; border-radius: 100px;
 }
 .seg-ctrl .seg.active {
   background: white;
@@ -515,7 +567,7 @@ footer p {
   flex: 1; text-align: center;
   padding: 6px 8px;
   font-size: 11px; font-weight: 400;
-  color: #888;
+  color: #888888;
   border-radius: 100px;
   display: flex; align-items: center; justify-content: center; gap: 5px;
 }
@@ -546,7 +598,7 @@ footer p {
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .group-row .count { font-size: 11px; font-weight: 400; }
-.group-row .chevron { color: #CCC; font-size: 14px; line-height: 1; }
+.group-row .chevron { color: #D8D8D8; font-size: 14px; line-height: 1; }
 
 /* Group hero (light blue band with avatars) */
 .group-hero-band {
@@ -576,14 +628,14 @@ footer p {
 
 /* "Selected (n/n)" label */
 .selected-label {
-  font-size: 11px; color: #888;
+  font-size: 11px; color: #888888;
   margin-bottom: 10px; margin-top: 16px;
 }
 
 /* Underlined leave-group link */
 .leave-link {
   text-align: center; font-size: 13px;
-  color: #888; text-decoration: underline;
+  color: #888888; text-decoration: underline;
   margin: 14px 0 8px;
 }
 
@@ -621,7 +673,7 @@ footer p {
 .goal-row .goal-icon {
   width: 22px; height: 22px;
   display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; color: #888;
+  flex-shrink: 0; color: #888888;
 }
 .goal-row .goal-bar {
   flex: 1;
@@ -677,7 +729,7 @@ footer p {
   padding: 9px 0;
   font-size: 12px; font-weight: 500;
   letter-spacing: 1.5px;
-  color: #888;
+  color: #888888;
   border-radius: 100px;
 }
 .big-tabs .big-tab.active {
@@ -692,7 +744,7 @@ footer p {
   margin-bottom: 8px;
 }
 .compare-row .year {
-  font-size: 12px; color: #888;
+  font-size: 12px; color: #888888;
   min-width: 38px;
 }
 .compare-row .bar-wrap {
@@ -792,7 +844,7 @@ footer p {
   margin-bottom: 8px;
   display: block;
 }
-.big-btn.neutral { background: #555; }
+.big-btn.neutral { background: #555555; }
 .big-btn.destructive { background: #1C1C1E; }
 
 /* Vertical bar chart (monthly distribution) */
@@ -823,7 +875,7 @@ footer p {
   line-height: 1.1;
 }
 .mountain-hero .label {
-  font-size: 12px; color: #888;
+  font-size: 12px; color: #888888;
   margin-top: 2px;
 }
 
@@ -839,10 +891,10 @@ footer p {
 }
 .empty-state .icon {
   font-size: 18px;
-  color: #888;
+  color: #888888;
 }
 .empty-state .txt {
-  font-size: 12px; color: #888;
+  font-size: 12px; color: #888888;
 }
 
 /* Mini step-line chart (monthly accumulation) */
@@ -867,6 +919,130 @@ footer p {
   width: 18px;
   background: var(--rosa-acc);
   border-radius: 3px;
+}
+
+/* ═══════════════════════════════════════════
+   PERSONAL GOAL ROWS + BOTTOM SHEET
+   (Innstillinger — erstatter pink-callout-ikoner + avatar-velger)
+   ═══════════════════════════════════════════ */
+.pgoal-card {
+  background: #FFC8E1;
+  border-radius: 20px;
+  padding: 18px 16px 16px;
+}
+.pgoal-head { text-align: center; margin-bottom: 4px; }
+.pgoal-head-t { font-size: 15px; font-weight: 600; color: var(--text); }
+.pgoal-head-s { font-size: 12px; color: #C050A0; margin-top: 3px; line-height: 1.4; }
+.pgoal-rows { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.pgoal-row {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 11px 13px;
+  display: flex; align-items: center; gap: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  cursor: pointer;
+  transition: transform .12s ease;
+}
+.pgoal-row:active { transform: scale(.985); }
+.pgoal-ic {
+  width: 38px; height: 38px; border-radius: 11px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.pgoal-ic.okter { background: var(--blue-bg); }
+.pgoal-ic.dist  { background: var(--rosa-bg); }
+.pgoal-ic.tid   { background: var(--gull-light); }
+.pgoal-meta { flex: 1; min-width: 0; }
+.pgoal-lbl { font-size: 14px; font-weight: 600; color: #1C1C1E; line-height: 1.1; }
+.pgoal-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.pgoal-val { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
+.pgoal-num {
+  font-size: 15px; font-weight: 600; color: var(--text);
+  background: #F7F7F7; border-radius: 9px; padding: 5px 11px;
+  min-width: 62px; text-align: center;
+}
+.pgoal-unit { font-size: 11px; font-weight: 500; color: var(--muted); margin-left: 1px; }
+.pgoal-chev { color: #D8D8D8; font-size: 18px; line-height: 1; }
+
+/* Slett bruker — diskret tekstlenke (erstatter big-btn destructive) */
+.pgoal-leave-link {
+  text-align: center; font-size: 13px; color: var(--muted);
+  text-decoration: underline; margin-top: 12px; cursor: pointer;
+  background: none; border: none; width: 100%; font-family: inherit;
+  display: block;
+}
+
+/* Bottom sheet (Sett mål) */
+.pgoal-scrim {
+  position: absolute; inset: 0; background: rgba(0,0,0,.32);
+  display: flex; align-items: flex-end; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity .22s ease; z-index: 20;
+  border-radius: 16px;
+}
+.pgoal-scrim.open { opacity: 1; pointer-events: auto; }
+.pgoal-sheet {
+  width: 100%; background: var(--blue);
+  border-radius: 28px 28px 0 0;
+  padding: 22px 22px 30px;
+  transform: translateY(100%);
+  transition: transform .26s cubic-bezier(.3,.8,.4,1);
+  box-shadow: 0 -6px 30px rgba(0,0,0,.18);
+}
+.pgoal-scrim.open .pgoal-sheet { transform: translateY(0); }
+.pgoal-grip { width: 38px; height: 4px; border-radius: 3px; background: rgba(255,255,255,.55); margin: 0 auto 16px; }
+.pgoal-sheet-ic {
+  width: 54px; height: 54px; border-radius: 16px; background: rgba(255,255,255,.25);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;
+}
+.pgoal-sheet-title { text-align: center; font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+.pgoal-sheet-sub { text-align: center; font-size: 12.5px; color: rgba(255,255,255,.9); margin-bottom: 18px; }
+.pgoal-input-wrap { position: relative; margin-bottom: 16px; }
+.pgoal-input {
+  width: 100%; border: none; border-radius: 14px; background: #fff;
+  padding: 16px 60px 16px 18px; font-size: 22px; font-weight: 600;
+  color: var(--text); font-family: inherit; outline: none; text-align: center;
+}
+.pgoal-input-unit {
+  position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+  font-size: 14px; font-weight: 500; color: #B0B0B0;
+}
+.pgoal-save {
+  width: 100%; background: #fff; color: var(--blue-acc);
+  border: none; border-radius: 100px; padding: 14px; font-size: 15px; font-weight: 700;
+  font-family: inherit; cursor: pointer;
+}
+
+/* ═══════════════════════════════════════════
+   TRØYER (Tour de Konka klassement-ikoner)
+   Fem klassementer, hver en farget mynt med en hvit (eller grå) trøye-
+   silhuett. Brukes i Tour de Konka uke- og år-view.
+     gul = lengst distanse · grønn = mest aktiv · klatre = mest høydemeter
+     tid = mest treningstid · hvit = størst framgang
+   ═══════════════════════════════════════════ */
+.jersey {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1.5px solid #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,.25);
+  vertical-align: middle;
+}
+.jersey svg { width: 56%; height: 56%; }
+.jersey.gul    { background: var(--gull-300); }
+.jersey.gronn  { background: var(--lysegul-400); }
+.jersey.klatre { background: var(--rosa-300); }
+.jersey.tid    { background: var(--lavendel-300); }
+.jersey.hvit   { background: #fff; }
+.jersey-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 0; border-bottom: 1px solid var(--line);
+}
+.jersey-row:last-child { border-bottom: none; }
+.jersey-row .jr-label { font-size: var(--fs-body); font-weight: 600; color: var(--text); }
+.jersey-row .jr-desc  { font-size: var(--fs-caption); color: var(--muted); margin-top: 1px; }
+.jersey-row .jr-pts {
+  margin-left: auto; flex-shrink: 0;
+  font-size: var(--fs-caption); font-weight: 700; color: var(--neu-500);
+  background: var(--neu-50); border-radius: 100px; padding: 3px 10px;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ─── RESPONSIVE ─── */
