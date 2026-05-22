@@ -452,8 +452,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a =>
 // Vanilla-port av TourDeKonka.jsx (uke) og TourDeKonkaYear.jsx (år).
 // Begge tegnes inn i sine egne containere i diagram-kortet.
 (function(){
-  var card = document.getElementById("d-tourdekonka");
-  if (!card) return;
+  var card = document.getElementById("d-tourdekonka");        // uke-kort
+  var yearCard = document.getElementById("d-tourdekonka-aar"); // år-kort (eget kort)
+  if (!card && !yearCard) return;
 
   /* ── Palett (Konka colorpalettev2) ── */
   var PAL = {
@@ -730,7 +731,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a =>
   }
 
   function renderWeek(){
-    var host=card.querySelector(".tdk-week");
+    var host=card?card.querySelector(".tdk-week"):null;
     if(!host) return;
     var data=wComputeData();
     var jerseys=wJerseys();
@@ -993,7 +994,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a =>
   }
 
   function renderYear(){
-    var host=card.querySelector(".tdk-year");
+    var host=yearCard?yearCard.querySelector(".tdk-year"):null;
     if(!host) return;
     var TOP_N=3;
     var visibleRows=yState.expanded?Y_ROWS:Y_ROWS.slice(0,TOP_N);
@@ -1045,12 +1046,15 @@ document.querySelectorAll('a[href^="#"]').forEach(a =>
     if(bb) bb.addEventListener("click",function(){ yState.flipped=false; renderYear(); });
   }
 
-  /* ── Info-knapper (flip) for begge views ── */
-  card.querySelectorAll("[data-tdk-info]").forEach(function(btn){
-    btn.addEventListener("click",function(){
-      var which=btn.getAttribute("data-tdk-info");
-      if(which==="week"){ wState.flipped=true; renderWeek(); }
-      else { yState.flipped=true; renderYear(); }
+  /* ── Info-knapper (flip) for begge views ── (kan ligge i hvert sitt kort) */
+  [card, yearCard].forEach(function(c){
+    if(!c) return;
+    c.querySelectorAll("[data-tdk-info]").forEach(function(btn){
+      btn.addEventListener("click",function(){
+        var which=btn.getAttribute("data-tdk-info");
+        if(which==="week"){ wState.flipped=true; renderWeek(); }
+        else { yState.flipped=true; renderYear(); }
+      });
     });
   });
 
