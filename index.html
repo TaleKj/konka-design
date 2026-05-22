@@ -85,6 +85,7 @@
         <a href="#p-chips" class="toc-link"><span class="toc-num">ε</span>👤 Chips &amp; badges</a>
         <a href="#p-seg" class="toc-link"><span class="toc-num">ζ</span>🎚 Segmented control</a>
         <a href="#p-tabs" class="toc-link"><span class="toc-num">η</span>🗂 Tab pills</a>
+        <a href="#p-sportselect" class="toc-link"><span class="toc-num">η²</span>🏃 Sport selector</a>
         <a href="#p-bottomtabs" class="toc-link"><span class="toc-num">θ</span>📐 Bottom tab bar</a>
         <a href="#p-weekdays" class="toc-link"><span class="toc-num">ι</span>📅 Weekday tracker</a>
         <a href="#p-goal" class="toc-link"><span class="toc-num">κ</span>🎯 Goal progress</a>
@@ -94,10 +95,8 @@
         <a href="#p-bigbtn" class="toc-link"><span class="toc-num">ξ</span>⏹ Logg ut / Slett bruker</a>
         <a href="#p-goalrows" class="toc-link"><span class="toc-num">ξ²</span>🎯 Mål-rader</a>
         <a href="#p-jerseys" class="toc-link"><span class="toc-num">ξ³</span>🎽 Trøyer</a>
-        <a href="#p-pink" class="toc-link"><span class="toc-num">ο</span>🌸 Pink callout</a>
         <a href="#p-barchart" class="toc-link"><span class="toc-num">π</span>📊 Bar chart</a>
         <a href="#p-mountain" class="toc-link"><span class="toc-num">ρ</span>⛰️ Mountain hero</a>
-        <a href="#p-uservariant" class="toc-link"><span class="toc-num">σ</span>👤 User variant <span class="toc-nisje-dot"></span></a>
         <a href="#p-empty" class="toc-link"><span class="toc-num">τ</span>🌫 Empty state</a>
         <a href="#p-dots" class="toc-link"><span class="toc-num">φ</span>⚫ Page dots</a>
       </div>
@@ -1883,31 +1882,56 @@
         </div>
         <div class="app-card">
           <div class="app-card-title">Tab pills</div>
-          <div style="display:flex;flex-direction:column;gap:14px;">
-            <div>
-              <p style="font-size:10px;color:#B0B0B0;margin-bottom:6px;">Gruppedata-tabs</p>
-              <div class="tab-pills">
-                <div class="pill active">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1C1C1E" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                  TID
-                </div>
-                <div class="pill">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#B0B0B0" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3"/><path d="M12 11v10M8 21h8"/></svg>
-                  DISTANSE
-                </div>
-                <div class="pill">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#B0B0B0" stroke-width="2" stroke-linecap="round"><path d="M13 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7 17l2-6 3 3 2-4 2 7"/></svg>
-                  ØKTER
-                </div>
-              </div>
+          <p style="font-size:10px;color:#B0B0B0;margin-bottom:6px;">Gruppedata-tabs</p>
+          <div class="tab-pills">
+            <div class="pill active">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1C1C1E" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              TID
             </div>
-            <div>
-              <p style="font-size:10px;color:#B0B0B0;margin-bottom:6px;">Filter chips</p>
-              <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                <div style="background:#1C1C1E;color:white;border-radius:20px;padding:5px 12px;font-size:11px;font-weight:600;">Løping</div>
-                <div style="background:#F2F2F7;color:#888888;border-radius:20px;padding:5px 12px;font-size:11px;">Sykling</div>
-                <div style="background:#F2F2F7;color:#888888;border-radius:20px;padding:5px 12px;font-size:11px;">Svømming</div>
-              </div>
+            <div class="pill">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#B0B0B0" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3"/><path d="M12 11v10M8 21h8"/></svg>
+              DISTANSE
+            </div>
+            <div class="pill">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#B0B0B0" stroke-width="2" stroke-linecap="round"><path d="M13 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7 17l2-6 3 3 2-4 2 7"/></svg>
+              ØKTER
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sport selector -->
+      <div class="diagram-card" id="p-sportselect">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">🏃 Sport selector</span>
+            <span class="diagram-meta-desc">Knapp som åpner sport-meny</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Sport selector</div>
+          <p style="font-size:10px;color:#B0B0B0;margin-bottom:10px;">Én knapp i stedet for filter-chips: viser valgt sport med ikonbrikke + chevron, og åpner en meny av sporter ved trykk. Samme mønster som sport-velgeren i Løpebane-diagrammet.</p>
+          <p style="font-size:10px;color:#B0B0B0;margin-bottom:6px;">Lukket</p>
+          <div style="margin-bottom:16px;">
+            <button class="sport-select" type="button">
+              <span class="sport-select-ic">🏃</span>
+              <span class="sport-select-label">Løping</span>
+              <span class="sport-select-caret">▾</span>
+            </button>
+          </div>
+          <p style="font-size:10px;color:#B0B0B0;margin-bottom:6px;">Åpen (meny)</p>
+          <div style="position:relative;height:184px;">
+            <button class="sport-select open" type="button">
+              <span class="sport-select-ic">🏃</span>
+              <span class="sport-select-label">Løping</span>
+              <span class="sport-select-caret">▾</span>
+            </button>
+            <div class="sport-menu">
+              <div class="sport-menu-item selected"><span class="sport-menu-ic">🏃</span>Løping<span class="sport-menu-check">✓</span></div>
+              <div class="sport-menu-item"><span class="sport-menu-ic">🚴</span>Sykling</div>
+              <div class="sport-menu-item"><span class="sport-menu-ic">🏊</span>Svømming</div>
+              <div class="sport-menu-item"><span class="sport-menu-ic">⛷️</span>Langrenn</div>
             </div>
           </div>
         </div>
@@ -1951,7 +1975,7 @@
         </div>
         <div class="app-card">
           <div class="app-card-title">Weekday tracker</div>
-          <p style="font-size:10px;color:#B0B0B0;margin-bottom:10px;">All-yellow row = the personal "ukas mål" view. M-T-O-T-F-L-S in Norwegian.</p>
+          <p style="font-size:10px;color:#B0B0B0;margin-bottom:10px;">Alle fylt = den personlige "ukas mål"-visningen. Fylt rosa = aktiv dag. M-T-O-T-F-L-S på norsk.</p>
           <div class="weekday-row" style="margin:0 0 16px;">
             <div class="day">M</div>
             <div class="day">T</div>
@@ -1961,7 +1985,7 @@
             <div class="day">L</div>
             <div class="day">S</div>
           </div>
-          <p style="font-size:10px;color:#B0B0B0;margin-bottom:10px;">Mixed state (suggestion: filled = active day, empty = rest day)</p>
+          <p style="font-size:10px;color:#B0B0B0;margin-bottom:10px;">Blandet tilstand: fylt = aktiv dag, nøytral grå = hviledag.</p>
           <div class="weekday-row" style="margin:0;">
             <div class="day">M</div>
             <div class="day">T</div>
@@ -1991,13 +2015,13 @@
           </div>
           <div class="goal-row">
             <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="#888888" stroke="none"><circle cx="14" cy="4" r="2"/><path d="M11 7l-3 4 3 3v6h2v-7l-2-2 2-3z"/></svg></div>
-            <div class="goal-bar"><div class="goal-fill" style="width:62%;background:var(--blue);"></div><span class="goal-text" style="color:white;">62%</span></div>
+            <div class="goal-bar"><div class="goal-fill" style="width:62%;"></div><span class="goal-text" style="color:white;">62%</span></div>
           </div>
           <div class="goal-row">
             <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
-            <div class="goal-bar"><div class="goal-fill" style="width:100%;background:var(--rosa-acc);"></div><span class="goal-text" style="color:white;">100%</span></div>
+            <div class="goal-bar"><div class="goal-fill" style="width:100%;"></div><span class="goal-text" style="color:white;">100%</span></div>
           </div>
-          <p style="font-size:10px;color:#B0B0B0;margin-top:12px;line-height:1.5;">Empty: gray track · Filled: blue (in progress) · Complete: rosa</p>
+          <p style="font-size:10px;color:#B0B0B0;margin-top:12px;line-height:1.5;">Tom: grå spor · Fylt: rosa (pinkmedium) — samme farge uansett fyllingsgrad</p>
         </div>
       </div>
 
@@ -2016,17 +2040,10 @@
           <div class="compare-row">
             <span class="year">2026</span>
             <div class="bar-wrap"><div class="bar-fill" style="width:82%;background:#FFB2E3;"></div></div>
-            <span class="val">60t 8m</span>
           </div>
           <div class="compare-row">
             <span class="year">2025</span>
             <div class="bar-wrap"><div class="bar-fill" style="width:62%;background:#91BCFF;"></div></div>
-            <span class="val">45t 59m</span>
-          </div>
-          <div class="compare-row">
-            <span class="year">2024</span>
-            <div class="bar-wrap"><div class="bar-fill" style="width:42%;background:#B7A0EC;"></div></div>
-            <span class="val">31t 12m</span>
           </div>
         </div>
       </div>
@@ -2090,14 +2107,10 @@
           <p style="font-size:10px;color:#B0B0B0;margin-bottom:10px;">Gjeldende mønster på Innstillinger: <strong>Logg ut</strong> er den blå <code style="background:#F2F2F7;padding:1px 4px;border-radius:3px;font-size:10px;">.cta-btn</code> (samme som Neste-knappen ellers i flyten), og <strong>Slett bruker</strong> er en diskret grå tekstlenke <code style="background:#F2F2F7;padding:1px 4px;border-radius:3px;font-size:10px;">.pgoal-leave-link</code> — på linje med «Meld deg ut av gruppen».</p>
           <button class="cta-btn">Logg ut</button>
           <button class="pgoal-leave-link">Slett bruker</button>
-          <div style="height:16px;"></div>
-          <p style="font-size:10px;color:#B0B0B0;margin-bottom:6px;"><strong>Utfaset:</strong> de gamle fullbredde <code style="background:#F2F2F7;padding:1px 4px;border-radius:3px;font-size:10px;">.big-btn</code>-knappene (begge handlinger som solide knapper) brukes ikke lenger på denne siden — den doble solid-vekten gjorde Slett bruker for fremtredende.</p>
-          <button class="big-btn neutral" style="opacity:.45;">Logg ut</button>
-          <button class="big-btn destructive" style="opacity:.45;">Slett bruker</button>
         </div>
       </div>
 
-      <!-- Goal rows + bottom sheet (erstatter pink-callout-ikoner i Innstillinger) -->
+      <!-- Goal rows + bottom sheet (Innstillinger — ukentlige treningsmål) -->
       <div class="diagram-card" id="p-goalrows">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;">
           <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
@@ -2108,7 +2121,7 @@
         </div>
         <div class="app-card">
           <div class="app-card-title">Ukentlige treningsmål</div>
-          <p style="font-size:10px;color:#B0B0B0;margin-bottom:10px;">Erstatter de tre hvite sirklene i pink-callout. Hver målrad er trykkbar og åpner en bottom sheet for inntasting. Ikonene er hentet fra Gruppedata-toggle, hver i en avrundet brikke med en svak palett-tone: <strong>kornblomst for økter, rosa for distanse, gull for tid</strong>.</p>
+          <p style="font-size:10px;color:#B0B0B0;margin-bottom:10px;">Hver målrad er trykkbar og åpner en bottom sheet for inntasting. Ikonene er hentet fra Gruppedata-toggle, hver i en avrundet brikke med en svak palett-tone: <strong>kornblomst for økter, rosa for distanse, gull for tid</strong>.</p>
           <div class="pgoal-card">
             <div class="pgoal-head">
               <div class="pgoal-head-t">Sett ukentlige treningsmål</div>
@@ -2155,7 +2168,7 @@
           </div>
           <div class="jersey-row">
             <span class="jersey gronn"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 3 L4 6 L6 9 L8 8 V21 H16 V8 L18 9 L20 6 L16 3 L14 4 A2 2 0 0 1 10 4 Z"/></svg></span>
-            <div><div class="jr-label">Grønn trøye</div><div class="jr-desc">Mest aktiv · sport-nøytral</div></div>
+            <div><div class="jr-label">Grønn trøye</div><div class="jr-desc">Flest økter · sport-nøytral</div></div>
             <span class="jr-pts">2 p</span>
           </div>
           <div class="jersey-row">
@@ -2174,31 +2187,6 @@
             <span class="jr-pts">1,5 p</span>
           </div>
           <p style="font-size:10px;color:#B0B0B0;margin-top:10px;">Farger fra paletten: gull-300, lysegul-400, rosa-300, lavendel-300, hvit (grå silhuett). Gul ledertrøye markeres også som gul ramme rundt lederens navnesirkel i uke-viewet.</p>
-        </div>
-      </div>
-
-      <!-- Pink callout -->
-      <div class="diagram-card" id="p-pink">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
-          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-            <span class="diagram-meta-name">🌸 Pink callout</span>
-            <span class="diagram-meta-desc">Saturated pink call-to-action</span>
-          </div>
-          <button class="info-btn">i</button>
-        </div>
-        <div class="app-card">
-          <div class="app-card-title">Pink callout card</div>
-          <p style="font-size:10px;color:#B0B0B0;margin-bottom:10px;">Mettet rosa kort-mønster. <strong>Merk:</strong> ikon-varianten med tre hvite sirkler brukes ikke lenger på Innstillinger — den er erstattet av <a href="#p-goalrows" style="color:var(--rosa-acc);">Mål-rader</a>. Selve den rosa kortflaten beholdes som et gjenbrukbart callout-mønster.</p>
-          <div class="pink-callout" style="margin-bottom:24px;">
-            <p class="pink-callout-title">Sett ukentlige treningsmål</p>
-            <div class="pink-callout-icons">
-              <div class="pink-callout-icon" style="position:relative;">🧮<span style="position:absolute;bottom:-16px;font-size:10px;font-weight:500;color:var(--text);white-space:nowrap;">4 stk</span></div>
-              <div class="pink-callout-icon" style="position:relative;">📏<span style="position:absolute;bottom:-16px;font-size:10px;font-weight:500;color:var(--text);white-space:nowrap;">10 km</span></div>
-              <div class="pink-callout-icon" style="position:relative;">⏱<span style="position:absolute;bottom:-16px;font-size:10px;font-weight:500;color:var(--text);white-space:nowrap;">3 t</span></div>
-            </div>
-            <div style="height:16px;"></div>
-          </div>
-          <p style="font-size:10px;color:#B0B0B0;margin-top:6px;">Bakgrunn: <code style="background:#F2F2F7;padding:1px 4px;border-radius:3px;font-size:10px;">#FFC8E1</code> (samme tone som mål-kortet i ny Innstillinger).</p>
         </div>
       </div>
 
@@ -2247,26 +2235,6 @@
               <div class="label">Total høydemeter</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- User variant (deprecated) -->
-      <div class="diagram-card" id="p-uservariant">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
-          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
-            <span class="diagram-meta-name">👤 User variant <span class="status-tag" style="background:#F2F2F2;color:#888888;">⊘ Utfaset</span></span>
-            <span class="diagram-meta-desc">Avatar selector (no longer used)</span>
-          </div>
-          <button class="info-btn">i</button>
-        </div>
-        <div class="app-card">
-          <div class="app-card-title">Avatar-velger (fjernet)</div>
-          <p style="font-size:10px;color:#B0B0B0;margin-bottom:10px;">Avatar-valget på Innstillinger er <strong>tatt ut</strong>. Mønsteret beholdes her kun som referanse i tilfelle det trengs et to-kort-valg andre steder. Vises dempet for å markere at det ikke lenger er i bruk.</p>
-          <div class="user-variants" style="opacity:.45;">
-            <div class="user-variant selected">⛑️</div>
-            <div class="user-variant">⛑️</div>
-          </div>
-          <p style="font-size:10px;color:#B0B0B0;margin-top:6px;">Erstattet av: ingenting — feltet ble fjernet fra skjermen for å forenkle Innstillinger.</p>
         </div>
       </div>
 

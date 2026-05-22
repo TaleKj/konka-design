@@ -486,7 +486,7 @@ footer p {
 /* Dashed empty-state CTA */
 .dashed-cta {
   border: 1.5px dashed #91BCFF;
-  border-radius: 14px;
+  border-radius: 100px;
   padding: 14px;
   text-align: center;
   color: #5E96F0;
@@ -578,6 +578,69 @@ footer p {
   box-shadow: 0 1px 3px rgba(0,0,0,.1);
 }
 
+/* Sport selector — single button that opens a sport menu
+   (replaces filter chips; same pattern as Løpebane sport-pill) */
+.sport-select {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 32px;
+  padding: 0 12px 0 6px;
+  border-radius: 16px;
+  background: #F7F7F7;
+  border: none;
+  color: #555555;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  cursor: pointer;
+  transition: background .12s ease;
+}
+.sport-select:hover { background: #EFEFEF; }
+.sport-select .sport-select-ic {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+.sport-select .sport-select-caret {
+  font-size: 8px; color: #B0B0B0; margin-left: 1px;
+  transition: transform .15s ease;
+}
+.sport-select.open { background: #EFEFEF; }
+.sport-select.open .sport-select-caret { transform: rotate(180deg); }
+
+/* Sport menu (dropdown) */
+.sport-menu {
+  position: absolute; top: 40px; left: 0;
+  min-width: 180px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 6px 22px rgba(0,0,0,.14);
+  padding: 6px;
+  z-index: 5;
+}
+.sport-menu-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  font-size: 13px; font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+.sport-menu-item:hover { background: var(--off); }
+.sport-menu-item .sport-menu-ic {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--off);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+}
+.sport-menu-item.selected { color: var(--rosa-acc); }
+.sport-menu-item.selected .sport-menu-ic { background: var(--rosa-50); }
+.sport-menu-item .sport-menu-check {
+  margin-left: auto;
+  font-size: 12px; font-weight: 700;
+  color: var(--rosa-acc);
+}
+
 /* Group list card (used in list view) */
 .group-row {
   background: white;
@@ -648,21 +711,24 @@ footer p {
 
 /* Weekday tracker circles (M T O T F L S) */
 .weekday-row {
-  display: flex; gap: 6px; justify-content: center;
+  display: flex; gap: 8px; justify-content: center;
   margin: 14px 0 18px;
 }
 .weekday-row .day {
-  width: 26px; height: 26px;
+  width: 30px; height: 30px;
   border-radius: 50%;
-  background: var(--lysegul);
+  background: var(--rosa-acc);
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 600;
-  color: var(--text);
+  font-size: 12px; font-weight: 700;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(232,128,196,.30);
+  transition: transform .12s ease;
 }
 .weekday-row .day.empty {
   background: var(--off);
   color: var(--muted);
-  border: 1px solid var(--line);
+  font-weight: 600;
+  box-shadow: none;
 }
 
 /* Goal progress bar with icon */
@@ -691,7 +757,7 @@ footer p {
 .goal-row .goal-fill {
   position: absolute; top: 0; left: 0;
   height: 100%;
-  background: var(--blue);
+  background: var(--rosa-acc);
   border-radius: 100px;
 }
 .goal-row .goal-text {
@@ -758,12 +824,6 @@ footer p {
   height: 100%;
   border-radius: 100px;
 }
-.compare-row .val {
-  font-size: 11px; font-weight: 500;
-  color: var(--text);
-  min-width: 46px;
-  text-align: right;
-}
 
 /* Stats card (white block with title) */
 .stats-card {
@@ -778,74 +838,6 @@ footer p {
   text-align: center; color: var(--text);
   margin-bottom: 10px;
 }
-
-/* Pink callout card (Sett ukentlige treningsmål) */
-.pink-callout {
-  background: #FFC8E1;
-  border-radius: 18px;
-  padding: 16px 14px;
-  text-align: center;
-  margin-bottom: 18px;
-}
-.pink-callout-title {
-  font-size: 13px; font-weight: 500;
-  color: var(--text);
-  margin-bottom: 14px;
-}
-.pink-callout-icons {
-  display: flex; justify-content: space-around;
-  gap: 8px;
-}
-.pink-callout-icon {
-  background: white;
-  border-radius: 50%;
-  width: 56px; height: 56px;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  font-size: 18px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.08);
-  position: relative;
-}
-.pink-callout-icon .lbl {
-  position: absolute;
-  bottom: -16px;
-  font-size: 10px; font-weight: 500;
-  color: var(--text);
-}
-
-/* User variant cards (avatar selector) */
-.user-variants {
-  display: flex; gap: 10px;
-  margin-bottom: 24px;
-}
-.user-variant {
-  background: var(--blue-bg);
-  border-radius: 12px;
-  padding: 20px 10px 14px;
-  text-align: center;
-  font-size: 32px;
-  border: 2px solid transparent;
-  flex: 1;
-}
-.user-variant.selected {
-  border-color: var(--blue-acc);
-  background: var(--blue-bg);
-}
-
-/* Big destructive buttons (Logg ut / Slett bruker) */
-.big-btn {
-  width: 100%;
-  padding: 13px;
-  border-radius: 100px;
-  text-align: center;
-  font-size: 14px; font-weight: 500;
-  color: white;
-  border: none;
-  margin-bottom: 8px;
-  display: block;
-}
-.big-btn.neutral { background: #555555; }
-.big-btn.destructive { background: #1C1C1E; }
 
 /* Vertical bar chart (monthly distribution) */
 .bar-chart {
@@ -923,7 +915,7 @@ footer p {
 
 /* ═══════════════════════════════════════════
    PERSONAL GOAL ROWS + BOTTOM SHEET
-   (Innstillinger — erstatter pink-callout-ikoner + avatar-velger)
+   (Innstillinger — ukentlige treningsmål)
    ═══════════════════════════════════════════ */
 .pgoal-card {
   background: #FFC8E1;
@@ -963,7 +955,7 @@ footer p {
 .pgoal-unit { font-size: 11px; font-weight: 500; color: var(--muted); margin-left: 1px; }
 .pgoal-chev { color: #D8D8D8; font-size: 18px; line-height: 1; }
 
-/* Slett bruker — diskret tekstlenke (erstatter big-btn destructive) */
+/* Slett bruker — diskret tekstlenke */
 .pgoal-leave-link {
   text-align: center; font-size: 13px; color: var(--muted);
   text-decoration: underline; margin-top: 12px; cursor: pointer;
