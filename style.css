@@ -1037,6 +1037,194 @@ footer p {
   font-variant-numeric: tabular-nums;
 }
 
+/* ═══════════════════════════════════════════
+   HJEM (Tale) — løpende donut med føtter
+   Personlig uke-view. Føtter (SVG) ligger bak donut-en, donut viser
+   sportsfordeling, swipe-prikker + ukedags-rad under. Deretter Ukas mål
+   (tynne loader-streker) og Siste aktivitet (kort-stabel med streak).
+   ═══════════════════════════════════════════ */
+.hjem-app { position: relative; overflow: hidden; }
+
+/* Scene som holder føtter (bakerst), donut og swipe-prikker */
+.hjem-stage { position: relative; margin: 2px 0 0; }
+
+/* Føttene — gjengis som-de-er fra SVG-filene, kun skalert. Ligger BAK
+   donut-en (lavere z-index) og leggen møter donut-ens nedre kant. */
+.hjem-foot {
+  position: absolute;
+  width: auto; height: 122px;
+  z-index: 1; pointer-events: none; user-select: none;
+}
+.hjem-foot-left  { left:  6px; bottom: -6px; }
+.hjem-foot-right { right: 6px; bottom: -6px; }
+
+/* Donut ligger OVER føttene */
+.hjem-donut { position: relative; z-index: 2; width: 100%; }
+
+/* Swipe-prikker — rett under donut-en, over føtter/ukedager */
+.hjem-dots {
+  position: relative; z-index: 3;
+  display: flex; gap: 4px; justify-content: center; margin: -6px 0 0;
+}
+
+/* Ukedags-raden: under føttene, sentrert, liten og blå */
+.hjem-weekdays {
+  position: relative; z-index: 3;
+  margin: 22px auto 16px; gap: 3px; width: max-content;
+}
+.hjem-weekdays .day {
+  width: 26px; height: 26px;
+  font-size: 11px; font-weight: 700;
+  background: var(--kornblomst-300);
+  box-shadow: 0 1px 4px rgba(94,150,240,.28);
+}
+.hjem-weekdays .day.empty {
+  background: var(--kornblomst-50);
+  color: var(--kornblomst-400);
+  box-shadow: none;
+}
+
+/* Plasseffektive kort: padding på hjem-kortene */
+.hjem-app .stats-card { padding: 14px 18px; }
+
+/* Midtstilt kort-tittel (Ukas mål) */
+.hjem-card-title {
+  display: block; text-align: center;
+  font-size: 15px; font-weight: 500; color: var(--text);
+}
+
+/* Ukas mål — tynn loader-strek (blå/rosa fyll, grå prosent) */
+.hjem-goals .hjem-card-title { margin-bottom: 12px; }
+.hjem-goal-row {
+  display: flex; align-items: center; gap: 12px; padding: 5px 0;
+}
+.hjem-goal-ico {
+  width: 20px; flex-shrink: 0; display: flex; justify-content: center;
+}
+.hjem-goal-ico svg { display: block; }
+.hjem-goal-track {
+  flex: 1; height: 7px; background: #F2F2F4;
+  border-radius: 100px; overflow: hidden;
+}
+.hjem-goal-fill { display: block; height: 100%; border-radius: 100px; }
+.hjem-goal-fill.blue { background: var(--kornblomst-300); }
+.hjem-goal-fill.rosa { background: var(--rosa-300); }
+.hjem-goal-pct {
+  min-width: 46px; text-align: right;
+  font-size: 15px; font-weight: 600; color: #9A9AA0;
+}
+
+/* Siste aktivitet — streak over kort-stabelen, «+ N til» under */
+.hjem-activity-block { position: relative; margin-bottom: 8px; padding-top: 14px; }
+.hjem-streak {
+  position: absolute; top: -4px; right: 4px; z-index: 3;
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--rosa-50); color: var(--rosa-500);
+  font-size: 13px; font-weight: 600;
+  padding: 4px 11px; border-radius: 100px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+/* Stabel-effekt: hint om at det ligger flere kort under */
+.hjem-activity-card-stack { position: relative; }
+.hjem-activity-card-stack::after {
+  content: ""; position: absolute; left: 8px; right: 8px; bottom: -6px;
+  height: 16px; background: #FFFFFF;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 3px 8px rgba(0,0,0,.05); z-index: 0;
+}
+.hjem-activity-card-main {
+  position: relative; z-index: 1;
+  background: #FFFFFF; border-radius: 18px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.06); padding: 4px 6px;
+}
+.hjem-activity-row {
+  display: flex; align-items: center; gap: 12px;
+  border-radius: 14px; padding: 12px 12px;
+}
+.hjem-activity-icon {
+  width: 30px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 22px;
+}
+.hjem-activity-meta { flex: 1; min-width: 0; }
+.hjem-activity-name {
+  font-size: 17px; font-weight: 700; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+.hjem-activity-tag {
+  font-size: 12px; font-weight: 700; letter-spacing: .5px;
+  color: var(--kornblomst-400);
+}
+.hjem-activity-sub {
+  font-size: 13px; color: var(--muted); margin-top: 4px;
+  display: flex; align-items: center; flex-wrap: wrap;
+}
+.hjem-activity-when {
+  font-size: 13px; color: var(--muted);
+  flex-shrink: 0; align-self: flex-start;
+}
+.hjem-show-more {
+  margin: 18px auto 0; border: none; background: none;
+  color: var(--muted); font-family: inherit; font-size: 14px; font-weight: 500;
+  display: flex; align-items: center; gap: 7px; cursor: pointer;
+}
+.hjem-show-more-plus {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #ECECEF; color: var(--muted);
+  font-size: 16px; font-weight: 500; line-height: 1;
+}
+
+/* Tom-tilstand: grå donut-ring (brukes ved .hjem-app.is-empty) */
+.hjem-app.is-empty .hjem-donut svg circle:not(:first-of-type),
+.hjem-app.is-empty .hjem-donut svg line { display: none; }
+.hjem-app.is-empty .hjem-donut svg text { fill: var(--neu-300); }
+.hjem-app.is-empty .hjem-weekdays .day {
+  background: var(--kornblomst-50); color: var(--kornblomst-400); box-shadow: none;
+}
+
+/* ═══════════════════════════════════════════
+   MAKSPULS-KORT (Innstillinger)
+   Eget kort under treningsmålene — personlig kalibrering som gjør
+   Pulssoner-diagrammet riktigere. Bottom sheet viser sonegrensene
+   (Z1–Z5) som regnes om i sanntid.
+   ═══════════════════════════════════════════ */
+.pgoal-hr-card {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 6px 4px; margin-top: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  border: 1px solid #F2F2F2;
+}
+.pgoal-hr-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 14px; cursor: pointer;
+  transition: transform .12s ease;
+}
+.pgoal-hr-row:active { transform: scale(.985); }
+.pgoal-hr-ic {
+  width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+  background: var(--korall-50);
+  display: flex; align-items: center; justify-content: center;
+}
+.pgoal-hr-meta { flex: 1; min-width: 0; }
+.pgoal-hr-lbl { font-size: 14px; font-weight: 600; color: #1C1C1E; line-height: 1.15; }
+.pgoal-hr-sub { font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.35; }
+.pgoal-hr-val { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
+.pgoal-hr-num {
+  font-size: 15px; font-weight: 600; color: var(--text);
+  background: #F7F7F7; border-radius: 9px; padding: 5px 11px; text-align: center;
+}
+
+/* Sonegrenser inni bottom sheet (kun for makspuls) */
+.pgoal-zones { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.pgoal-zones .zrow { display: flex; align-items: center; gap: 9px; }
+.pgoal-zones .zdot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+.pgoal-zones .zname { font-size: 12px; color: rgba(255,255,255,.95); font-weight: 500; }
+.pgoal-zones .zval {
+  font-size: 12px; color: #fff; font-weight: 600;
+  font-variant-numeric: tabular-nums; margin-left: auto;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .diagram-card { width: 100%; max-width: 420px; }

@@ -89,11 +89,12 @@
         <a href="#p-bottomtabs" class="toc-link"><span class="toc-num">θ</span>📐 Bottom tab bar</a>
         <a href="#p-weekdays" class="toc-link"><span class="toc-num">ι</span>📅 Weekday tracker</a>
         <a href="#p-goal" class="toc-link"><span class="toc-num">κ</span>🎯 Goal progress</a>
+        <a href="#p-hjemdonut" class="toc-link"><span class="toc-num">κ²</span>👟 Løpende donut</a>
         <a href="#p-compare" class="toc-link"><span class="toc-num">λ</span>📊 Year comparison</a>
         <a href="#p-statrow" class="toc-link"><span class="toc-num">μ</span>🏅 Stat row</a>
         <a href="#p-bigtabs" class="toc-link"><span class="toc-num">ν</span>🔠 Big tabs</a>
         <a href="#p-bigbtn" class="toc-link"><span class="toc-num">ξ</span>⏹ Logg ut / Slett bruker</a>
-        <a href="#p-goalrows" class="toc-link"><span class="toc-num">ξ²</span>🎯 Mål-rader</a>
+        <a href="#p-goalrows" class="toc-link"><span class="toc-num">ξ²</span>🎯 Mål-rader + makspuls</a>
         <a href="#p-jerseys" class="toc-link"><span class="toc-num">ξ³</span>🎽 Trøyer</a>
         <a href="#p-barchart" class="toc-link"><span class="toc-num">π</span>📊 Bar chart</a>
         <a href="#p-mountain" class="toc-link"><span class="toc-num">ρ</span>⛰️ Mountain hero</a>
@@ -428,44 +429,113 @@
           </div>
           <button class="info-btn">i</button>
         </div>
-        <div class="app-card">
+        <div class="app-card hjem-app">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
             <div class="ios-nav-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
-            <div class="ios-nav-title">Tale</div>
+            <div class="ios-nav-title">Tale's uke</div>
             <div style="width:32px;"></div>
           </div>
-          <div class="weekday-row">
+
+          <!-- Løpende donut: føtter (bakerst) → kakediagram → swipe-prikker → ukedags-rad -->
+          <div class="hjem-stage">
+            <!-- Føtter: leftfoot (gull sko) + rightfoot (speilet). Lag UNDER diagrammet. -->
+            <svg class="hjem-foot hjem-foot-left" viewBox="40 0 1620 2700" xmlns="http://www.w3.org/2000/svg">
+              <g><g>
+                <path d="M711.91 1220.86C753.563 1258.68 724.607 1310.14 737.022 1356.41C740.844 1370.65 757.579 1410 765.141 1422.19C809.579 1493.87 897.068 1533.57 921.1 1613.12C939.891 1675.36 912.116 1728.59 914.047 1790.74C916.412 1867.06 945.572 1938.67 964.984 2011.01C973.766 2043.75 1015.61 2132.79 1051.19 2190.48C1082.05 2240.51 1143.09 2310.57 1159.08 2350.56C1179.36 2401.32 1197.27 2527.68 1169.85 2575.2C1155.48 2600.12 1117.81 2628.23 1091.31 2638.16C1040.35 2657.26 964.31 2629.12 918.926 2602.94C897.572 2590.62 806.511 2544.16 794.585 2538.53C761.567 2522.98 589.281 2429.01 550.707 2388.64C466.191 2300.21 412.106 2182.91 392.162 2062.25C387.234 2032.44 352.901 1876.51 342.073 1827.79C334.828 1795.17 282.671 1711.23 261.096 1620.3C241.219 1536.53 251.605 1445.85 249.788 1405.64C247.433 1353.49 229.449 1306.13 223.211 1254.49C220.073 1228.51 221.7 1202.16 220.78 1176.01C220.403 1165.28 216.832 1154.34 219.141 1143.86C245.566 1023.56 383.1 1121.21 446.863 1146.78C475.695 1158.35 511.33 1163.6 541.609 1170.25C588.377 1180.52 624.898 1183.13 671.838 1195.84C690.204 1200.81 701.061 1211.02 711.91 1220.86Z" fill="#fad067"/>
+                <path d="M270.787 1087.34C282.271 1097.31 254.548 1113.24 248.889 1127.35C245.1 1136.8 244.388 1164.31 243.869 1172.95C240.05 1236.88 249.343 1295.71 264.958 1357.84C272.2 1386.65 286.001 1416.24 287.209 1446.39C289.426 1501.89 261.779 1554.58 275.078 1610.93C289.881 1673.63 334.141 1722.16 361.439 1779.06C378.45 1814.52 388.397 1857.91 398.058 1896.01C406.248 1928.29 406.101 1960.58 410.616 1993.16C417.664 2044.02 437.151 2102.27 456.352 2149.68C474.093 2193.49 508.571 2233.43 536.293 2271.52C567.263 2314.06 607.995 2360.07 650.816 2390.83C679.802 2411.66 714.279 2419.5 744.416 2437.74C784.991 2462.29 825.385 2499.76 860.444 2531.89C895.74 2564.25 941.928 2582.81 977.152 2614.61C982.377 2619.33 991.49 2624.58 989.919 2631.44C988.313 2638.47 978.093 2640.96 970.94 2641.78C951.805 2643.99 927.82 2626.83 907.446 2628.81C873.732 2632.08 855.276 2653.61 819.849 2635.05C789.692 2619.26 779.349 2585.32 752.633 2569.06C712.722 2544.78 683.4 2592.31 642.855 2562.51C627.575 2551.27 606.571 2530.95 595.132 2516.04C582.554 2499.64 577.658 2470.24 561.953 2456.67C525.52 2425.19 471.808 2477.86 427.833 2434.89C409.275 2416.76 394.761 2378.08 393.734 2352.52C392.724 2327.21 402.094 2307.07 388.684 2283.36C358.145 2229.34 289.39 2226.67 264.884 2165.79C240.291 2104.71 278.507 2047.19 266.121 1991.42C257.442 1952.36 201.993 1914.63 183.618 1874.02C160.789 1823.55 185.956 1774.95 181.067 1724.67C177.052 1683.36 114.747 1659.39 102.863 1612.11C93.7986 1576.04 102.948 1511.25 124.51 1480.28C133.117 1467.92 147.318 1457.64 149.703 1442.76C157.157 1396.39 75.0506 1390.36 83.1253 1300.56C87.7015 1249.67 140.221 1265.49 129.335 1207.43C124.092 1179.44 99.348 1178.4 84.0454 1158.82C64.7246 1134.09 52.7771 1095.68 68.9263 1066.1C111.263 988.518 228.322 1050.5 270.787 1087.34Z" fill="#050505"/>
+                <path d="M661.261 1457.47C676.842 1386.55 623.486 1328.76 587.131 1304.54C523.935 1262.43 466.944 1275.9 432.894 1295.35C414.051 1306.11 361.208 1351.79 352.934 1400.74C336.887 1495.67 418.885 1617.94 524.807 1588.22C586.067 1571.02 645.68 1528.39 661.261 1457.47Z" fill="#5e96f0"/>
+              </g></g>
+            </svg>
+
+            <svg class="hjem-foot hjem-foot-right" viewBox="0 180 1960 2260" xmlns="http://www.w3.org/2000/svg">
+              <g><g>
+                <path d="M513.505 1731.41C548.664 1687.5 601.825 1713.21 647.238 1697.95C661.213 1693.25 699.449 1674.12 711.147 1665.81C779.936 1617.02 814.139 1527.24 892.048 1498.33C953.006 1475.72 1007.85 1500.14 1069.77 1494.36C1145.79 1487.28 1215.46 1453.74 1286.45 1429.88C1318.59 1419.09 1404.87 1371.81 1460.24 1332.72C1508.26 1298.82 1574.41 1233.56 1613.33 1215.13C1662.74 1191.74 1787.75 1166.04 1836.87 1190.46C1862.64 1203.26 1893.03 1239.11 1904.58 1264.95C1926.8 1314.62 1903.43 1392.26 1880.11 1439.18C1869.13 1461.26 1828.4 1555.02 1823.52 1567.27C1810.04 1601.19 1726.93 1778.97 1689.03 1819.97C1606 1909.8 1492.28 1971.05 1373.08 1998.43C1343.63 2005.19 1190.13 2049.12 1142.17 2062.94C1110.07 2072.2 1029.52 2129.45 940.103 2156.62C857.719 2181.65 766.576 2176.9 726.552 2181.2C674.645 2186.78 628.492 2207.67 577.339 2217.09C551.598 2221.83 525.206 2221.84 499.155 2224.38C488.476 2225.42 477.773 2229.66 467.171 2228.01C345.468 2209.08 434.409 2065.76 455.984 2000.54C465.739 1971.05 468.771 1935.15 473.536 1904.52C480.894 1857.21 481.236 1820.59 491.006 1772.96C494.829 1754.32 504.347 1742.85 513.505 1731.41Z" fill="#fad067"/>
+                <path d="M407.564 2179.96C416.797 2167.88 434.416 2194.56 448.85 2199.34C458.514 2202.53 486.022 2201.54 494.68 2201.52C558.714 2201.37 616.856 2188.45 677.903 2169.02C706.214 2160.01 734.884 2144.4 764.908 2141.33C820.164 2135.68 874.463 2160.01 929.882 2143.24C991.544 2124.58 1037.24 2077.4 1092.34 2046.63C1126.67 2027.46 1169.37 2014.84 1206.8 2002.84C1238.51 1992.67 1270.74 1990.81 1302.99 1984.29C1353.31 1974.1 1410.24 1951.05 1456.36 1928.94C1499 1908.52 1536.73 1871.64 1573.02 1841.61C1613.56 1808.06 1656.96 1764.56 1685.01 1719.92C1704 1689.7 1709.7 1654.8 1726.03 1623.59C1748.02 1581.57 1782.91 1538.94 1812.81 1501.95C1842.93 1464.72 1858.58 1417.47 1888.14 1380.35C1892.53 1374.84 1897.2 1365.42 1904.15 1366.56C1911.26 1367.73 1914.38 1377.77 1915.65 1384.86C1919.04 1403.82 1903.39 1428.83 1906.63 1449.04C1911.99 1482.48 1934.62 1499.57 1918.29 1536.08C1904.39 1567.16 1871.16 1579.58 1856.59 1607.25C1834.83 1648.59 1884.08 1674.92 1856.85 1717.23C1846.58 1733.17 1827.6 1755.4 1813.42 1767.74C1797.84 1781.31 1768.8 1788.02 1756.23 1804.53C1727.07 1842.84 1782.96 1893.19 1742.79 1939.74C1725.85 1959.39 1688.14 1976.27 1662.69 1978.88C1637.49 1981.45 1616.82 1973.35 1593.98 1988.2C1541.95 2022.03 1543.55 2090.82 1484.3 2119.05C1424.86 2147.38 1365.09 2112.8 1310.19 2128.61C1271.74 2139.7 1237.53 2197.37 1198.13 2218.23C1149.17 2244.14 1099.11 2222.03 1049.23 2230.03C1008.25 2236.59 988.182 2300.26 941.728 2315.05C906.288 2326.34 841.052 2321.22 808.809 2301.61C795.934 2293.79 784.8 2280.25 769.803 2278.79C723.057 2274.23 722.121 2356.55 631.999 2354.05C580.924 2352.64 593.462 2299.24 536.18 2313.7C508.57 2320.67 509.068 2345.43 490.467 2361.91C466.989 2382.73 429.395 2397.03 398.865 2382.75C318.811 2345.3 373.422 2224.62 407.564 2179.96Z" fill="#050505"/>
+                <path d="M752.79 1767.31C681.041 1756.15 626.668 1812.98 604.747 1850.77C566.633 1916.45 583.608 1972.5 605.126 2005.28C617.035 2023.42 665.905 2073.33 715.27 2078.56C811.009 2088.69 927.967 1999.28 891.743 1895.4C870.784 1835.32 824.539 1778.47 752.79 1767.31Z" fill="#5e96f0"/>
+              </g></g>
+            </svg>
+
+            <!-- Kakediagram per sportstype — samme geometri som Gruppedata (r=82, sw=32, C=515.22) -->
+            <div class="hjem-donut">
+              <svg width="220" height="220" viewBox="0 0 220 220" style="display:block;margin:0 auto;">
+                <circle cx="110" cy="110" r="82" fill="none" stroke="#F2F2F7" stroke-width="32"/>
+                <!-- Løping (blå) 22% -->
+                <circle cx="110" cy="110" r="82" fill="none" stroke="#A6C8FF" stroke-width="32"
+                  stroke-dasharray="113.3 401.9" stroke-dashoffset="0" transform="rotate(-90 110 110)"/>
+                <!-- Styrke (rosa) 38% -->
+                <circle cx="110" cy="110" r="82" fill="none" stroke="#FFC2E8" stroke-width="32"
+                  stroke-dasharray="195.8 319.4" stroke-dashoffset="-113.3" transform="rotate(-90 110 110)"/>
+                <!-- Sykkel (gull) 40% -->
+                <circle cx="110" cy="110" r="82" fill="none" stroke="#FAD479" stroke-width="32"
+                  stroke-dasharray="206.1 309.1" stroke-dashoffset="-309.1" transform="rotate(-90 110 110)"/>
+                <!-- Hvite skillelinjer mellom segmentene (kumulativ % × 3.6°) -->
+                <line x1="110" y1="28" x2="110" y2="60" stroke="white" stroke-width="2.5" transform="rotate(0 110 110)"/>
+                <line x1="110" y1="28" x2="110" y2="60" stroke="white" stroke-width="2.5" transform="rotate(79.2 110 110)"/>
+                <line x1="110" y1="28" x2="110" y2="60" stroke="white" stroke-width="2.5" transform="rotate(216 110 110)"/>
+                <!-- Hvitt fyll i midten så bein bak donut-en ikke synes gjennom hullet -->
+                <circle cx="110" cy="110" r="66" fill="#FFFFFF"/>
+                <!-- Senter: samme klokke-symbol som i Ukas mål, lite + total tid -->
+                <svg x="98" y="86" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9A9AA0" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <text x="110" y="138" text-anchor="middle" font-size="16" font-weight="600" fill="#1C1C1E" font-family="'Fredoka',sans-serif">3t 11min</text>
+              </svg>
+            </div>
+
+            <!-- Swipe-prikker — rett under donut-en (swipebare sider) -->
+            <div class="hjem-dots">
+              <div style="width:18px;height:5px;border-radius:3px;background:#FFB2E3;"></div>
+              <div style="width:6px;height:5px;border-radius:3px;background:#D8D8D8;"></div>
+              <div style="width:6px;height:5px;border-radius:3px;background:#D8D8D8;"></div>
+            </div>
+          </div>
+
+          <!-- Ukedags-rad — under føttene, blå -->
+          <div class="weekday-row hjem-weekdays">
             <div class="day">M</div>
-            <div class="day">T</div>
-            <div class="day">O</div>
+            <div class="day empty">T</div>
+            <div class="day empty">O</div>
             <div class="day">T</div>
             <div class="day">F</div>
             <div class="day">L</div>
-            <div class="day">S</div>
+            <div class="day empty">S</div>
           </div>
-          <!-- Illustration placeholder (sleeping shoes) -->
-          <div style="text-align:center;font-size:60px;line-height:1;margin:14px 0 18px;letter-spacing:-4px;">
-            <span style="display:inline-block;transform:rotate(-15deg);">👟</span><span style="display:inline-block;transform:translateY(-8px);font-size:24px;">💤</span><span style="display:inline-block;transform:rotate(15deg) scaleX(-1);">👟</span>
-          </div>
-          <div class="stats-card" style="margin-bottom:8px;">
-            <p style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:8px;">Ukas mål</p>
-            <div class="goal-row">
-              <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-              <div class="goal-bar"><span class="goal-text">0%</span></div>
+
+          <div class="stats-card hjem-goals" style="margin-bottom:14px;">
+            <p class="hjem-card-title">Ukas mål</p>
+            <div class="hjem-goal-row">
+              <span class="hjem-goal-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9A9AA0" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+              <span class="hjem-goal-track"><span class="hjem-goal-fill blue" style="width:100%;"></span></span>
+              <span class="hjem-goal-pct">106%</span>
             </div>
-            <div class="goal-row">
-              <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="#888888" stroke="none"><circle cx="14" cy="4" r="2"/><path d="M11 7l-3 4 3 3v6h2v-7l-2-2 2-3z"/></svg></div>
-              <div class="goal-bar"><span class="goal-text">0%</span></div>
+            <div class="hjem-goal-row">
+              <span class="hjem-goal-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9A9AA0" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3"/><path d="M12 11v10M8 21h8"/></svg></span>
+              <span class="hjem-goal-track"><span class="hjem-goal-fill rosa" style="width:86%;"></span></span>
+              <span class="hjem-goal-pct">86%</span>
             </div>
-            <div class="goal-row">
-              <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
-              <div class="goal-bar"><span class="goal-text">0%</span></div>
+            <div class="hjem-goal-row">
+              <span class="hjem-goal-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="#9A9AA0" stroke="none"><circle cx="14" cy="4" r="2"/><path d="M11 7l-3 4 3 3v6h2v-7l-2-2 2-3z"/></svg></span>
+              <span class="hjem-goal-track"><span class="hjem-goal-fill blue" style="width:100%;"></span></span>
+              <span class="hjem-goal-pct">100%</span>
             </div>
           </div>
-          <div class="empty-state">
-            <div class="icon">🚶</div>
-            <div class="txt">Ingen aktiviteter denne uken…</div>
+
+          <!-- Siste aktivitet (fylt state) — streak ligger over kortet, «+ N til» under -->
+          <div class="hjem-activity-block">
+            <span class="hjem-streak">🔥 18</span>
+            <div class="hjem-activity-card-stack">
+              <div class="hjem-activity-card-main">
+                <div class="hjem-activity-row">
+                  <div class="hjem-activity-icon">👟</div>
+                  <div class="hjem-activity-meta">
+                    <div class="hjem-activity-name">Løping <span class="hjem-activity-tag">LETT</span></div>
+                    <div class="hjem-activity-sub">32m&nbsp;·&nbsp;3.1 km&nbsp;·&nbsp;10:38 min/km&nbsp;·&nbsp;<svg width="11" height="11" viewBox="0 0 24 24" fill="#FF8FA3" stroke="none" style="vertical-align:-1px;"><path d="M12 21s-7-4.6-9.5-9C.7 8.6 2.3 5 6 5c2 0 3.2 1.1 4 2.3C10.8 6.1 12 5 14 5c3.7 0 5.3 3.6 3.5 7-2.5 4.4-9.5 9-9.5 9z" transform="translate(2)"/></svg> 131</div>
+                  </div>
+                  <div class="hjem-activity-when">I dag</div>
+                </div>
+              </div>
+            </div>
+            <button class="hjem-show-more"><span class="hjem-show-more-plus">+</span> 3 til</button>
           </div>
+
           <div class="bottom-tabs">
   <div class="tab active"><svg width="15" height="15" viewBox="0 0 24 24" fill="#E880C4" stroke="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
   <div class="tab "><svg width="15" height="15" viewBox="0 0 24 24" fill="#1C1C1E" stroke="none"><rect x="3" y="12" width="4" height="9" rx="1"/><rect x="10" y="7" width="4" height="14" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg></div>
@@ -519,6 +589,15 @@
             </div>
           </div>
 
+          <!-- Makspuls-kort: personlig kalibrering som gjør Pulssoner-diagrammet riktigere -->
+          <div class="pgoal-hr-card">
+            <div class="pgoal-hr-row" data-goal="puls">
+              <div class="pgoal-hr-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FF7A85"><path d="M12 21s-7-4.6-9.3-9.1C1.3 9.1 2.5 5.5 5.8 5.1c2-.2 3.4 1 4.2 2.3.8-1.3 2.2-2.5 4.2-2.3 3.3.4 4.5 4 3.1 6.8C19 16.4 12 21 12 21z"/></svg></div>
+              <div class="pgoal-hr-meta"><div class="pgoal-hr-lbl">Makspuls</div><div class="pgoal-hr-sub">Gjør pulssonene dine riktigere</div></div>
+              <div class="pgoal-hr-val"><span class="pgoal-hr-num" data-val="puls">190<span class="pgoal-unit"> bpm</span></span><span class="pgoal-chev">›</span></div>
+            </div>
+          </div>
+
           <div style="height:24px;"></div>
 
           <!-- Logg ut = blå CTA (tidligere Neste-knapp). Slett bruker = grå tekstlenke. -->
@@ -539,6 +618,7 @@
               <div class="pgoal-sheet-ic"></div>
               <div class="pgoal-sheet-title">Sett mål</div>
               <div class="pgoal-sheet-sub"></div>
+              <div class="pgoal-zones" style="display:none;"></div>
               <div class="pgoal-input-wrap">
                 <input type="number" class="pgoal-input" inputmode="numeric">
                 <span class="pgoal-input-unit"></span>
@@ -2003,12 +2083,13 @@
         <div style="display:flex;align-items:flex-start;justify-content:space-between;">
           <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
             <span class="diagram-meta-name">🎯 Goal progress</span>
-            <span class="diagram-meta-desc">Progress bar with icon</span>
+            <span class="diagram-meta-desc">Tykk pille + tynn loader</span>
           </div>
           <button class="info-btn">i</button>
         </div>
         <div class="app-card">
           <div class="app-card-title">Goal progress</div>
+          <p style="font-size:10px;color:#B0B0B0;margin-bottom:8px;line-height:1.5;">Eldre tykk pille-variant (<code style="background:#F2F2F7;padding:1px 4px;border-radius:3px;font-size:10px;">.goal-row</code>): tom = grå spor, fylt = rosa.</p>
           <div class="goal-row">
             <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
             <div class="goal-bar"><span class="goal-text">0%</span></div>
@@ -2021,7 +2102,83 @@
             <div class="goal-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
             <div class="goal-bar"><div class="goal-fill" style="width:100%;"></div><span class="goal-text" style="color:white;">100%</span></div>
           </div>
-          <p style="font-size:10px;color:#B0B0B0;margin-top:12px;line-height:1.5;">Tom: grå spor · Fylt: rosa (pinkmedium) — samme farge uansett fyllingsgrad</p>
+          <p style="font-size:10px;color:#B0B0B0;margin:16px 0 8px;line-height:1.5;">Ny tynn loader-variant brukt på Hjem (<code style="background:#F2F2F7;padding:1px 4px;border-radius:3px;font-size:10px;">.hjem-goal-row</code>): blå/rosa fyll, prosent til høyre, går over 100%.</p>
+          <div class="hjem-goals">
+            <div class="hjem-goal-row">
+              <span class="hjem-goal-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9A9AA0" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+              <span class="hjem-goal-track"><span class="hjem-goal-fill blue" style="width:100%;"></span></span>
+              <span class="hjem-goal-pct">106%</span>
+            </div>
+            <div class="hjem-goal-row">
+              <span class="hjem-goal-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9A9AA0" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3"/><path d="M12 11v10M8 21h8"/></svg></span>
+              <span class="hjem-goal-track"><span class="hjem-goal-fill rosa" style="width:86%;"></span></span>
+              <span class="hjem-goal-pct">86%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hjem: løpende donut + aktivitetskort (nytt mønster) -->
+      <div class="diagram-card" id="p-hjemdonut">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+          <div class="diagram-meta-left" style="padding:12px 0 0 14px;">
+            <span class="diagram-meta-name">👟 Løpende donut + aktivitet</span>
+            <span class="diagram-meta-desc">Hjem-elementer (føtter, streak, kort-stabel)</span>
+          </div>
+          <button class="info-btn">i</button>
+        </div>
+        <div class="app-card">
+          <div class="app-card-title">Løpende donut</div>
+          <p style="font-size:10px;color:#B0B0B0;margin-bottom:6px;line-height:1.5;">To gjenbrukte sko-SVG-er (<code style="background:#F2F2F7;padding:1px 4px;border-radius:3px;font-size:10px;">.hjem-foot</code>, høyre er speilet) ligger bak donut-en. Donut-en deler treningstiden på sportstype med samme geometri som Gruppedata; et hvitt midtfyll skjuler beina gjennom hullet.</p>
+          <div class="hjem-app" style="margin-bottom:6px;">
+            <div class="hjem-stage">
+              <svg class="hjem-foot hjem-foot-left" viewBox="40 0 1620 2700" xmlns="http://www.w3.org/2000/svg">
+                <g><g>
+                  <path d="M711.91 1220.86C753.563 1258.68 724.607 1310.14 737.022 1356.41C740.844 1370.65 757.579 1410 765.141 1422.19C809.579 1493.87 897.068 1533.57 921.1 1613.12C939.891 1675.36 912.116 1728.59 914.047 1790.74C916.412 1867.06 945.572 1938.67 964.984 2011.01C973.766 2043.75 1015.61 2132.79 1051.19 2190.48C1082.05 2240.51 1143.09 2310.57 1159.08 2350.56C1179.36 2401.32 1197.27 2527.68 1169.85 2575.2C1155.48 2600.12 1117.81 2628.23 1091.31 2638.16C1040.35 2657.26 964.31 2629.12 918.926 2602.94C897.572 2590.62 806.511 2544.16 794.585 2538.53C761.567 2522.98 589.281 2429.01 550.707 2388.64C466.191 2300.21 412.106 2182.91 392.162 2062.25C387.234 2032.44 352.901 1876.51 342.073 1827.79C334.828 1795.17 282.671 1711.23 261.096 1620.3C241.219 1536.53 251.605 1445.85 249.788 1405.64C247.433 1353.49 229.449 1306.13 223.211 1254.49C220.073 1228.51 221.7 1202.16 220.78 1176.01C220.403 1165.28 216.832 1154.34 219.141 1143.86C245.566 1023.56 383.1 1121.21 446.863 1146.78C475.695 1158.35 511.33 1163.6 541.609 1170.25C588.377 1180.52 624.898 1183.13 671.838 1195.84C690.204 1200.81 701.061 1211.02 711.91 1220.86Z" fill="#fad067"/>
+                  <path d="M270.787 1087.34C282.271 1097.31 254.548 1113.24 248.889 1127.35C245.1 1136.8 244.388 1164.31 243.869 1172.95C240.05 1236.88 249.343 1295.71 264.958 1357.84C272.2 1386.65 286.001 1416.24 287.209 1446.39C289.426 1501.89 261.779 1554.58 275.078 1610.93C289.881 1673.63 334.141 1722.16 361.439 1779.06C378.45 1814.52 388.397 1857.91 398.058 1896.01C406.248 1928.29 406.101 1960.58 410.616 1993.16C417.664 2044.02 437.151 2102.27 456.352 2149.68C474.093 2193.49 508.571 2233.43 536.293 2271.52C567.263 2314.06 607.995 2360.07 650.816 2390.83C679.802 2411.66 714.279 2419.5 744.416 2437.74C784.991 2462.29 825.385 2499.76 860.444 2531.89C895.74 2564.25 941.928 2582.81 977.152 2614.61C982.377 2619.33 991.49 2624.58 989.919 2631.44C988.313 2638.47 978.093 2640.96 970.94 2641.78C951.805 2643.99 927.82 2626.83 907.446 2628.81C873.732 2632.08 855.276 2653.61 819.849 2635.05C789.692 2619.26 779.349 2585.32 752.633 2569.06C712.722 2544.78 683.4 2592.31 642.855 2562.51C627.575 2551.27 606.571 2530.95 595.132 2516.04C582.554 2499.64 577.658 2470.24 561.953 2456.67C525.52 2425.19 471.808 2477.86 427.833 2434.89C409.275 2416.76 394.761 2378.08 393.734 2352.52C392.724 2327.21 402.094 2307.07 388.684 2283.36C358.145 2229.34 289.39 2226.67 264.884 2165.79C240.291 2104.71 278.507 2047.19 266.121 1991.42C257.442 1952.36 201.993 1914.63 183.618 1874.02C160.789 1823.55 185.956 1774.95 181.067 1724.67C177.052 1683.36 114.747 1659.39 102.863 1612.11C93.7986 1576.04 102.948 1511.25 124.51 1480.28C133.117 1467.92 147.318 1457.64 149.703 1442.76C157.157 1396.39 75.0506 1390.36 83.1253 1300.56C87.7015 1249.67 140.221 1265.49 129.335 1207.43C124.092 1179.44 99.348 1178.4 84.0454 1158.82C64.7246 1134.09 52.7771 1095.68 68.9263 1066.1C111.263 988.518 228.322 1050.5 270.787 1087.34Z" fill="#050505"/>
+                  <path d="M661.261 1457.47C676.842 1386.55 623.486 1328.76 587.131 1304.54C523.935 1262.43 466.944 1275.9 432.894 1295.35C414.051 1306.11 361.208 1351.79 352.934 1400.74C336.887 1495.67 418.885 1617.94 524.807 1588.22C586.067 1571.02 645.68 1528.39 661.261 1457.47Z" fill="#5e96f0"/>
+                </g></g>
+              </svg>
+              <svg class="hjem-foot hjem-foot-right" viewBox="0 180 1960 2260" xmlns="http://www.w3.org/2000/svg">
+                <g><g>
+                  <path d="M513.505 1731.41C548.664 1687.5 601.825 1713.21 647.238 1697.95C661.213 1693.25 699.449 1674.12 711.147 1665.81C779.936 1617.02 814.139 1527.24 892.048 1498.33C953.006 1475.72 1007.85 1500.14 1069.77 1494.36C1145.79 1487.28 1215.46 1453.74 1286.45 1429.88C1318.59 1419.09 1404.87 1371.81 1460.24 1332.72C1508.26 1298.82 1574.41 1233.56 1613.33 1215.13C1662.74 1191.74 1787.75 1166.04 1836.87 1190.46C1862.64 1203.26 1893.03 1239.11 1904.58 1264.95C1926.8 1314.62 1903.43 1392.26 1880.11 1439.18C1869.13 1461.26 1828.4 1555.02 1823.52 1567.27C1810.04 1601.19 1726.93 1778.97 1689.03 1819.97C1606 1909.8 1492.28 1971.05 1373.08 1998.43C1343.63 2005.19 1190.13 2049.12 1142.17 2062.94C1110.07 2072.2 1029.52 2129.45 940.103 2156.62C857.719 2181.65 766.576 2176.9 726.552 2181.2C674.645 2186.78 628.492 2207.67 577.339 2217.09C551.598 2221.83 525.206 2221.84 499.155 2224.38C488.476 2225.42 477.773 2229.66 467.171 2228.01C345.468 2209.08 434.409 2065.76 455.984 2000.54C465.739 1971.05 468.771 1935.15 473.536 1904.52C480.894 1857.21 481.236 1820.59 491.006 1772.96C494.829 1754.32 504.347 1742.85 513.505 1731.41Z" fill="#fad067"/>
+                  <path d="M407.564 2179.96C416.797 2167.88 434.416 2194.56 448.85 2199.34C458.514 2202.53 486.022 2201.54 494.68 2201.52C558.714 2201.37 616.856 2188.45 677.903 2169.02C706.214 2160.01 734.884 2144.4 764.908 2141.33C820.164 2135.68 874.463 2160.01 929.882 2143.24C991.544 2124.58 1037.24 2077.4 1092.34 2046.63C1126.67 2027.46 1169.37 2014.84 1206.8 2002.84C1238.51 1992.67 1270.74 1990.81 1302.99 1984.29C1353.31 1974.1 1410.24 1951.05 1456.36 1928.94C1499 1908.52 1536.73 1871.64 1573.02 1841.61C1613.56 1808.06 1656.96 1764.56 1685.01 1719.92C1704 1689.7 1709.7 1654.8 1726.03 1623.59C1748.02 1581.57 1782.91 1538.94 1812.81 1501.95C1842.93 1464.72 1858.58 1417.47 1888.14 1380.35C1892.53 1374.84 1897.2 1365.42 1904.15 1366.56C1911.26 1367.73 1914.38 1377.77 1915.65 1384.86C1919.04 1403.82 1903.39 1428.83 1906.63 1449.04C1911.99 1482.48 1934.62 1499.57 1918.29 1536.08C1904.39 1567.16 1871.16 1579.58 1856.59 1607.25C1834.83 1648.59 1884.08 1674.92 1856.85 1717.23C1846.58 1733.17 1827.6 1755.4 1813.42 1767.74C1797.84 1781.31 1768.8 1788.02 1756.23 1804.53C1727.07 1842.84 1782.96 1893.19 1742.79 1939.74C1725.85 1959.39 1688.14 1976.27 1662.69 1978.88C1637.49 1981.45 1616.82 1973.35 1593.98 1988.2C1541.95 2022.03 1543.55 2090.82 1484.3 2119.05C1424.86 2147.38 1365.09 2112.8 1310.19 2128.61C1271.74 2139.7 1237.53 2197.37 1198.13 2218.23C1149.17 2244.14 1099.11 2222.03 1049.23 2230.03C1008.25 2236.59 988.182 2300.26 941.728 2315.05C906.288 2326.34 841.052 2321.22 808.809 2301.61C795.934 2293.79 784.8 2280.25 769.803 2278.79C723.057 2274.23 722.121 2356.55 631.999 2354.05C580.924 2352.64 593.462 2299.24 536.18 2313.7C508.57 2320.67 509.068 2345.43 490.467 2361.91C466.989 2382.73 429.395 2397.03 398.865 2382.75C318.811 2345.3 373.422 2224.62 407.564 2179.96Z" fill="#050505"/>
+                  <path d="M752.79 1767.31C681.041 1756.15 626.668 1812.98 604.747 1850.77C566.633 1916.45 583.608 1972.5 605.126 2005.28C617.035 2023.42 665.905 2073.33 715.27 2078.56C811.009 2088.69 927.967 1999.28 891.743 1895.4C870.784 1835.32 824.539 1778.47 752.79 1767.31Z" fill="#5e96f0"/>
+                </g></g>
+              </svg>
+              <div class="hjem-donut">
+                <svg width="180" height="180" viewBox="0 0 220 220" style="display:block;margin:0 auto;">
+                  <circle cx="110" cy="110" r="82" fill="none" stroke="#F2F2F7" stroke-width="32"/>
+                  <circle cx="110" cy="110" r="82" fill="none" stroke="#A6C8FF" stroke-width="32" stroke-dasharray="113.3 401.9" stroke-dashoffset="0" transform="rotate(-90 110 110)"/>
+                  <circle cx="110" cy="110" r="82" fill="none" stroke="#FFC2E8" stroke-width="32" stroke-dasharray="195.8 319.4" stroke-dashoffset="-113.3" transform="rotate(-90 110 110)"/>
+                  <circle cx="110" cy="110" r="82" fill="none" stroke="#FAD479" stroke-width="32" stroke-dasharray="206.1 309.1" stroke-dashoffset="-309.1" transform="rotate(-90 110 110)"/>
+                  <line x1="110" y1="28" x2="110" y2="60" stroke="white" stroke-width="2.5" transform="rotate(0 110 110)"/>
+                  <line x1="110" y1="28" x2="110" y2="60" stroke="white" stroke-width="2.5" transform="rotate(79.2 110 110)"/>
+                  <line x1="110" y1="28" x2="110" y2="60" stroke="white" stroke-width="2.5" transform="rotate(216 110 110)"/>
+                  <circle cx="110" cy="110" r="66" fill="#FFFFFF"/>
+                  <svg x="98" y="86" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9A9AA0" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  <text x="110" y="138" text-anchor="middle" font-size="16" font-weight="600" fill="#1C1C1E" font-family="'Fredoka',sans-serif">3t 11min</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <p style="font-size:10px;color:#B0B0B0;margin:14px 0 6px;line-height:1.5;">Siste aktivitet: streak-pille (<code style="background:#F2F2F7;padding:1px 4px;border-radius:3px;font-size:10px;">.hjem-streak</code>) over en kort-stabel som hinter om flere kort under, og «+ N til» som utvider.</p>
+          <div class="hjem-activity-block">
+            <span class="hjem-streak">🔥 18</span>
+            <div class="hjem-activity-card-stack">
+              <div class="hjem-activity-card-main">
+                <div class="hjem-activity-row">
+                  <div class="hjem-activity-icon">👟</div>
+                  <div class="hjem-activity-meta">
+                    <div class="hjem-activity-name">Løping <span class="hjem-activity-tag">LETT</span></div>
+                    <div class="hjem-activity-sub">32m&nbsp;·&nbsp;3.1 km&nbsp;·&nbsp;10:38 min/km</div>
+                  </div>
+                  <div class="hjem-activity-when">I dag</div>
+                </div>
+              </div>
+            </div>
+            <button class="hjem-show-more"><span class="hjem-show-more-plus">+</span> 3 til</button>
+          </div>
         </div>
       </div>
 
@@ -2120,8 +2277,8 @@
           <button class="info-btn">i</button>
         </div>
         <div class="app-card">
-          <div class="app-card-title">Ukentlige treningsmål</div>
-          <p style="font-size:10px;color:#B0B0B0;margin-bottom:10px;">Hver målrad er trykkbar og åpner en bottom sheet for inntasting. Ikonene er hentet fra Gruppedata-toggle, hver i en avrundet brikke med en svak palett-tone: <strong>kornblomst for økter, rosa for distanse, gull for tid</strong>.</p>
+          <div class="app-card-title">Ukentlige treningsmål + makspuls</div>
+          <p style="font-size:10px;color:#B0B0B0;margin-bottom:10px;">Hver målrad er trykkbar og åpner en bottom sheet for inntasting. Ikonene er hentet fra Gruppedata-toggle, hver i en avrundet brikke med en svak palett-tone: <strong>kornblomst for økter, rosa for distanse, gull for tid</strong>. Makspuls ligger i et eget kort under (egen kalibrering, ikke et ukemål) og regner om Pulssoner-grensene.</p>
           <div class="pgoal-card">
             <div class="pgoal-head">
               <div class="pgoal-head-t">Sett ukentlige treningsmål</div>
@@ -2145,7 +2302,14 @@
               </div>
             </div>
           </div>
-          <p style="font-size:10px;color:#B0B0B0;margin-top:14px;">Trykk på en rad i selve Innstillinger-skjermen (skjerm I) for å se bottom sheet-en med inntasting.</p>
+          <div class="pgoal-hr-card">
+            <div class="pgoal-hr-row">
+              <div class="pgoal-hr-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FF7A85"><path d="M12 21s-7-4.6-9.3-9.1C1.3 9.1 2.5 5.5 5.8 5.1c2-.2 3.4 1 4.2 2.3.8-1.3 2.2-2.5 4.2-2.3 3.3.4 4.5 4 3.1 6.8C19 16.4 12 21 12 21z"/></svg></div>
+              <div class="pgoal-hr-meta"><div class="pgoal-hr-lbl">Makspuls</div><div class="pgoal-hr-sub">Gjør pulssonene dine riktigere</div></div>
+              <div class="pgoal-hr-val"><span class="pgoal-hr-num">190<span class="pgoal-unit"> bpm</span></span><span class="pgoal-chev">›</span></div>
+            </div>
+          </div>
+          <p style="font-size:10px;color:#B0B0B0;margin-top:14px;">Trykk på en rad i selve Innstillinger-skjermen (skjerm I) for å se bottom sheet-en med inntasting. Makspuls-arket viser i tillegg Z1–Z5-grensene som regnes om i sanntid.</p>
         </div>
       </div>
 

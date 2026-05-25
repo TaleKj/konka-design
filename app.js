@@ -1068,7 +1068,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a =>
 
 /* ===================================================================== */
 
-// --- Blokk 7: Personlige treningsmål — bottom sheet (Innstillinger) ---
+// --- Blokk 7: Personlige treningsmål + makspuls — bottom sheet (Innstillinger) ---
 (function(){
   var card = document.getElementById("sk-innstillinger-pers");
   if (!card) return;
@@ -1078,11 +1078,33 @@ document.querySelectorAll('a[href^="#"]').forEach(a =>
     dist:  { title:"Distanse per uke",  sub:"Antall kilometer totalt", unit:"km",
       icon:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3"/><path d="M12 11v10M8 21h8"/></svg>' },
     tid:   { title:"Tid per uke",       sub:"Antall timer trening", unit:"t",
-      icon:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>' }
+      icon:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>' },
+    puls:  { title:"Din makspuls",      sub:"Brukes til å regne ut pulssonene dine", unit:"bpm", zones:true,
+      icon:'<svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 21s-7-4.6-9.3-9.1C1.3 9.1 2.5 5.5 5.8 5.1c2-.2 3.4 1 4.2 2.3.8-1.3 2.2-2.5 4.2-2.3 3.3.4 4.5 4 3.1 6.8C19 16.4 12 21 12 21z"/></svg>' }
   };
+
+  // Pulssoner — samme farger og navn som Pulssoner-diagrammet (Z1–Z5).
+  // Rene prosent av makspuls; Z0 (hvile) utelates da den ikke avledes av makspuls.
+  var ZONES = [
+    {name:"Z1 · Oppvarming", color:"#AADEEE", lo:0.50, hi:0.60},
+    {name:"Z2 · Lett",       color:"#91BCFF", lo:0.60, hi:0.70},
+    {name:"Z3 · Aerob",      color:"#FAD067", lo:0.70, hi:0.80},
+    {name:"Z4 · Terskel",    color:"#FFB2E3", lo:0.80, hi:0.90},
+    {name:"Z5 · Maks",       color:"#FFA39B", lo:0.90, hi:1.00}
+  ];
+
   var scrim = card.querySelector(".pgoal-scrim");
   var input = card.querySelector(".pgoal-input");
+  var zonesBox = card.querySelector(".pgoal-zones");
   var active = null;
+
+  function renderZones(max){
+    zonesBox.innerHTML = ZONES.map(function(z){
+      return '<div class="zrow"><span class="zdot" style="background:'+z.color+'"></span>'+
+        '<span class="zname">'+z.name+'</span>'+
+        '<span class="zval">'+Math.round(z.lo*max)+'–'+Math.round(z.hi*max)+' bpm</span></div>';
+    }).join("");
+  }
 
   function open(key){
     active = key;
@@ -1091,8 +1113,16 @@ document.querySelectorAll('a[href^="#"]').forEach(a =>
     card.querySelector(".pgoal-sheet-title").textContent = c.title;
     card.querySelector(".pgoal-sheet-sub").textContent = c.sub;
     card.querySelector(".pgoal-input-unit").textContent = c.unit;
-    var cur = card.querySelector('.pgoal-num[data-val="'+key+'"]').textContent.replace(/[^0-9]/g,"");
+    var cur = card.querySelector('[data-val="'+key+'"]').textContent.replace(/[^0-9]/g,"");
     input.value = cur;
+    if (c.zones) {
+      zonesBox.style.display = "flex";
+      renderZones(parseInt(cur,10) || 190);
+      input.oninput = function(){ renderZones(parseInt(input.value,10) || 0); };
+    } else {
+      zonesBox.style.display = "none";
+      input.oninput = null;
+    }
     scrim.classList.add("open");
     setTimeout(function(){ input.focus(); }, 260);
   }
@@ -1100,11 +1130,12 @@ document.querySelectorAll('a[href^="#"]').forEach(a =>
   function save(){
     var c = cfg[active];
     var val = input.value || "0";
-    card.querySelector('.pgoal-num[data-val="'+active+'"]').innerHTML = val + '<span class="pgoal-unit"> '+c.unit+'</span>';
+    card.querySelector('[data-val="'+active+'"]').innerHTML = val + '<span class="pgoal-unit"> '+c.unit+'</span>';
     close();
   }
 
-  card.querySelectorAll(".pgoal-row").forEach(function(row){
+  // Mål-rader (okter/dist/tid) og makspuls-raden deler samme bottom sheet
+  card.querySelectorAll(".pgoal-row, .pgoal-hr-row").forEach(function(row){
     row.addEventListener("click", function(){ open(row.getAttribute("data-goal")); });
   });
   scrim.addEventListener("click", function(e){ if (e.target === scrim) close(); });
